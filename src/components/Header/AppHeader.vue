@@ -10,9 +10,9 @@
       <div class="contacts row">
         <div class="basket"></div>
         <div class="contact-btn">
-          <button class="btn"><span>Contact us</span></button>
+          <AppButton class="www">Contact us</AppButton>
         </div>
-        <button @click="isOpen = true" class="burger btn"><span></span></button>
+        <AppButton @action="isOpen = true" class="burger btn"><span></span></AppButton>
       </div>
     </div>
   </div>
@@ -25,6 +25,7 @@
 import { ref } from 'vue'
 import AppLogo from '../Logo/AppLogo.vue'
 import BurgerMenu from './BurgerMenu.vue'
+import AppButton from '../Button/AppButton.vue'
 
 const isOpen = ref(false)
 
@@ -51,21 +52,20 @@ $second: #fff
   @media (max-width: 480px)
     display: none
 
-.btn
-  background: $hover
-  color: $second
-  border-radius: .5rem
-  border-color: transparent
-  padding: 16px 32px
-  cursor: pointer
-  & span
-    font-size: 18px
-    font-weight: 500
-    line-height: 21px
-  &:hover
-    background: darken($hover, 10% )
-    color: $second
-
+// .btn
+//   background: $hover
+//   color: $second
+//   border-radius: .5rem
+//   border-color: transparent
+//   padding: 16px 32px
+//   cursor: pointer
+//   & span
+//     font-size: 18px
+//     font-weight: 500
+//     line-height: 21px
+//   &:hover
+//     background: darken($hover, 10% )
+//     color: $second
 .burger
   display: none
   width: 24px

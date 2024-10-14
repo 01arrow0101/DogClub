@@ -3,17 +3,17 @@
     <div class="container">
       <div class="col">
         <AppLogo />
-        <button @click="$emit('action')" class="burger btn">
+        <AppButton @action="$emit('action')" class="burger btn">
           <span></span>
-        </button>
-        <nav v-for="link in links" :key="link.title" class="nav col gap p-t">
-          <div class="nav-link">
+        </AppButton>
+        <nav class="nav col gap p-t">
+          <div v-for="link in links" :key="link.title" class="nav-link">
             <a href="#">{{ link.title }}</a>
           </div>
         </nav>
         <div class="contacts">
           <div class="contact-btn center">
-            <el-button class="btn">Contact us</el-button>
+            <AppButton>Contact us</AppButton>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 import AppLogo from '../Logo/AppLogo.vue'
-
+import AppButton from '../Button/AppButton.vue'
 const props = defineProps({
   links: Object,
 })
@@ -42,18 +42,6 @@ $second: #fff
   &-link
     &:hover
       color: $hover
-.btn
-  font-size: 18px
-  line-height: 21px
-  font-weight: 500
-  background: $hover
-  color: $second
-  border-radius: .5rem
-  border-color: transparent
-  padding: 16px 32px
-  &:hover
-    background: darken($hover, 10% )
-    color: $second
 .burger
   position: absolute
   right: 24px
@@ -69,7 +57,6 @@ $second: #fff
     position: relative
     width: 100%
     height: 1px
-    // background: #fff
     &::before
      content: ''
      position: absolute
