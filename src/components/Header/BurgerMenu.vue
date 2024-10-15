@@ -85,7 +85,8 @@ $second: #fff
   position: absolute
   top: 0
   left: 0
-  background: lighten($hover,35% )
+  background: $second
   width: 100vw
   height: 100vh
+  z-index: 9999
 </style>

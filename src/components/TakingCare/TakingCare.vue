@@ -3,13 +3,13 @@
   <div class="row">
     <div class="left">
       <div class="title">Taking care for your Smart Dog!</div>
-      <p class="text">Human–canine bonding is the relationship between dogs and humans</p>
+      <p class="text">Human–canine bonding is the relationship <br/> between dogs and humans</p>
       <AppButton>Explore More</AppButton>
+      <div class="bgMedia">
+        <img src="/src/assets/img/Main/bgMedia.png" alt="bgMedia">
+      </div>
     </div>
-    <div class="right">
-      <img class="bg" src="/src/assets/img/Main/bg1Home.png" alt="bg">
-      <img class="dog" src="/src/assets/img/Main/dog.png" alt="dog">
-    </div>
+    <div class="right dog"></div>
   </div>
 </div>
 </template>
@@ -21,20 +21,56 @@ import AppButton from '../Button/AppButton.vue'
 <style lang="sass" scoped>
 .padding
   padding-top: 212px
-  padding-bottom: 235px
+  padding-bottom: 60px
+  @media(max-width: 768px)
+    padding: 100px 0
+  @media(max-width: 480px)
+    padding: 34px 0
 .row
   position: relative
+  justify-content: space-between
+  @media (max-width:768px)
+    text-align: center
+    justify-content: center
+
 .left
-  width: 50% 
-.right
-  width: 50%
   position: relative
-  & .dog
+  width: 635px
+  &::after
+    content: ''
     position: absolute
-    top: 0
+    top: -60px
+    right: -640px
+    width: 828px
+    height: 513px
+    background: url('../src/assets/img/Main/bg1Home.png') center / contain no-repeat
+    @media (max-width: 768px)
+      width: 0
+      height: 0
+      display: none
+
+.bgMedia
+  position: relative
+  display: none
+  width: 0
+  height: 0
+  z-index: -1
+  @media(max-width: 768px)
+    display: block
+    width: 313px
+    position: absolute
+    left: 0
     right: 0
-  & .bg
-    position: absolute
-    top: calc(151px - 212px)
-    left: -150px 
+    margin: 0 auto
+    bottom: 70px
+  @media(max-width: 480px)
+    bottom: 130px
+.right
+  position: relative
+  background: url('../src/assets/img/Main/dog.png') right / contain no-repeat
+  width: 506px
+  height: 516px
+  @media(max-width:768px)
+    display: none
+  
 </style>

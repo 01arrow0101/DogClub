@@ -1,4 +1,5 @@
 <template>
+  <Modal v-if="isActive" :closeModal="isActive"/>
   <div class="container p-t">
     <div class="row space-between">
       <AppLogo />
@@ -10,7 +11,7 @@
       <div class="contacts row">
         <div class="basket"></div>
         <div class="contact-btn">
-          <AppButton class="www">Contact us</AppButton>
+          <AppButton @action="isActiveModal">Contact us</AppButton>
         </div>
         <AppButton @action="isOpen = true" class="burger btn"><span></span></AppButton>
       </div>
@@ -26,8 +27,10 @@ import { ref } from 'vue'
 import AppLogo from '../Logo/AppLogo.vue'
 import BurgerMenu from './BurgerMenu.vue'
 import AppButton from '../Button/AppButton.vue'
+import Modal from '../Modal/Modal.vue'
 
 const isOpen = ref(false)
+const isActive = ref(false)
 
 const links = ref([
   { title: 'Less talk' },
@@ -35,6 +38,10 @@ const links = ref([
   { title: 'Happy customer' },
   { title: 'Contact' },
 ])
+
+function isActiveModal(){
+  isActive.value = true
+}
 </script>
 
 <style lang="sass" scoped>
