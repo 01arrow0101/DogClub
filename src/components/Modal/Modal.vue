@@ -3,7 +3,7 @@
     <div class="container">
       <div class="modal-window">
         <div class="modal-content center">
-          <AppButton class="close">X</AppButton>
+          <AppButton @action="closedModal = true" class="close">X</AppButton>
           <h2 class="title-h2">Our experts will take care of your friend</h2>
           <p class="text">Fill out the form so we can contact you!</p>
           <form action="">
@@ -98,12 +98,19 @@ $primary: #fff
   &-content
     position: relative
     padding: 142px 140px
+    @media (max-width: 768px)
+      padding: 70px
+    @media (max-width: 480px)
+      padding: 40px
 .close
   position: absolute
   top: 32px
   right: 32px
   border-radius: 50%
   padding: 8px 12px
+  @media (max-width: 480px)
+    top: 16px
+    right: 16px
 .title-h2
   margin-bottom: 16px
 .text
