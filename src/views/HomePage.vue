@@ -4,6 +4,7 @@ import TakingCare from '@/components/TakingCare/TakingCare.vue'
 import AppHeader from '../components/Header/AppHeader.vue'
 import LessTalk from '../components/LessTalk/LessTalk.vue'
 import Services from '../components/Services/Services.vue'
+import Customer from '../components/Customer/Customer.vue'
 
 import { ref } from 'vue'
 
@@ -17,5 +18,6 @@ const isOpenModal = ref(false)
     <TakingCare />
     <LessTalk />
     <Services />
+    <Customer />
   </main>
 </template>
