@@ -7,19 +7,37 @@
       <p class="text">{{ person.title }}</p>
       <p class="text">{{ person.text }}</p>
     </div>
+    <div class="row">
     <div class="quality">
-      <Svg folder="/src/assets/img/Main/Customer/icon/" :name="person.quality < 1 ? 'whiteBone' : 'goldBone'"></Svg>
-      <Svg folder="/src/assets/img/Main/Customer/icon/" :name="person.quality < 2 ? 'whiteBone' : 'goldBone'"></Svg>
-      <Svg folder="/src/assets/img/Main/Customer/icon/" :name="person.quality < 3 ? 'whiteBone' : 'goldBone'"></Svg>
-      <Svg folder="/src/assets/img/Main/Customer/icon/" :name="person.quality < 4 ? 'whiteBone' : 'goldBone'"></Svg>
-      <Svg folder="/src/assets/img/Main/Customer/icon/" :name="person.quality < 5 ? 'whiteBone' : 'goldBone'"></Svg>
+      <Svg
+        folder="/src/assets/img/Main/Customer/icon/"
+        :name="person.quality < 1 ? 'whiteBone' : 'goldBone'"
+      ></Svg>
+      <Svg
+        folder="/src/assets/img/Main/Customer/icon/"
+        :name="person.quality < 2 ? 'whiteBone' : 'goldBone'"
+      ></Svg>
+      <Svg
+        folder="/src/assets/img/Main/Customer/icon/"
+        :name="person.quality < 3 ? 'whiteBone' : 'goldBone'"
+      ></Svg>
+      <Svg
+        folder="/src/assets/img/Main/Customer/icon/"
+        :name="person.quality < 4 ? 'whiteBone' : 'goldBone'"
+      ></Svg>
+      <Svg
+        folder="/src/assets/img/Main/Customer/icon/"
+        :name="person.quality < 5 ? 'whiteBone' : 'goldBone'"
+      ></Svg>
+
+    </div>
       <span>{{ person.quality }}/5</span>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue"
+import { ref } from 'vue'
 import Svg from '../Svg/Svg.vue'
 
 const props = defineProps({
@@ -29,9 +47,9 @@ const props = defineProps({
 const quality = ref([
   {
     folder: '',
-    name: ''
-  }
-  ])
+    name: '',
+  },
+])
 </script>
 <style lang="sass" scoped>
   $bg: rgb(131, 154, 169)
@@ -44,4 +62,6 @@ const quality = ref([
 .img-person
   height: 326px
   overflow: hidden
+.row
+  justify-content: space-around 
 </style>

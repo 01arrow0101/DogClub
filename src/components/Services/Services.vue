@@ -43,8 +43,9 @@ const services = ref([
 <style lang="sass" scoped>
 @import '@/assets/main'
 .bg
-  width: 100%
-  background: url('../src/assets/img/Main/Services/bg.png') center /cover no-repeat
+  max-width: 1440px
+  background: url('../src/assets/img/Main/Services/bg.png') center / cover no-repeat
+  margin: 0 auto
 .container
   position: relative
   padding: 68px 0 95px
