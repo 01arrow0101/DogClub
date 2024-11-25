@@ -58,6 +58,8 @@ const services = ref([
     right: -80px
     transform: rotate(5deg)
     background: url('../src/assets/img/Main/Services/bgArrow.svg') center / cover no-repeat
+    @media (max-width: 768px)
+      display: none
   
 .cards
   justify-content: center

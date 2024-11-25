@@ -5,6 +5,8 @@ import AppHeader from '../components/Header/AppHeader.vue'
 import LessTalk from '../components/LessTalk/LessTalk.vue'
 import Services from '../components/Services/Services.vue'
 import Customer from '../components/Customer/Customer.vue'
+import AppForma from '../components/Forma/AppForma.vue'
+import AppFooter from '../components/Footer/AppFooter.vue'
 
 import { ref } from 'vue'
 
@@ -19,5 +21,7 @@ const isOpenModal = ref(false)
     <LessTalk />
     <Services />
     <Customer />
+    <AppForma/>
   </main>
+  <AppFooter/>
 </template>

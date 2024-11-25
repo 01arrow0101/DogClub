@@ -1,11 +1,11 @@
 <template>
-  <Modal v-if="isActive" :closeModal="isActive"/>
+  <Modal v-if="isActive" :closeModal="isActive" />
   <div class="container p-t">
     <div class="row space-between">
       <AppLogo />
-      <nav  v-for="link in links" :key="link.title" class="nav row gap">
+      <nav v-for="link in links" :key="link.title" class="nav row gap">
         <div class="nav-link">
-          <a href="#">{{ link.title }}</a>
+          <a href="#" @click="goTo(link.title)">{{ link.title }}</a>
         </div>
       </nav>
       <div class="contacts row">
@@ -13,12 +13,14 @@
         <div class="contact-btn">
           <AppButton @action="isActiveModal">Contact us</AppButton>
         </div>
-        <AppButton @action="isOpen = true" class="burger btn"><span></span></AppButton>
+        <AppButton @action="isOpen = true" class="burger btn"
+          ><span></span
+        ></AppButton>
       </div>
     </div>
   </div>
   <div class="container">
-    <BurgerMenu :links="links" @action="isOpen = false" v-if="isOpen"/>
+    <BurgerMenu :links="links" @action="isOpen = false" v-if="isOpen" />
   </div>
 </template>
 
@@ -28,6 +30,28 @@ import AppLogo from '../Logo/AppLogo.vue'
 import BurgerMenu from './BurgerMenu.vue'
 import AppButton from '../Button/AppButton.vue'
 import Modal from '../Modal/Modal.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+function goTo(title) {
+  switch (title) {
+    case 'Less talk':
+      router.push('/')
+      break
+    case 'Services category':
+      router.push('/services')
+      break
+    case 'Happy customer':
+      router.push('/customer')
+      break
+    case 'Contact':
+      isActiveModal()
+      break
+    default:
+      router.go()
+  }
+}
 
 const isOpen = ref(false)
 const isActive = ref(false)
@@ -39,7 +63,7 @@ const links = ref([
   { title: 'Contact' },
 ])
 
-function isActiveModal(){
+function isActiveModal() {
   isActive.value = true
 }
 </script>
