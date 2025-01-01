@@ -7,6 +7,7 @@ import Nutrition from '../components/Services/Category/Nutrition.vue'
 import { ref } from 'vue'
 
 const isOpenModal = ref(false)
+
 </script>
 
 <template>

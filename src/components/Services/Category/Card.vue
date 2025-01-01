@@ -1,16 +1,15 @@
 <template>
 <div class="card center">
   <div class="img">
-    <img src="/src/assets/img/Main/Services/Category/Nutrition/savory.png" alt="37875">
+    <img :src="item.path" :alt="item.id">
   </div>
   <div class="code">
-    vendor code: 37875 <span>5 stars</span>
+    vendor code: {{item.id}} <span>{{item.stars}} stars</span>
   </div>
   <div class="text">
-    Dry food for dogs of average breeds Savory 3 kg 
-    (turkey and lamb)
+    {{item.title}}
     </div>
-    <div class="price">136.00$ <span>320.43$</span></div>
+    <div class="price">{{item.discount}}$ <span>{{item.price}}$</span></div>
     <div class="btn">
       <AppButton>Buy</AppButton>
     </div>
@@ -19,6 +18,10 @@
 
 <script setup>
 import AppButton from '/src/components/Button/AppButton.vue'
+
+const props = defineProps({
+  item: Object
+})
 </script>
 
 <style lang="sass" scoped>
