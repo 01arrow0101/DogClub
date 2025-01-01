@@ -6,63 +6,37 @@
         <div class="row">
           <div class="title-h3">Sorting:</div>
           <div class="category">
-            <button
-
-              :class="{ active: activeSort === 'stars_desc' }"
-            >
-              Popularity
-            </button>
-            <button
-
-              :class="{ active: activeSort === 'price_asc' }"
-            >
-              Cheaper first
-            </button>
-            <button
-
-              :class="{ active: activeSort === 'discount_desc' }"
-            >
-              More expensive first
-            </button>
-            <button
-
-              :class="{ active: activeSort === 'title_asc' }"
-            >
-              By name
-            </button>
-            <button
-
-              :class="{ active: activeSort === 'new_desc' }"
-            >
-              New ones first
-            </button>
+            <button>Popularity</button>
+            <button>Cheaper first</button>
+            <button>More expensive first</button>
+            <button>By name</button>
+            <button>New ones first</button>
           </div>
         </div>
       </div>
     </div>
-    <div v-if="loading" class="loading">
+    <div class="loading">
       <div class="loader"></div>
     </div>
     <div class="grid">
-      <Card v-for="item in items" :key="item.id" :item="item" />
+      <Card :item="nutritionStore.cards"/>
     </div>
-    <div >
+    <div>
       <p>No items found.</p>
     </div>
     <div class="pagination">
-      <button :disabled="currentPage === 1">Previous</button>
-      <button :class="{ active: currentPage === page }">
-        {{ page }}
-      </button>
-      <button :disabled="currentPage === totalPages">
-        Next
-      </button>
+      <button>Previous</button>
+      <button>1</button>
+      <button>Next</button>
     </div>
   </div>
 </template>
 
 <script setup>
 import Card from './Card.vue'
+import { useNutritionStore } from '/src/stores/nutritionStore'
+
+const nutritionStore = useNutritionStore()
 </script>
 
 <style lang="sass" scoped>
