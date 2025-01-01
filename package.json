@@ -14,7 +14,7 @@
   "dependencies": {
     "axios": "^1.7.7",
     "element-plus": "^2.8.5",
-    "firebase": "^11.0.2",
+    "firebase": "^11.1.0",
     "pinia": "^2.2.4",
     "sass": "^1.79.5",
     "swiper": "^11.1.14",
