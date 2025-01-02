@@ -6,21 +6,22 @@
         <div class="row">
           <div class="title-h3">Sorting:</div>
           <div class="category">
-            <button>Popularity</button>
-            <button>Cheaper first</button>
-            <button>More expensive first</button>
-            <button>By name</button>
-            <button>New ones first</button>
+            <button @click="nutritionStore.sortBy('stars')">Popularity</button>
+            <button @click="nutritionStore.sortBy('discount')">Cheaper first</button>
+            <button @click="nutritionStore.sortBy('price')">More expensive first</button>
+            <button  @click="nutritionStore.sortByName('title')">By name</button>
+            <button  @click="nutritionStore.sortBy('new')">New ones first</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="loading">
+    <div v-if="loader" class="loading">
       <div class="loader"></div>
     </div>
     <div class="grid">
-      <Card :item="nutritionStore.cards"/>
-    </div>
+      <Card v-for="item in nutritionStore.cards" :key="item.id" :item="item"/>
+      <Card v-for="item in nutritionStore.sortCategory" :key="item.id" :item="item"/>
+          </div>
     <div>
       <p>No items found.</p>
     </div>
@@ -33,9 +34,11 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import Card from './Card.vue'
 import { useNutritionStore } from '/src/stores/nutritionStore'
 
+const loader = ref(false)
 const nutritionStore = useNutritionStore()
 </script>
 

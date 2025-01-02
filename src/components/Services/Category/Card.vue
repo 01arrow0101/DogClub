@@ -4,6 +4,7 @@
     <img :src="item.path" :alt="item.id">
   </div>
   <div class="code">
+    <span v-if="item.new" style="color: red">NEW</span>
     vendor code: {{item.id}} <span>{{item.stars}} stars</span>
   </div>
   <div class="text">
@@ -53,4 +54,4 @@ $primary: #839AA9
       text-decoration: line-through
       color: $primary
       margin-left: 8px
-</style>  
+</style>
