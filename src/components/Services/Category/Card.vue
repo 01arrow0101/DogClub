@@ -12,13 +12,20 @@
     </div>
     <div class="price">{{item.discount}}$ <span>{{item.price}}$</span></div>
     <div class="btn">
-      <AppButton>Buy</AppButton>
+      <AppButton @action="addToCart(item)">Buy</AppButton>
     </div>
 </div>
 </template>
 
 <script setup>
 import AppButton from '/src/components/Button/AppButton.vue'
+import { useCartStore } from '@/stores/cartStore';
+
+const cartStore = useCartStore()
+
+const addToCart = (item)=>{
+  cartStore.addToCart(item)
+}
 
 const props = defineProps({
   item: Object

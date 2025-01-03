@@ -1,19 +1,22 @@
 <template>
   <div class="cart">
     <div class="cart-btn">
-      <el-button @click="cartShow.showCart = !cartShow.showCart" class="close" circle><span class="close_line"></span></el-button>
+      <el-button @click="cartStore.showCart = !cartStore.showCart" class="close" circle><span class="close_line"></span></el-button>
     </div>
     <div class="cart-content border">
-      
+      <div v-if="cartStore.carts.length !== 0" >
+        <CartCard v-for="item in cartStore.carts" :key="item.id" :card="item"/>
+      </div>
+      <div v-else class="text">Empty</div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { useCartStore } from '@/stores/cartStore';
+import CartCard from './CartCard.vue';
 
-const cartShow = useCartStore()
-
+const cartStore = useCartStore()
 </script>
 
 <style lang="sass" scoped>
