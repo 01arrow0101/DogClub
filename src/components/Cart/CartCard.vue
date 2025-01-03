@@ -12,12 +12,15 @@
       <el-input-number  size="small" style="width: 80px" v-model="num" :min="1" :max="10" @change="handleChange" />
       <p class="total-price">{{ card.discount }}</p>
     </div>
+    <el-button @click="cartStore.deleteProduct(card.id)">Delete</el-button>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import { useCartStore } from '@/stores/cartStore';
 
+const cartStore = useCartStore()
 const num = ref(1)
 const handleChange = (num) => {
   console.log(num)

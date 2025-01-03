@@ -9,7 +9,7 @@
         </div>
       </nav>
       <div class="contacts row">
-        <div @click="cartStore.showCart = !cartStore.showCart" class="basket"></div>
+        <div @click="cartStore.showCart = !cartStore.showCart" class="basket"><span class="curr-cart">{{ cartStore.currentCart }}</span></div>
         <div class="contact-btn">
           <AppButton @action="isActiveModal">Contact us</AppButton>
         </div>
@@ -99,6 +99,11 @@ $second: #fff
 //   &:hover
 //     background: darken($hover, 10% )
 //     color: $second
+
+.curr-cart
+  position: relative
+  top: -4px
+  right: -32px
 .burger
   display: none
   width: 24px

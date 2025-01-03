@@ -1,16 +1,34 @@
 import { defineStore } from 'pinia'
-import {  ref } from 'vue'
-import { useNutritionStore } from './nutritionStore'
+import {  computed, ref } from 'vue'
 
 
 
 export const useCartStore = defineStore('cartStore', () => {
   const showCart = ref(false)
   const carts = ref([])
+  const productInToCart = ref(false)
 
-  const addToCart = (id) => {
-  const nutritionStore = useNutritionStore()
-  carts.value.push({...id})
+const currentCart = computed(()=> carts.value.length)
+
+const addToCart = (id) => {
+  // Проверяем, есть ли уже объект с таким id в массиве carts
+  const isAlreadyInCart = carts.value.some(el => el.id === id.id);
+
+  if (!isAlreadyInCart) {
+    productInToCart.value = true
+    // Если объекта с таким id нет, добавляем его
+    carts.value.push({ ...id });
+    console.log('Текущая корзина:', carts.value);
+  } else {
+    console.warn(`Продукт с id ${id.id} уже находится в корзине.`);
+  }
+};
+
+const deleteProduct = (id) =>{
+  carts.value = carts.value.filter((el) => el.id !== id)
+  productInToCart.value = false
 }
-return{showCart,carts,addToCart}
+
+
+return{showCart,carts,addToCart,deleteProduct,currentCart}
 })
