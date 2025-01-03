@@ -9,7 +9,7 @@
         </div>
       </nav>
       <div class="contacts row">
-        <div class="basket"></div>
+        <div @click="cartStore.showCart = !cartStore.showCart" class="basket"></div>
         <div class="contact-btn">
           <AppButton @action="isActiveModal">Contact us</AppButton>
         </div>
@@ -31,8 +31,10 @@ import BurgerMenu from './BurgerMenu.vue'
 import AppButton from '../Button/AppButton.vue'
 import Modal from '../Modal/Modal.vue'
 import { useRouter } from 'vue-router'
+import { useCartStore } from '@/stores/cartStore'
 
 const router = useRouter()
+const cartStore = useCartStore()
 
 function goTo(title) {
   switch (title) {

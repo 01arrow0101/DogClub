@@ -1,26 +1,36 @@
 <template>
-  <div calss="cart-wrapper">
-    <el-button class="close" circle><span class="close_line"></span></el-button>
-hhhd
-<br>
-asdasdasd
+  <div class="cart">
+    <div class="cart-btn">
+      <el-button @click="cartShow.showCart = !cartShow.showCart" class="close" circle><span class="close_line"></span></el-button>
+    </div>
+    <div class="cart-content border">
+      
+    </div>
   </div>
 </template>
 
 <script setup>
+import { useCartStore } from '@/stores/cartStore';
+
+const cartShow = useCartStore()
 
 </script>
 
 <style lang="sass" scoped>
-.cart-wrapper
-  position: relative
-  padding-top: 52px
+.border
+  border-top: 1px solid #fff
+  border-left: 1px solid #fff
+  border-radius: 32px
+  padding: 16px
+.cart
+  margin: 48px 8px
+  &-btn
+    position: absolute
+    top: 10px
+    left: 8px
+    width: 32px
+    height: 32px
 .close
-  position: absolute
-  top: 32px
-  right: 16px
-  width: 32px
-  height: 32px
   &_line
     position: relative
     width: 16px
