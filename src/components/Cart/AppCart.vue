@@ -9,6 +9,7 @@
       </div>
       <div v-else class="text">Empty</div>
     </div>
+    <div>Количество товаров: {{ cartStore.carts.length }} СУММА: {{ cartStore.totalAllPrice }} $</div>
   </div>
 </template>
 
@@ -27,6 +28,7 @@ const cartStore = useCartStore()
   padding: 16px
 .cart
   margin: 48px 8px
+
   &-btn
     position: absolute
     top: 10px

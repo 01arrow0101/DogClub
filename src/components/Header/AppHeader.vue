@@ -77,7 +77,7 @@ $second: #fff
 .active
   color: $hover
 .p-t
-  padding-top: 32px
+  padding: 32px 0 16px 0
 .nav
   &-link
     &:hover
