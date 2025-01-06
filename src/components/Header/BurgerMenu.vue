@@ -8,7 +8,7 @@
         </AppButton>
         <nav class="nav col gap p-t">
           <div v-for="link in links" :key="link.title" class="nav-link">
-            <a href="#"> {{ link.title }}</a>
+            <a  href="#"> {{ link.title }}</a>
           </div>
         </nav>
         <div class="contacts">

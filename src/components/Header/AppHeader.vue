@@ -5,7 +5,7 @@
       <AppLogo />
       <nav v-for="link in links" :key="link.title" class="nav row gap">
         <div class="nav-link">
-          <a href="#" @click="goTo(link.title)">{{ link.title }}</a>
+          <a :class="link.isActive ? 'active' : ''" href="#" @click.prevent="goTo(link.path)">{{ link.title }}</a>
         </div>
       </nav>
       <div class="contacts row">
@@ -20,54 +20,79 @@
     </div>
   </div>
   <div class="container">
-    <BurgerMenu :links="links" @action="isOpen = false" v-if="isOpen" />
+    <!-- <BurgerMenu :links="links" @action="isOpen = false" v-if="isOpen" /> -->
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, watch} from 'vue'
 import AppLogo from '../Logo/AppLogo.vue'
 import BurgerMenu from './BurgerMenu.vue'
 import AppButton from '../Button/AppButton.vue'
 import Modal from '../Modal/Modal.vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useCartStore } from '@/stores/cartStore'
 
 const router = useRouter()
+const route = useRoute()
 const cartStore = useCartStore()
 
-function goTo(title) {
-  switch (title) {
-    case 'Less talk':
-      router.push('/')
-      break
-    case 'Services category':
-      router.push('/services')
-      break
-    case 'Happy customer':
-      router.push('/customer')
-      break
-    case 'Contact':
-      isActiveModal()
-      break
-    default:
-      router.go()
-  }
-}
 
 const isOpen = ref(false)
 const isActive = ref(false)
 
+const updateActiveLink = (path) => {
+  links.value.forEach((el) => {
+    el.isActive = el.path === path;
+  });
+};
+
+
+const goTo = (path) => {
+  links.value.forEach(el => {
+    if( el.path === path){
+      router.push(path)
+      el.isActive = true
+    }else{
+      el.isActive = false
+    }
+  })
+}
+
 const links = ref([
-  { title: 'Less talk' },
-  { title: 'Services category' },
-  { title: 'Happy customer' },
-  { title: 'Contact' },
+  { title: 'Less talk',
+    path: '/',
+    isActive: false
+   },
+  { title: 'Services category',
+    path: '/services',
+    isActive: false
+   },
+  { title: 'Happy customer',
+    path: '/customer',
+    isActive: false
+   },
+  { title: 'Contact',
+    path: '/contact',
+    isActive: false
+   },
 ])
 
 function isActiveModal() {
   isActive.value = true
 }
+
+onMounted(() => {
+  updateActiveLink(route.path);
+});
+
+watch(
+  () => route.path,
+  (newPath) => {
+    updateActiveLink(newPath);
+  }
+);
+
 </script>
 
 <style lang="sass" scoped>
@@ -84,22 +109,6 @@ $second: #fff
       color: $hover
   @media (max-width: 480px)
     display: none
-
-// .btn
-//   background: $hover
-//   color: $second
-//   border-radius: .5rem
-//   border-color: transparent
-//   padding: 16px 32px
-//   cursor: pointer
-//   & span
-//     font-size: 18px
-//     font-weight: 500
-//     line-height: 21px
-//   &:hover
-//     background: darken($hover, 10% )
-//     color: $second
-
 .curr-cart
   position: relative
   top: -4px
