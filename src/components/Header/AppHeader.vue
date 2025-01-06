@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="container">
-    <!-- <BurgerMenu :links="links" @action="isOpen = false" v-if="isOpen" /> -->
+    <BurgerMenu @close="isOpen = false" :links="links" @action="isOpen = false" v-if="isOpen" />
   </div>
 </template>
 

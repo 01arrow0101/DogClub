@@ -8,7 +8,7 @@
         </AppButton>
         <nav class="nav col gap p-t">
           <div v-for="link in links" :key="link.title" class="nav-link">
-            <a  href="#"> {{ link.title }}</a>
+            <router-link :to="link.path" @click="$emit('close')">{{ link.title}} </router-link>
           </div>
         </nav>
         <div class="contacts">
@@ -30,14 +30,17 @@ const props = defineProps({
 
 const links = ref(props.links)
 
-defineEmits(['action'])
+defineEmits(['action', 'close'])
 </script>
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'
 $hover: #FF9F0E
 $second: #fff
+.content
+  overflow: hidden
 .container
   padding-top: 32px
+  overflow: hidden
 .nav
   &-link
     &:hover

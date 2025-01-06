@@ -91,14 +91,17 @@ const cartStore = useCartStore()
       height: 0
       padding: 25px
       opacity: 0
+      overflow: hidden
     75%
       width: 100%
       height: 0
       padding: 25px
       opacity: 1
+      overflow: hidden
     100%
       width: 100%
       height: 100vh
+      overflow-y: auto
 
 
   .swipe-leave-active
@@ -107,11 +110,14 @@ const cartStore = useCartStore()
     0%
       width: 100%
       height: 100vh
+      overflow-y: auto
     75%
       width: 100%
       padding: 25px
       opacity: 1
+      overflow: hidden
     100%
       padding: 25px
       opacity: 0
+      height: 0
 </style>
