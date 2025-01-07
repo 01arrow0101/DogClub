@@ -52,11 +52,14 @@ $second: #839AA9
   z-index: 999
   width: 100%
   height: 100%
-  background: rgba(0,0 ,0 , 45% )
+
+  background-color: rgba(0, 0, 0, 0.5)
+  backdrop-filter: blur(10px)
+  transition: backdrop-filter 1s ease
 
   display: flex
   justify-content: center
-  // align-items: center
+
 
 .modal
   &-window
