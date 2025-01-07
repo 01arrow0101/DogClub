@@ -5,9 +5,9 @@
 <div class="content">
 <div class="cards row">
   <Card v-for="service in services" :key="service.name" :service="service"/>
-  <a class="linkMore" href="#">more services
+  <router-link to="/services" class="linkMore" href="#">more services
     <Svg folder="/src/assets/img/Main/Services" name="Arrow" class="arrow"></Svg>
-  </a>
+  </router-link>
 </div>
 </div>
   </div>
@@ -60,7 +60,7 @@ const services = ref([
     background: url('../src/assets/img/Main/Services/bgArrow.svg') center / cover no-repeat
     @media (max-width: 768px)
       display: none
-  
+
 .cards
   justify-content: center
   align-items: center
@@ -80,7 +80,18 @@ const services = ref([
   letter-spacing: 0.05em
   &:hover,
   &:hover .arrow
-    color: darken($second, 50% )
+    animation: arrow 0.5s ease
 .arrow
-  color: $hover  
-</style>
+  color: $hover
+  &:hover
+@keyframes arrow
+  0%
+    transform: translateX(0)
+  50%
+    transform: translateX(30px)
+  100%
+    transform: translateX(0)
+
+
+
+  </style>

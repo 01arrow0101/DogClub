@@ -4,6 +4,8 @@ import { ref } from "vue";
 export const useModuleStore = defineStore('moduleStore', () =>{
 const isOpenModalWindow = ref(false)
 const isAgree = ref(false)
+const activeTabCategory = ref('h')
+
 const linkItems = ref([
   { title: 'Less talk',
     path: '/',
@@ -58,7 +60,7 @@ const showModal = () => {
   isOpenModalWindow.value = ! isOpenModalWindow.value
 }
 
-function submitForm (){
+const  submitForm = () =>{
   inputItems.value.forEach(el =>{
     if(isAgree.value){
       console.log(el.valueInput);
@@ -67,6 +69,8 @@ function submitForm (){
     }
   })
   }
-
-return {isOpenModalWindow,showModal,linkItems,inputItems,submitForm,isAgree}
+const setCategory = (arg) => {
+  activeTabCategory.value = arg
+}
+return {isOpenModalWindow,showModal,linkItems,inputItems,submitForm,isAgree,activeTabCategory,setCategory}
 })

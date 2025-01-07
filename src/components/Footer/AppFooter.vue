@@ -9,14 +9,14 @@
               <Svg
                 folder="/src/assets/img/Social"
                 name="instagram"
-                class="instagram"
+                class="instagram social-link"
               ></Svg>
             </a>
-            <a href="#">
+            <a  href="#">
               <Svg
                 folder="/src/assets/img/Social"
                 name="facebook"
-                class="facebook"
+                class="facebook social-link"
               ></Svg>
             </a>
           </div>
