@@ -3,12 +3,16 @@ import { RouterView } from 'vue-router'
 import AppCart from './components/Cart/AppCart.vue'
 import AppHeader from './components/Header/AppHeader.vue'
 import AppFooter from './components/Footer/AppFooter.vue'
+import Modal from './components/Modal/Modal.vue'
 import { useCartStore } from './stores/cartStore'
+import { useModuleStore } from './stores/modulesStore'
 
+const moduleStore = useModuleStore()
 const cartStore = useCartStore()
 </script>
 
 <template>
+  <Modal v-if="moduleStore.isOpenModalWindow" />
   <header class="header">
     <transition name="swipe">
       <div v-if="cartStore.showCart" class="cart-wrapper animate-cart">

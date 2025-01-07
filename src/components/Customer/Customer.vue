@@ -32,11 +32,11 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const onSwiper = swiper => {
-  console.log(swiper)
+  // console.log(swiper)
 }
 
 const onSlideChange = () => {
-  console.log('slide change')
+  // console.log('slide change')
 }
 
 const modules = [Navigation, Pagination, Scrollbar, A11y]

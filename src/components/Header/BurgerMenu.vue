@@ -13,7 +13,7 @@
         </nav>
         <div class="contacts">
           <div class="contact-btn center">
-            <AppButton>Contact us</AppButton>
+            <AppButton @click="$emit('close')" @action="moduleStore.showModal">Contact us</AppButton>
           </div>
         </div>
       </div>
@@ -22,15 +22,19 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import { useModuleStore } from '@/stores/modulesStore'
 import AppLogo from '../Logo/AppLogo.vue'
 import AppButton from '../Button/AppButton.vue'
+
 const props = defineProps({
   links: Object,
 })
-
+const moduleStore = useModuleStore()
 const links = ref(props.links)
 
-defineEmits(['action', 'close'])
+
+
+defineEmits(['action','close'])
 </script>
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="modal-window">
         <div class="modal-content center">
-          <AppButton @action="closedModal = true" class="close">X</AppButton>
+          <AppButton @action="moduleStore.showModal" class="close">X</AppButton>
           <h2 class="title-h2">Our experts will take care of your friend</h2>
           <p class="text">Fill out the form so we can contact you!</p>
           <form action="">
@@ -33,8 +33,10 @@
 <script setup>
 import { ref } from 'vue'
 import AppButton from '../Button/AppButton.vue'
+import { useModuleStore } from '@/stores/modulesStore';
 import Input from './Input.vue'
 
+const moduleStore = useModuleStore()
 const inputsItem = ref([
   {
     label: 'Your name',
@@ -72,7 +74,8 @@ const inputsItem = ref([
 $primary: #fff
 $second: #839AA9
 .overlay
-  position: absolute
+  position: fixed
+  padding-top: 50px
   top: 0
   left: 0
   z-index: 999
@@ -82,7 +85,7 @@ $second: #839AA9
 
   display: flex
   justify-content: center
-  align-items: center
+  // align-items: center
 
 .modal
   &-window

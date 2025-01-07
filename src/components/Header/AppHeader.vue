@@ -1,5 +1,4 @@
 <template>
-  <Modal v-if="isActive" :closeModal="isActive" />
   <div class="container p-t">
     <div class="row space-between">
       <AppLogo />
@@ -11,7 +10,7 @@
       <div class="contacts row">
         <div @click="cartStore.showCart = !cartStore.showCart" class="basket"><span class="curr-cart">{{ cartStore.currentCart }}</span></div>
         <div class="contact-btn">
-          <AppButton @action="isActiveModal">Contact us</AppButton>
+          <AppButton @action="moduleStore.showModal">Contact us</AppButton>
         </div>
         <AppButton @action="isOpen = true" class="burger btn"
           ><span></span
@@ -29,17 +28,17 @@ import { ref, onMounted, watch} from 'vue'
 import AppLogo from '../Logo/AppLogo.vue'
 import BurgerMenu from './BurgerMenu.vue'
 import AppButton from '../Button/AppButton.vue'
-import Modal from '../Modal/Modal.vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useCartStore } from '@/stores/cartStore'
+import { useModuleStore } from '@/stores/modulesStore'
 
 const router = useRouter()
 const route = useRoute()
 const cartStore = useCartStore()
+const moduleStore = useModuleStore()
 
 
 const isOpen = ref(false)
-const isActive = ref(false)
 
 const updateActiveLink = (path) => {
   links.value.forEach((el) => {
@@ -77,10 +76,6 @@ const links = ref([
     isActive: false
    },
 ])
-
-function isActiveModal() {
-  isActive.value = true
-}
 
 onMounted(() => {
   updateActiveLink(route.path);
