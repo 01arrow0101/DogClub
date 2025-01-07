@@ -27,9 +27,11 @@
              <!-- <router-link :to="link.path">{{  link.title }}</router-link> -->
           </div>
         </nav>
-        <div class="forma">
+
+        <form @submit.prevent="moduleStore.submitForm">
+          <div class="forma">
           <Input
-            v-for="input in inputsItem"
+            v-for="input in moduleStore.inputItems"
             :key="input.label"
             :input="input"
           />
@@ -38,11 +40,13 @@
             </div>
             <div class="license">
               <label class="text-license" for="check">
-                <input type="checkbox" name="check" />
+                <input v-model="moduleStore.isAgree" required :checked="moduleStore.isAgree" type="checkbox" name="check" />
                 I agree to the privacy policy
               </label>
             </div>
         </div>
+
+        </form>
       </div>
       <div class="image"></div>
     </div>
@@ -50,7 +54,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useModuleStore } from '@/stores/modulesStore'
 import AppLogo from '../Logo/AppLogo.vue'
 import Svg from '@/components/Svg/Svg.vue'
@@ -58,22 +61,6 @@ import Input from '../Modal/Input.vue'
 import AppButton from '../Button/AppButton.vue'
 
 const moduleStore = useModuleStore()
-const inputsItem = ref([
-  {
-    label: 'Your email',
-    valueInput: '',
-    iconName: 'mail',
-    iconPath: '/src/assets/img/Modal',
-    type: 'text',
-  },
-  {
-    label: 'Your cmc',
-    valueInput: '',
-    iconName: 'cmc',
-    iconPath: '/src/assets/img/Footer',
-    type: 'text',
-  }
-])
 </script>
 
 <style lang="sass" scoped>

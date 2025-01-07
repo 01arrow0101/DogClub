@@ -5,6 +5,7 @@
       v-model="input.valueInput"
       :type="input.type"
       :placeholder="input.label"
+      required
     />
     <Svg :folder="input.iconPath" class="icon" :name="input.iconName"></Svg>
   </label>
@@ -13,7 +14,7 @@
 <script setup>
 import Svg from '@/components/Svg/Svg.vue';
 
-const props = defineProps({
+defineProps({
   input: {
     type: Object,
     required: true,

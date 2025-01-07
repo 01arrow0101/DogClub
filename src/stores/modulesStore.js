@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 export const useModuleStore = defineStore('moduleStore', () =>{
 const isOpenModalWindow = ref(false)
-
+const isAgree = ref(false)
 const linkItems = ref([
   { title: 'Less talk',
     path: '/',
@@ -23,11 +23,50 @@ const linkItems = ref([
    },
 ])
 
+const inputItems = ref([
+  {
+    label: 'Your name',
+    valueInput: '',
+    iconName: 'user',
+    iconPath: '/src/assets/img/Modal',
+    type: 'text'
+  },
+  {
+    label: 'Pet name',
+    valueInput: '',
+    iconName: 'pet',
+    iconPath: '/src/assets/img/Modal',
+    type: 'text',
+  },
+  {
+    label: 'Your phone',
+    valueInput: '',
+    iconName: 'phone',
+    iconPath: '/src/assets/img/Modal',
+    type: 'text',
+  },
+  {
+    label: 'Your email',
+    valueInput: '',
+    iconName: 'mail',
+    iconPath: '/src/assets/img/Modal',
+    type: 'text',
+  },
+])
 
 const showModal = () => {
   isOpenModalWindow.value = ! isOpenModalWindow.value
 }
 
+function submitForm (){
+  inputItems.value.forEach(el =>{
+    if(isAgree.value){
+      console.log(el.valueInput);
+    }else{
+      console.log(`Error License not read please, checked license`);
+    }
+  })
+  }
 
-return {isOpenModalWindow,showModal,linkItems}
+return {isOpenModalWindow,showModal,linkItems,inputItems,submitForm,isAgree}
 })

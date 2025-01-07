@@ -4,10 +4,10 @@
         <div class="modal-content center">
           <h2 class="title-h2">Our experts will take care of your friend</h2>
           <p class="text">Fill out the form so we can contact you!</p>
-          <form action="">
+          <form @submit.prevent="moduleStore.submitForm">
             <div class="inputs">
               <Input
-                v-for="input in inputsItem"
+                v-for="input in moduleStore.inputItems"
                 :key="input.label"
                 :input="input"
               />
@@ -17,7 +17,7 @@
             </div>
             <div class="license">
               <label class="text-license" for="check">
-                <input type="checkbox" name="check" />
+                <input required v-model="moduleStore.isAgree" :checked="moduleStore.isAgree" type="checkbox" name="check" />
                 I agree to the privacy policy
               </label>
             </div>
@@ -28,41 +28,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { useModuleStore } from '@/stores/modulesStore';
 import AppButton from '../Button/AppButton.vue'
 import Input from '../Modal/Input.vue'
 
-const inputsItem = ref([
-  {
-    label: 'Your name',
-    valueInput: '',
-    iconName: 'user',
-    iconPath: '/src/assets/img/Modal',
-    type: 'text'
-  },
-  {
-    label: 'Pet name',
-    valueInput: '',
-    iconName: 'pet',
-    iconPath: '/src/assets/img/Modal',
-    type: 'text',
-  },
-  {
-    label: 'Your phone',
-    valueInput: '',
-    iconName: 'phone',
-    iconPath: '/src/assets/img/Modal',
-    type: 'text',
-  },
-  {
-    label: 'Your email',
-    valueInput: '',
-    iconName: 'mail',
-    iconPath: '/src/assets/img/Modal',
-    type: 'text',
-  },
-])
-
+const moduleStore = useModuleStore()
 </script>
 
 <style lang="sass" scoped>
