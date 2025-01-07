@@ -5,6 +5,7 @@ import { db } from '../firebase';
 
 export const useNutritionStore = defineStore('nutritionStore', () => {
   const cards = ref([])
+  const activeTab = ref('stars')
 
   const getNutrition = async () => {
     const querySnapshot = await getDocs(collection(db, "nutritions"));
@@ -19,12 +20,15 @@ export const useNutritionStore = defineStore('nutritionStore', () => {
   const sortBy = (arg) =>{
    const sortPrice = [...cards.value].sort((a,b) => b[arg] - a[arg])
    cards.value = sortPrice
+   activeTab.value = arg
+
   }
 
     const sortByName = (title) => {
       const byName = [...cards.value].sort((a,b) => a[title].localeCompare(b[title]))
       cards.value = byName
+   activeTab.value = title
     }
 
-  return { cards, getNutrition, sortBy, sortByName }
+  return { cards, getNutrition, sortBy, sortByName, activeTab }
 })

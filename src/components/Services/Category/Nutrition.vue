@@ -6,11 +6,11 @@
         <div class="row">
           <div class="title-h3">Sorting:</div>
           <div class="category">
-            <button @click="nutritionStore.sortBy('stars')">Popularity</button>
-            <button @click="nutritionStore.sortBy('discount')">Cheaper first</button>
-            <button @click="nutritionStore.sortBy('price')">More expensive first</button>
-            <button  @click="nutritionStore.sortByName('title')">By name</button>
-            <button  @click="nutritionStore.sortBy('new')">New ones first</button>
+            <AppButton class="btn filter" :class="nutritionStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('stars')"><span>Popularity</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('discount')"><span>Cheaper first</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('price')"><span>More expensive first</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'title' ? 'btn active-tab' : ''"  @click="nutritionStore.sortByName('title')"><span>By name</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'new' ? 'btn active-tab' : ''"  @click="nutritionStore.sortBy('new')"><span>New ones first</span></AppButton>
           </div>
         </div>
       </div>
@@ -35,8 +35,9 @@
 
 <script setup>
 import { ref } from 'vue';
-import Card from './Card.vue'
 import { useNutritionStore } from '/src/stores/nutritionStore'
+import Card from './Card.vue'
+import AppButton from '@/components/Button/AppButton.vue';
 
 const loader = ref(false)
 const nutritionStore = useNutritionStore()
@@ -44,7 +45,8 @@ const nutritionStore = useNutritionStore()
 
 <style lang="sass" scoped>
 $primary: #FF9F0E
-
+.btn
+  color: #000
 .container
   padding-top: 72px
   padding-bottom: 88px

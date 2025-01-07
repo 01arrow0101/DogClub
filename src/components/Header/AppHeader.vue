@@ -4,7 +4,7 @@
       <AppLogo />
       <nav v-for="link in moduleStore.linkItems" :key="link.title" class="nav row gap">
         <div class="nav-link">
-          <a :class="link.isActive ? 'active' : ''" href="#" @click.prevent="goTo(link.path)">{{ link.title }}</a>
+          <a class="link" :class="link.isActive ? 'active' : ''" href="#" @click.prevent="goTo(link.path)">{{ link.title }}</a>
         </div>
       </nav>
       <div class="contacts row">
@@ -76,12 +76,16 @@ $hover: #FF9F0E
 $second: #fff
 .active
   color: $hover
+  transition: color .5s ease
 .p-t
   padding: 32px 0 16px 0
 .nav
   &-link
+    transition: color .5s ease
     &:hover
       color: $hover
+      transition: color .5s ease
+
   @media (max-width: 480px)
     display: none
 .curr-cart
