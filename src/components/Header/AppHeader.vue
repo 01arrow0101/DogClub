@@ -2,7 +2,7 @@
   <div class="container p-t">
     <div class="row space-between">
       <AppLogo />
-      <nav v-for="link in links" :key="link.title" class="nav row gap">
+      <nav v-for="link in moduleStore.linkItems" :key="link.title" class="nav row gap">
         <div class="nav-link">
           <a :class="link.isActive ? 'active' : ''" href="#" @click.prevent="goTo(link.path)">{{ link.title }}</a>
         </div>
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="container">
-    <BurgerMenu @close="isOpen = false" :links="links" @action="isOpen = false" v-if="isOpen" />
+    <BurgerMenu @close="isOpen = false" :links="moduleStore.linkItems" @action="isOpen = false" v-if="isOpen" />
   </div>
 </template>
 
@@ -37,18 +37,17 @@ const route = useRoute()
 const cartStore = useCartStore()
 const moduleStore = useModuleStore()
 
-
 const isOpen = ref(false)
 
 const updateActiveLink = (path) => {
-  links.value.forEach((el) => {
+  moduleStore.linkItems.forEach((el) => {
     el.isActive = el.path === path;
   });
 };
 
 
 const goTo = (path) => {
-  links.value.forEach(el => {
+  moduleStore.linkItems.forEach(el => {
     if( el.path === path){
       router.push(path)
       el.isActive = true
@@ -57,25 +56,6 @@ const goTo = (path) => {
     }
   })
 }
-
-const links = ref([
-  { title: 'Less talk',
-    path: '/',
-    isActive: false
-   },
-  { title: 'Services category',
-    path: '/services',
-    isActive: false
-   },
-  { title: 'Happy customer',
-    path: '/customer',
-    isActive: false
-   },
-  { title: 'Contact',
-    path: '/contact',
-    isActive: false
-   },
-])
 
 onMounted(() => {
   updateActiveLink(route.path);

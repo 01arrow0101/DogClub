@@ -10,21 +10,25 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      isActive: false,
       component: HomePage
     },
     {
       path: '/services',
       name: 'services',
+      isActive: false,
       component: ServicesCategory
     },
     {
       path: '/customer',
       name: 'customer',
+      isActive: false,
       component: Customer
     },
     {
       path: '/contact',
       name: 'contact',
+      isActive: false,
       component: Contact
     },
   ]

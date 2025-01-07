@@ -22,8 +22,9 @@
           </div>
         </div>
         <nav class="nav gap col">
-          <div v-for="link in links" :key="link.title" class="nav-link">
-            <a href="#">{{ link.title }}</a>
+          <div v-for="link in moduleStore.linkItems" :key="link.title" class="nav-link">
+            <a :href="link.path">{{ link.title }}</a>
+             <!-- <router-link :to="link.path">{{  link.title }}</router-link> -->
           </div>
         </nav>
         <div class="forma">
@@ -50,19 +51,13 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useModuleStore } from '@/stores/modulesStore'
 import AppLogo from '../Logo/AppLogo.vue'
 import Svg from '@/components/Svg/Svg.vue'
 import Input from '../Modal/Input.vue'
 import AppButton from '../Button/AppButton.vue'
 
-const links = ref([
-  { title: 'Less talk' },
-  { title: 'Services category' },
-  { title: 'Happy customer' },
-  { title: 'Contact' },
-])
-
-
+const moduleStore = useModuleStore()
 const inputsItem = ref([
   {
     label: 'Your email',
@@ -118,7 +113,7 @@ $license:#839AA9
   text-align: center
 .license
   text-align: center
-  color: $license        
+  color: $license
 .gap
   gap: 16px
 .image
