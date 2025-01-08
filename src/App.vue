@@ -40,7 +40,7 @@ const cartStore = useCartStore()
   position: fixed
   right: 0
   top: 20px
-  background: lighten($hover, 15% )
+  background: rgba($hover, 60% )
   width: 50px
   border-radius: 32px 0 0 32px
   z-index: 2000
@@ -68,6 +68,7 @@ const cartStore = useCartStore()
     width: 30%
     height: 100vh
     overflow: auto
+
 
 // Анимация для исчезновения
 .swipe-leave-active

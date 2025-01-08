@@ -11,7 +11,8 @@
 
 <script setup>
 import Svg from '@/components/Svg/Svg.vue'
-
+import { useModuleStore } from '@/stores/modulesStore';
+const moduleStore = useModuleStore()
 const props = defineProps({
   service: Object
 })

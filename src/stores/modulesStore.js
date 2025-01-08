@@ -4,7 +4,7 @@ import { ref } from "vue";
 export const useModuleStore = defineStore('moduleStore', () =>{
 const isOpenModalWindow = ref(false)
 const isAgree = ref(false)
-const activeTabCategory = ref('h')
+const activeTabCategory = ref('Nutrition')
 
 const linkItems = ref([
   { title: 'Less talk',

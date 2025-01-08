@@ -4,7 +4,7 @@
 <h2 class="title-h2 center">Services category </h2>
 <div class="content">
 <div class="cards row">
-  <Card v-for="service in services" :key="service.name" :service="service"/>
+  <Card @click="goTo(service.name, service.path)" v-for="service in services" :key="service.name" :service="service"/>
   <router-link to="/services" class="linkMore" href="#">more services
     <Svg folder="/src/assets/img/Main/Services" name="Arrow" class="arrow"></Svg>
   </router-link>
@@ -17,27 +17,46 @@
 <script setup>
 import Card from '@/components/Services/Card.vue'
 import Svg from '@/components/Svg/Svg.vue'
+import { useModuleStore } from '@/stores/modulesStore';
 
 import { ref } from 'vue'
-
+import { useRouter } from 'vue-router';
+const router = useRouter()
+const moduleStore = useModuleStore()
 const services = ref([
   {
     folderIcon: '/src/assets/img/Main/Services',
-    name: 'Grooming'
+    name: 'Grooming',
+    path: '/grooming'
 },
   {
     folderIcon: '/src/assets/img/Main/Services',
-    name: 'Nutrition'
+    name: 'Nutrition',
+    path: '/nutrition'
 },
   {
     folderIcon: '/src/assets/img/Main/Services',
-    name: 'Training'
+    name: 'Training',
+    path: '/training'
 },
   {
     folderIcon: '/src/assets/img/Main/Services',
-    name: 'Bathing'
+    name: 'Bathing',
+    path: '/bathing'
 },
 ])
+
+const goTo = (category, path) => {
+  moduleStore.setCategory(category)
+  const serviceExists = services.value.some(el => el.path === path);
+  if (serviceExists) {
+    router.push('/services');
+  } else {
+    console.error('Error: Path not found');
+  }
+}
+
+defineEmits(['scroll-to'])
 </script>
 
 <style lang="sass" scoped>
