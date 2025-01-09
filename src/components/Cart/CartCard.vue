@@ -15,6 +15,7 @@
     </div>
     <div class="price">
       <el-input-number
+      class="input"
         size="small"
         style="width: 80px"
         v-model="num"
@@ -24,7 +25,9 @@
       />
       <p class="total-price">{{ parseFloat(card.total).toFixed(2) }} $</p>
     </div>
-    <el-button @click="cartStore.deleteProduct(card.id)">Delete</el-button>
+    <div class="delete">
+      <el-button type="danger"  @click="cartStore.deleteProduct(card.id)">Delete</el-button>
+    </div>
   </div>
 </template>
 
@@ -47,14 +50,22 @@ const props = defineProps({
 </script>
 
 <style lang="sass" scoped>
+@import '/src/assets/main.sass'
+.delete
+  text-align: center
+.input
+  margin-bottom: 24px
 .row
   justify-content: space-between
   align-items: center
-  gap: 16px
 .cart-card
   border: 1px solid #fff
   padding: 8px
-  border-radius: .5rem
+  border-radius: 1.5rem
+  border-top: 3px solid $hover
+  border-bottom: 3px solid $hover
+  border-left: 3px solid $hover
+
   box-shadow: 0 2px 10px 2px #fff
   background: rgba(255, 255, 255, 0.9)
   margin-bottom: 24px

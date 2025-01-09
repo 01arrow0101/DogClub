@@ -1,7 +1,11 @@
 <template>
   <div class="cart">
     <div class="cart-btn">
-      <el-button @click="cartStore.showCart = !cartStore.showCart" class="close" circle><span class="close_line"></span></el-button>
+      <!-- <el-button type="warning" @click="cartStore.showCart = !cartStore.showCart" class="close" circle><span class="close_line"></span></el-button> -->
+      <!-- <el-button type="warning" @click="cartStore.showCart = !cartStore.showCart" class="close" circle><span class="close_line"></span></el-button> -->
+      <AppButton
+      @click="cartStore.showCart = !cartStore.showCart"
+      class="close-btn">X</AppButton>
     </div>
     <div class="cart-content border">
       <div v-if="cartStore.carts.length !== 0" >
@@ -9,23 +13,28 @@
       </div>
       <div v-else class="text">Empty</div>
     </div>
-    <div>Количество товаров: {{ cartStore.carts.length }} СУММА: {{ cartStore.totalAllPrice }} $</div>
+    <div class="sum">Количество товаров: {{ cartStore.carts.length }} СУММА: {{ cartStore.totalAllPrice }} $</div>
   </div>
 </template>
 
 <script setup>
 import { useCartStore } from '@/stores/cartStore';
 import CartCard from './CartCard.vue';
+import AppButton from '../Button/AppButton.vue';
 
 const cartStore = useCartStore()
 </script>
 
 <style lang="sass" scoped>
-.border
-  border-top: 1px solid #fff
-  border-left: 1px solid #fff
-  border-radius: 32px
-  padding: 16px
+@import '/src/assets/main.sass'
+
+.close-btn
+  width: 32px
+  height: 32px
+  padding: 8px
+  border-radius: 50%
+  padding-top: 2px
+  padding-bottom: 2px
 .cart
   margin: 48px 8px
 
