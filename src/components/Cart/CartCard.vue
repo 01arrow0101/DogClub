@@ -6,10 +6,7 @@
       </div>
       <div class="cart-title">
         <h2>
-          {{ card.title }} Lorem ipsum dolor, sit amet consectetur adipisicing
-          elit. Placeat ad modi, pariatur voluptatibus aut quaerat perferendis!
-          Tempore quia ratione ipsam a doloribus optio quasi. Tempora, maxime
-          officia? Praesentium, dolores dolorem?
+          {{ card.title }} 
         </h2>
       </div>
     </div>

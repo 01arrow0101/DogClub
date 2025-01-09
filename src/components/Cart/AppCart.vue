@@ -1,19 +1,20 @@
 <template>
   <div class="cart">
     <div class="cart-btn">
-      <!-- <el-button type="warning" @click="cartStore.showCart = !cartStore.showCart" class="close" circle><span class="close_line"></span></el-button> -->
-      <!-- <el-button type="warning" @click="cartStore.showCart = !cartStore.showCart" class="close" circle><span class="close_line"></span></el-button> -->
       <AppButton
       @click="cartStore.showCart = !cartStore.showCart"
       class="close-btn">X</AppButton>
     </div>
-    <div class="cart-content border">
+    <div class="cart-content">
+    <h2 class="title-h2">{{cartStore.carts.length < 1 ? 'В корзине нет товаров' : 'Моя Корзина'}} </h2>
       <div v-if="cartStore.carts.length !== 0" >
         <CartCard v-for="item in cartStore.carts" :key="item.id" :card="item"/>
+        <hr/>
       </div>
-      <div v-else class="text">Empty</div>
     </div>
-    <div class="sum">Количество товаров: {{ cartStore.carts.length }} СУММА: {{ cartStore.totalAllPrice }} $</div>
+    <div class="cart-total">
+      <div class="sum">Количество товаров: {{ cartStore.carts.length }} СУММА: {{ cartStore.totalAllPrice }} $</div>
+    </div>
   </div>
 </template>
 
@@ -27,7 +28,10 @@ const cartStore = useCartStore()
 
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'
-
+.title-h2
+  font-size: 30px
+  margin-bottom: 24px
+  font-weight: 700
 .close-btn
   width: 32px
   height: 32px
