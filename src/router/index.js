@@ -3,6 +3,10 @@ import HomePage from '../views/HomePage.vue'
 import ServicesCategory from '../views/ServicesCategory.vue'
 import Customer from '@/views/Customer.vue'
 import Contact from '@/views/Contact.vue'
+import Nutrition from '@/components/Services/Category/Nutrition.vue'
+import Grooming from '@/components/Services/Category/Grooming.vue'
+import Training from '@/components/Services/Category/Training.vue'
+import Bathing from '@/components/Services/Category/Bathing.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +22,30 @@ const router = createRouter({
       name: 'services',
       isActive: false,
       component: ServicesCategory
+    },
+    {
+      path: '/services/nutrition',
+      name: 'nutrition',
+      isActive: false,
+      component: Nutrition
+    },
+    {
+      path: '/services/grooming',
+      name: 'grooming',
+      isActive: false,
+      component: Grooming
+    },
+    {
+      path: '/services/training',
+      name: 'training',
+      isActive: false,
+      component: Training
+    },
+    {
+      path: '/services/bathing',
+      name: 'bathing',
+      isActive: false,
+      component: Bathing
     },
     {
       path: '/customer',

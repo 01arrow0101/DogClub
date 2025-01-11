@@ -112,6 +112,14 @@ a {
   flex-direction: column;
 }
 
+.nav-link {
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: #FF9F0E;
+  transition: color 0.3s ease;
+}
+
 body {
   position: relative;
   font-size: 1.125rem;
@@ -127,4 +135,19 @@ body {
   max-width: 77.25rem;
   padding: 0 16px;
   margin: 0 auto;
+}
+
+.el-input-number--small .el-input-number__decrease, .el-input-number--small .el-input-number__increase {
+  background: #FF9F0E;
+  color: #181817;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.el-input-number--small .el-input--small .el-input__wrapper {
+  outline: 1px solid #FF9F0E;
+}
+
+.el-icon svg {
+  color: #fff;
 }/*# sourceMappingURL=main.css.map */

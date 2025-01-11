@@ -2,12 +2,15 @@
   <div class="cart-card">
     <div class="row">
       <div class="card-img">
-        <img :src="card.path" :alt="card.title" />
+        <a href="#"><img :src="card.path" :alt="card.title" /></a>
       </div>
       <div class="cart-title">
-        <h2>
-          {{ card.title }} 
-        </h2>
+        <h3 class="title-h3">
+          <a href="#">{{ card.title }} Lorem ipsum dolor sit amet.</a>
+        </h3>
+        <p class="title-h3">
+          Вес: 12кг
+        </p>
       </div>
     </div>
     <div class="price">
@@ -48,12 +51,22 @@ const props = defineProps({
 
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'
+.card-img
+  width: 70px
+  & img
+    width: 70px
+.cart-title
+  display: flex
+  flex-direction: column
+  gap: 16px
 .delete
   text-align: center
 .input
   margin-bottom: 24px
+  background: #000
 .row
-  justify-content: space-between
+  gap: 16px
+  // justify-content: space-between
   align-items: center
 .cart-card
   border: 1px solid #fff
@@ -64,10 +77,13 @@ const props = defineProps({
   border-left: 3px solid $hover
 
   box-shadow: 0 2px 10px 2px #fff
-  background: rgba(255, 255, 255, 0.9)
+  background: #eee
   margin-bottom: 24px
 .price
   display: flex
   justify-content: end
   gap: 16px
+.total-price
+  font-size: 18px
+  font-weight: 700
 </style>
