@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row mb">
       <div class="title-h2">Nutrition</div>
-      <div class="sort">
+      <div v-if="tabIsShow" class="sort">
         <div class="row">
           <div class="title-h3">Sorting:</div>
-          <div class="category">
+          <div  class="category">
             <AppButton class="btn filter" :class="nutritionStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('stars')"><span>Popularity</span></AppButton>
             <AppButton class="btn" :class="nutritionStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('discount')"><span>Cheaper first</span></AppButton>
             <AppButton class="btn" :class="nutritionStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('price')"><span>More expensive first</span></AppButton>
@@ -15,17 +15,17 @@
         </div>
       </div>
     </div>
-    <div v-if="loader" class="loading">
+    <div v-if="nutritionStore.loader" class="loading">
       <div class="loader"></div>
     </div>
-    <div class="grid">
+    <div v-if="nutritionStore.cards.length !== 0" class="grid">
       <Card v-for="item in nutritionStore.cards" :key="item.id" :item="item"/>
       <Card v-for="item in nutritionStore.sortCategory" :key="item.id" :item="item"/>
           </div>
-    <div>
+    <div v-else>
       <p>No items found.</p>
     </div>
-    <div class="pagination">
+    <div v-if="tabIsShow" class="pagination">
       <button>Previous</button>
       <button>1</button>
       <button>Next</button>
@@ -34,13 +34,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
 import { useNutritionStore } from '/src/stores/nutritionStore'
 import Card from './Card.vue'
 import AppButton from '@/components/Button/AppButton.vue';
 
-const loader = ref(false)
 const nutritionStore = useNutritionStore()
+
+defineProps({
+  tabIsShow: {
+    type: Boolean,
+    default: true
+  }
+})
 </script>
 
 <style lang="sass" scoped>

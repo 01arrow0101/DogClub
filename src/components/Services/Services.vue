@@ -5,7 +5,7 @@
 <div class="content">
 <div class="cards row">
   <Card @click="goTo(service.name, service.path)" v-for="service in services" :key="service.name" :service="service"/>
-  <router-link to="/services" class="linkMore" href="#">more services
+  <router-link v-if="isShow" to="/services" class="linkMore" href="#">more services
     <Svg folder="/src/assets/img/Main/Services" name="Arrow" class="arrow"></Svg>
   </router-link>
 </div>
@@ -18,11 +18,13 @@
 import Card from '@/components/Services/Card.vue'
 import Svg from '@/components/Svg/Svg.vue'
 import { useModuleStore } from '@/stores/modulesStore';
+import {useNutritionStore} from '@/stores/nutritionStore'
 
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const moduleStore = useModuleStore()
+const nutritionStore = useNutritionStore()
 const services = ref([
   {
     folderIcon: '/src/assets/img/Main/Services',
@@ -50,13 +52,18 @@ const goTo = (category, path) => {
   moduleStore.setCategory(category)
   const serviceExists = services.value.some(el => el.path === path);
   if (serviceExists) {
-    router.push('/services');
+    nutritionStore.cards = []
+    nutritionStore.getNutrition()
+    router.push(`/services${path}`);
   } else {
     console.error('Error: Path not found');
   }
 }
 
-defineEmits(['scroll-to'])
+defineProps({
+  isShow: Boolean
+})
+
 </script>
 
 <style lang="sass" scoped>

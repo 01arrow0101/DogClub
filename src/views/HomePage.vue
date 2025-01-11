@@ -10,7 +10,7 @@ import AppForma from '../components/Forma/AppForma.vue'
   <main>
     <TakingCare />
     <LessTalk />
-    <Services />
+    <Services :is-show="true"/>
     <Customer />
     <AppForma/>
   </main>
