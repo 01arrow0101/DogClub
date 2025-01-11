@@ -10,8 +10,8 @@ import Bathing from '@/components/Services/Category/Bathing.vue'
   <main>
     <Services :is-show="false" />
     <Nutrition :tab-is-show="false" />
-    <Grooming />
-    <Training />
-    <Bathing />
+    <Grooming :tab-is-show="false"/>
+    <Training :tab-is-show="false"/>
+    <Bathing :tab-is-show="false"/>
   </main>
 </template>
