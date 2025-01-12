@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <div class="row mb">
-      <div class="title-h2">Grooming</div>
+      <div class="title-h2">Грумінг</div>
       <div v-if="tabIsShow" class="sort">
         <div class="row">
-          <div class="title-h3">Sorting:</div>
+          <div class="title-h3">Сортування:</div>
           <div  class="category">
-            <AppButton class="btn filter" :class="nutritionStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('stars')"><span>Popularity</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('discount')"><span>Cheaper first</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('price')"><span>More expensive first</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'title' ? 'btn active-tab' : ''"  @click="nutritionStore.sortByName('title')"><span>By name</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'new' ? 'btn active-tab' : ''"  @click="nutritionStore.sortBy('new')"><span>New ones first</span></AppButton>
+            <AppButton class="btn filter" :class="nutritionStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('stars')"><span>Популярність</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('discount')"><span>Спочатку дешевше</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('price')"><span>Спочатку дорожче</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'title' ? 'btn active-tab' : ''"  @click="nutritionStore.sortByName('title')"><span>По імені</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'new' ? 'btn active-tab' : ''"  @click="nutritionStore.sortBy('new')"><span>Спершу нові</span></AppButton>
           </div>
         </div>
       </div>

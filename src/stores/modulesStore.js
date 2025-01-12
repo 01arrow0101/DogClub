@@ -4,22 +4,22 @@ import { ref } from "vue";
 export const useModuleStore = defineStore('moduleStore', () =>{
 const isOpenModalWindow = ref(false)
 const isAgree = ref(false)
-const activeTabCategory = ref('Nutrition')
+const activeTabCategory = ref('Харчування')
 
 const linkItems = ref([
-  { title: 'Less talk',
+  { title: 'Менше розмов',
     path: '/',
     isActive: false
    },
-  { title: 'Services category',
+  { title: 'Категорія послуг',
     path: '/services',
     isActive: false
    },
-  { title: 'Happy customer',
+  { title: 'Щасливий клієнт',
     path: '/customer',
     isActive: false
    },
-  { title: 'Contact',
+  { title: 'Контакт',
     path: '/contact',
     isActive: false
    },
@@ -27,28 +27,28 @@ const linkItems = ref([
 
 const inputItems = ref([
   {
-    label: 'Your name',
+    label: "Ваше ім'я",
     valueInput: '',
     iconName: 'user',
     iconPath: '/src/assets/img/Modal',
     type: 'text'
   },
   {
-    label: 'Pet name',
+    label: "Ім'я улюбленця",
     valueInput: '',
     iconName: 'pet',
     iconPath: '/src/assets/img/Modal',
     type: 'text',
   },
   {
-    label: 'Your phone',
+    label: 'Ваш телефон',
     valueInput: '',
     iconName: 'phone',
     iconPath: '/src/assets/img/Modal',
     type: 'text',
   },
   {
-    label: 'Your email',
+    label: 'Ваш пошта',
     valueInput: '',
     iconName: 'mail',
     iconPath: '/src/assets/img/Modal',

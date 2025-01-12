@@ -11,10 +11,10 @@
       </div>
       </div>
       <div class="right">
-        <h2 class="title-h2">Less talk and more walk</h2>
-        <p class="text">Sometimes our career, lifestyle, or routines can make it difficult to provide your pet with the recommended amount of exercise that they need. Which is why, it’s okay to use an extra hand in walking dogs so they are in perfect shape, mentally and physically.</p>
+        <h2 class="title-h2">Менше розмов і більше прогулянок</h2>
+        <p class="text">Іноді наша кар’єра, спосіб життя чи розпорядок дня можуть ускладнити надання вашому вихованцеві рекомендованої кількості вправ, які йому потрібні. Ось чому можна використовувати додаткову руку, щоб вигулювати собак, щоб вони були в ідеальній формі, розумово та фізично.</p>
         <div class="button">
-          <AppButton>Explore More</AppButton>
+          <AppButton>Досліджуйте більше</AppButton>
         </div>
       </div>
     </div>
@@ -72,5 +72,5 @@ $primary: #839AA9
   &:hover
     color: $hover
 .button
-  text-align: start   
+  text-align: start
 </style>

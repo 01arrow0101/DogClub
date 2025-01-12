@@ -51,7 +51,7 @@ a {
   font-size: 4.5rem;
   line-height: 5.5625rem;
   letter-spacing: 0.05em;
-  font-family: Rowdies;
+  font-family: Arsenal;
   margin-bottom: 40px;
 }
 @media (max-width: 768px) {
@@ -75,7 +75,7 @@ a {
 .title-h2 {
   font-size: 3.5rem;
   line-height: 70px;
-  font-family: Rowdies;
+  font-family: Arsenal;
   margin-bottom: 40px;
 }
 @media (max-width: 480px) {

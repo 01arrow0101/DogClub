@@ -11,15 +11,15 @@
     </div>
   </div>
   <div v-if="cartStore.carts.length === 0" class="cart-total">
-    <p class="text">Добавляйте понравившиеся товары в корзину</p>
+    <p class="text">Додайте товари, що сподобалися в кошик</p>
     </div>
   <div v-else class="cart-total">
-    <div class="sum">Итого: <span> {{ cartStore.totalAllPrice }}$</span></div>
-    <div class="sum">Скидка: <span> {{ cartStore.totalAllPrice }}$</span></div>
-    <div class="sum">Всего: <span class="total_bold"> {{ cartStore.totalAllPrice }}$</span></div>
+    <div class="sum">Разом: <span> {{ cartStore.totalAllPrice }}$</span></div>
+    <div class="sum">Знижка: <span> {{ cartStore.totalAllPrice }}$</span></div>
+    <div class="sum">Усього: <span class="total_bold"> {{ cartStore.totalAllPrice }}$</span></div>
     <div class="cart_total-btn">
-      <AppButton @click="submitForm" class="btn_accept">Оформить заказ</AppButton>
-      <AppButton @click="cartClear" class="btn btn_clear">Очистить корзину</AppButton>
+      <AppButton @click="submitForm" class="btn_accept">Оформити замовлення</AppButton>
+      <AppButton @click="cartClear" class="btn btn_clear">Очистити кошик</AppButton>
     </div>
     </div>
   </div>
@@ -33,10 +33,10 @@ import AppButton from '../Button/AppButton.vue';
 const cartStore = useCartStore()
 
 const submitForm = () => {
-  alert('Заказ оформлен')
+  alert('Замовлення оформлено')
 }
 const cartClear = () =>{
-  alert('Корзина очищена')
+  alert('Кошик очищений')
   cartStore.carts = []
 }
 </script>

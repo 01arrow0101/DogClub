@@ -1,11 +1,11 @@
 <template>
 <div class="bg">
   <div class="container ">
-<h2 class="title-h2 center">Services category </h2>
+<h2 class="title-h2 center">Категорія послуг </h2>
 <div class="content">
 <div class="cards row">
   <Card @click="goTo(service.name, service.path)" v-for="service in services" :key="service.name" :service="service"/>
-  <router-link v-if="isShow" to="/services" class="linkMore" href="#">more services
+  <router-link v-if="isShow" to="/services" class="linkMore" href="#">Більше послуг
     <Svg folder="/src/assets/img/Main/Services" name="Arrow" class="arrow"></Svg>
   </router-link>
 </div>
@@ -28,22 +28,26 @@ const nutritionStore = useNutritionStore()
 const services = ref([
   {
     folderIcon: '/src/assets/img/Main/Services',
+    title: 'Грумінг',
     name: 'Grooming',
     path: '/grooming'
 },
   {
     folderIcon: '/src/assets/img/Main/Services',
-    name: 'Nutrition',
+    title: 'Харчування',
+    name: 'nutrition',
     path: '/nutrition'
 },
   {
     folderIcon: '/src/assets/img/Main/Services',
-    name: 'Training',
+    title: 'Навчання',
+    name: 'training',
     path: '/training'
 },
   {
     folderIcon: '/src/assets/img/Main/Services',
-    name: 'Bathing',
+    title: 'Купання',
+    name: 'bathing',
     path: '/bathing'
 },
 ])

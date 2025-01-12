@@ -13,7 +13,7 @@
         </nav>
         <div class="contacts">
           <div class="contact-btn center">
-            <AppButton @click="$emit('close')" @action="moduleStore.showModal">Contact us</AppButton>
+            <AppButton @click="$emit('close')" @action="moduleStore.showModal">Зв'яжіться з нами</AppButton>
           </div>
         </div>
       </div>

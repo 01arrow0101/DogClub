@@ -41,7 +41,7 @@
             <div class="license">
               <label class="text-license" for="check">
                 <input v-model="moduleStore.isAgree" required :checked="moduleStore.isAgree" type="checkbox" name="check" />
-                I agree to the privacy policy
+                Я згоден з політикою конфіденційності
               </label>
             </div>
         </div>

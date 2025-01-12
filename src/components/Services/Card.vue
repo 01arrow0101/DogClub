@@ -3,7 +3,7 @@
   <div class="wrapper center">
   <Svg :folder="service.folderIcon" :name="service.name" class="icon"></Svg>
   <div class="category">
-    <p class="text">{{ service.name }}</p>
+    <p class="text">{{ service.title }}</p>
   </div>
 </div>
 </a>
@@ -11,8 +11,6 @@
 
 <script setup>
 import Svg from '@/components/Svg/Svg.vue'
-import { useModuleStore } from '@/stores/modulesStore';
-const moduleStore = useModuleStore()
 const props = defineProps({
   service: Object
 })
