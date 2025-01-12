@@ -6,10 +6,10 @@
       </div>
       <div class="cart-title">
         <h3 class="title-h3">
-          <a href="#">{{ card.title }} Lorem ipsum dolor sit amet.</a>
+          <a href="#">{{ card.title }}</a>
         </h3>
         <p class="title-h3">
-          Вес: 12кг
+          Вес: {{card.weight}}
         </p>
       </div>
     </div>
