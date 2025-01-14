@@ -36,7 +36,7 @@
             :input="input"
           />
             <div class="button-form">
-              <AppButton>Submit</AppButton>
+              <AppButton>Надіслати</AppButton>
             </div>
             <div class="license">
               <label class="text-license" for="check">

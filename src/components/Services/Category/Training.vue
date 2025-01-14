@@ -3,8 +3,8 @@
     <div class="row mb">
       <div class="title-h2">Навчання</div>
       <div v-if="tabIsShow" class="sort">
-        <div class="row">
-          <div class="title-h3">Сортування:</div>
+        <div class="col">
+          <div class="title-h3 center">Сортування:</div>
           <div  class="category">
             <AppButton class="btn filter" :class="nutritionStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('stars')"><span>Популярність</span></AppButton>
             <AppButton class="btn" :class="nutritionStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('discount')"><span>Спочатку дешевше</span></AppButton>
@@ -55,7 +55,8 @@ $primary: #FF9F0E
 .container
   padding-top: 72px
   padding-bottom: 88px
-
+.col
+  gap: 16px
 .row
   justify-content: space-between
   align-items: center
@@ -89,7 +90,9 @@ $primary: #FF9F0E
     line-height: 40px
     text-align: start
 .title-h3
-  margin-right: 16px
+  margin-bottom: 8px
+  font-size: 22px
+  font-weight: 600
 
 .loading
   display: flex

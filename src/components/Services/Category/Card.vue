@@ -11,9 +11,9 @@
     {{item.title}}
     </div>
     <div class="weight">Вес: {{item.weight}}</div>
-    <div class="price">{{item.discount}}$ <span>{{item.price}}$</span></div>
+    <div class="price">{{item.discount > 0 ? item.discount : item.price}}$ <span v-if="item.discount > 0">{{item.price}}$</span></div>
     <div class="btn">
-      <AppButton @action="addToCart(item)">Buy</AppButton>
+      <AppButton @action="addToCart(item)">Купити</AppButton>
     </div>
 </div>
 </template>
