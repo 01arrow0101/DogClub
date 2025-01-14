@@ -18,13 +18,13 @@
 import Card from '@/components/Services/Card.vue'
 import Svg from '@/components/Svg/Svg.vue'
 import { useModuleStore } from '@/stores/modulesStore';
-import {useNutritionStore} from '@/stores/nutritionStore'
+import {useDataBaseStore} from '@/stores/dataBaseStore'
 
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const moduleStore = useModuleStore()
-const nutritionStore = useNutritionStore()
+const nutritionStore = useDataBaseStore()
 const services = ref([
   {
     folderIcon: '/src/assets/img/Main/Services',
@@ -57,7 +57,7 @@ const goTo = (category, path) => {
   const serviceExists = services.value.some(el => el.path === path);
   if (serviceExists) {
     nutritionStore.cards = []
-    nutritionStore.getNutrition()
+    nutritionStore.getDataBase('nutritions')
     router.push(`/services${path}`);
   } else {
     console.error('Error: Path not found');

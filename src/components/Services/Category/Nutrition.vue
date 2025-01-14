@@ -34,11 +34,11 @@
 </template>
 
 <script setup>
-import { useNutritionStore } from '/src/stores/nutritionStore'
+import { useDataBaseStore } from '/src/stores/dataBaseStore'
 import Card from './Card.vue'
 import AppButton from '@/components/Button/AppButton.vue';
 
-const nutritionStore = useNutritionStore()
+const nutritionStore = useDataBaseStore()
 
 defineProps({
   tabIsShow: {

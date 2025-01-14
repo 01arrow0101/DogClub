@@ -3,14 +3,14 @@ import {  ref } from 'vue'
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 
-export const useNutritionStore = defineStore('nutritionStore', () => {
+export const useDataBaseStore = defineStore('dataBase', () => {
   const loader = ref(false)
   const cards = ref([])
   const activeTab = ref('stars')
 
-  const getNutrition = async () => {
+  const getDataBase = async (collectionDB) => {
     loader.value = true
-    const querySnapshot = await getDocs(collection(db, "nutritions"));
+    const querySnapshot = await getDocs(collection(db, collectionDB));
     querySnapshot.forEach((doc) => {
       cards.value.push({
         id: doc.id,
@@ -36,5 +36,5 @@ export const useNutritionStore = defineStore('nutritionStore', () => {
    loader.value = false
     }
 
-  return { cards, getNutrition, sortBy, sortByName, activeTab, loader }
+  return { cards, getDataBase, sortBy, sortByName, activeTab, loader }
 })
