@@ -56,6 +56,7 @@ const goTo = (category, path) => {
   moduleStore.setCategory(category)
   const serviceExists = services.value.some(el => el.path === path);
   if (serviceExists) {
+
     nutritionStore.cards = []
     nutritionStore.getDataBase('nutritions')
     router.push(`/services${path}`);
