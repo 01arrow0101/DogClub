@@ -1,27 +1,37 @@
 <template>
-<div class="bg">
-  <div class="container ">
-<h2 class="title-h2 center">Категорія послуг </h2>
-<div class="content">
-<div class="cards row">
-  <Card @click="goTo(service.name, service.path)" v-for="service in services" :key="service.name" :service="service"/>
-  <router-link v-if="isShow" to="/services" class="linkMore" href="#">Більше послуг
-    <Svg folder="/src/assets/img/Main/Services" name="Arrow" class="arrow"></Svg>
-  </router-link>
-</div>
-</div>
+  <div class="bg">
+    <div class="container">
+      <h2 class="title-h2 center">Категорія послуг</h2>
+      <div class="content">
+        <div class="cards row">
+          <Card
+            @click="goTo(service.name, service.path)"
+            v-for="service in services"
+            :key="service.name"
+            :service="service"
+          />
+          <router-link v-if="isShow" to="/services" class="linkMore" href="#"
+            >Більше послуг
+            <Svg
+              folder="/src/assets/img/Main/Services"
+              name="Arrow"
+              class="arrow"
+            ></Svg>
+          </router-link>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script setup>
 import Card from '@/components/Services/Card.vue'
 import Svg from '@/components/Svg/Svg.vue'
-import { useModuleStore } from '@/stores/modulesStore';
-import {useDataBaseStore} from '@/stores/dataBaseStore'
+import { useModuleStore } from '@/stores/modulesStore'
+import { useDataBaseStore } from '@/stores/dataBaseStore'
 
 import { ref } from 'vue'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 const router = useRouter()
 const moduleStore = useModuleStore()
 const nutritionStore = useDataBaseStore()
@@ -30,45 +40,62 @@ const services = ref([
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Грумінг',
     name: 'Grooming',
-    path: '/grooming'
-},
+    path: '/grooming',
+  },
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Харчування',
     name: 'nutrition',
-    path: '/nutrition'
-},
+    path: '/nutrition',
+  },
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Навчання',
     name: 'training',
-    path: '/training'
-},
+    path: '/training',
+  },
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Купання',
     name: 'bathing',
-    path: '/bathing'
-},
+    path: '/bathing',
+  },
 ])
 
 const goTo = (category, path) => {
   moduleStore.setCategory(category)
-  const serviceExists = services.value.some(el => el.path === path);
-  if (serviceExists) {
+  const serviceExists = services.value.some(el => el.path === path)
 
+  if (serviceExists) {
     nutritionStore.cards = []
-    nutritionStore.getDataBase('nutritions')
-    router.push(`/services${path}`);
+
+    switch (path) {
+      case '/nutrition':
+        nutritionStore.getDataBase('nutritions')
+        break
+      case '/bathing':
+        nutritionStore.getDataBase('bathing')
+        break
+      case '/training':
+        nutritionStore.getDataBase('training')
+        break
+      case '/grooming':
+        nutritionStore.getDataBase('grooming')
+        break
+      default:
+        console.error('Error: Unknown path')
+        return
+    }
+
+    router.push(`/services${path}`)
   } else {
-    console.error('Error: Path not found');
+    console.error('Error: Path not found')
   }
 }
 
 defineProps({
-  isShow: Boolean
+  isShow: Boolean,
 })
-
 </script>
 
 <style lang="sass" scoped>
@@ -122,7 +149,4 @@ defineProps({
     transform: translateX(30px)
   100%
     transform: translateX(0)
-
-
-
-  </style>
+</style>

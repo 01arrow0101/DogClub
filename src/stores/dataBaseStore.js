@@ -8,9 +8,10 @@ export const useDataBaseStore = defineStore('dataBase', () => {
   const cards = ref([])
   const activeTab = ref('stars')
 
-  const getDataBase = async (collectionDB) => {
+  const getDataBase = async (collectionBase) => {
     loader.value = true
-    const querySnapshot = await getDocs(collection(db, collectionDB));
+    const querySnapshot = await getDocs(collection(db, collectionBase))
+
     querySnapshot.forEach((doc) => {
       cards.value.push({
         id: doc.id,
