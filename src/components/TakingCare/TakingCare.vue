@@ -2,9 +2,9 @@
 <div class="container padding">
   <div class="row">
     <div class="left">
-      <div class="title">Taking care for your Smart Dog!</div>
-      <p class="text">Human–canine bonding is the relationship <br/> between dogs and humans</p>
-      <AppButton>Explore More</AppButton>
+      <div class="title">З турботою про Вашу розумну собаку!</div>
+      <p class="text">Зв’язок між людиною та собакою — це стосунки <br/>між собаками і людьми</p>
+      <AppButton>Досліджуйте більше</AppButton>
       <div class="bgMedia">
         <img src="/src/assets/img/Main/bgMedia.png" alt="bgMedia">
       </div>
@@ -72,5 +72,5 @@ import AppButton from '../Button/AppButton.vue'
   height: 516px
   @media(max-width:768px)
     display: none
-  
+
 </style>

@@ -10,7 +10,7 @@
       <div class="contacts row">
         <div @click="cartStore.showCart = !cartStore.showCart" class="basket"><span class="curr-cart">{{ cartStore.currentCart }}</span></div>
         <div class="contact-btn">
-          <AppButton @action="moduleStore.showModal">Contact us</AppButton>
+          <AppButton @action="moduleStore.showModal">Зв'яжіться з нами</AppButton>
         </div>
         <AppButton @action="isOpen = true" class="burger btn"
           ><span></span

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2 class="title-h2 center">Happy customer</h2>
+    <h2 class="title-h2 center">Щасливий клієнт</h2>
     <swiper
       class="row"
       :modules="modules"
@@ -55,26 +55,26 @@ const breakpoints = {
 const cards = ref([
   {
     folder: '/src/assets/img/Main/Customer/Christin.jpeg',
-    title: 'Christin & Tom',
-    text: 'Love the overall workout experience!',
+    title: 'Крістін і Том',
+    text: 'Подобається загальне враження від тренування!',
     quality: 5,
   },
   {
     folder: '/src/assets/img/Main/Customer/Anna.jpeg',
-    title: 'Anna & Tobby',
-    text: 'Amazing Products & Delivery on time.',
+    title: 'Анна і Тоббі',
+    text: 'Чудові продукти та вчасна доставка.',
     quality: 4,
   },
   {
     folder: '/src/assets/img/Main/Customer/Sindy.jpeg',
-    title: 'Sindy & Kitch',
-    text: 'Great job with the trainer!',
+    title: 'Сінді і Кітч',
+    text: 'Чудова робота з тренером!',
     quality: 5,
   },
   {
     folder: '/src/assets/img/Main/Customer/Sindy.jpeg',
-    title: 'Sindy & Kitch',
-    text: 'Great job with the trainer!',
+    title: 'Сінді і Кітч',
+    text: 'Чудова робота з тренером!',
     quality: 5,
   },
 ])

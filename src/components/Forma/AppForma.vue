@@ -2,8 +2,8 @@
     <div class="container bg-dog">
       <div class="modal-window">
         <div class="modal-content center">
-          <h2 class="title-h2">Our experts will take care of your friend</h2>
-          <p class="text">Fill out the form so we can contact you!</p>
+          <h2 class="title-h2">Наші фахівці подбають про вашого друга</h2>
+          <p class="text">Заповніть форму, щоб ми могли з вами зв'язатися!</p>
           <form @submit.prevent="moduleStore.submitForm">
             <div class="inputs">
               <Input
@@ -13,12 +13,12 @@
               />
             </div>
             <div class="button-form">
-              <AppButton>Submit</AppButton>
+              <AppButton>Надіслати</AppButton>
             </div>
             <div class="license">
               <label class="text-license" for="check">
                 <input required v-model="moduleStore.isAgree" :checked="moduleStore.isAgree" type="checkbox" name="check" />
-                I agree to the privacy policy
+                Я згоден з політикою конфіденційності
               </label>
             </div>
           </form>

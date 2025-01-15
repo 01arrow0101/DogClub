@@ -1,46 +1,51 @@
 <template>
   <div class="container">
     <div class="row mb">
-      <div class="title-h2">Nutrition</div>
-      <div class="sort">
-        <div class="row">
-          <div class="title-h3">Sorting:</div>
-          <div class="category">
-            <AppButton class="btn filter" :class="nutritionStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('stars')"><span>Popularity</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('discount')"><span>Cheaper first</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('price')"><span>More expensive first</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'title' ? 'btn active-tab' : ''"  @click="nutritionStore.sortByName('title')"><span>By name</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'new' ? 'btn active-tab' : ''"  @click="nutritionStore.sortBy('new')"><span>New ones first</span></AppButton>
+      <div class="title-h2">Харчування</div>
+      <div v-if="tabIsShow" class="sort">
+        <div class="col">
+          <div class="title-h3 center">Сортування:</div>
+          <div  class="category">
+            <AppButton class="btn filter" :class="nutritionStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('stars')"><span>Популярність</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('discount')"><span>Спочатку дешевше</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('price')"><span>Спочатку дорожче</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'title' ? 'btn active-tab' : ''"  @click="nutritionStore.sortByName('title')"><span>По імені</span></AppButton>
+            <AppButton class="btn" :class="nutritionStore.activeTab === 'new' ? 'btn active-tab' : ''"  @click="nutritionStore.sortBy('new')"><span>Спершу нові</span></AppButton>
           </div>
         </div>
       </div>
     </div>
-    <div v-if="loader" class="loading">
+    <div v-if="nutritionStore.loader" class="loading">
       <div class="loader"></div>
     </div>
-    <div class="grid">
+    <div v-if="nutritionStore.cards.length !== 0" class="grid">
       <Card v-for="item in nutritionStore.cards" :key="item.id" :item="item"/>
       <Card v-for="item in nutritionStore.sortCategory" :key="item.id" :item="item"/>
           </div>
-    <div>
-      <p>No items found.</p>
+    <div v-else>
+      <p>Елементів не знайдено.</p>
     </div>
-    <div class="pagination">
-      <button>Previous</button>
+    <div v-if="tabIsShow" class="pagination">
+      <button>Попередній</button>
       <button>1</button>
-      <button>Next</button>
+      <button>Далі</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useNutritionStore } from '/src/stores/nutritionStore'
+import { useDataBaseStore } from '/src/stores/dataBaseStore'
 import Card from './Card.vue'
 import AppButton from '@/components/Button/AppButton.vue';
 
-const loader = ref(false)
-const nutritionStore = useNutritionStore()
+const nutritionStore = useDataBaseStore()
+
+defineProps({
+  tabIsShow: {
+    type: Boolean,
+    default: true
+  }
+})
 </script>
 
 <style lang="sass" scoped>
@@ -50,7 +55,8 @@ $primary: #FF9F0E
 .container
   padding-top: 72px
   padding-bottom: 88px
-
+.col
+  gap: 16px
 .row
   justify-content: space-between
   align-items: center
@@ -84,7 +90,9 @@ $primary: #FF9F0E
     line-height: 40px
     text-align: start
 .title-h3
-  margin-right: 16px
+  margin-bottom: 8px
+  font-size: 22px
+  font-weight: 600
 
 .loading
   display: flex

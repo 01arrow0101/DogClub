@@ -51,7 +51,7 @@ a {
   font-size: 4.5rem;
   line-height: 5.5625rem;
   letter-spacing: 0.05em;
-  font-family: Rowdies;
+  font-family: Arsenal;
   margin-bottom: 40px;
 }
 @media (max-width: 768px) {
@@ -75,7 +75,7 @@ a {
 .title-h2 {
   font-size: 3.5rem;
   line-height: 70px;
-  font-family: Rowdies;
+  font-family: Arsenal;
   margin-bottom: 40px;
 }
 @media (max-width: 480px) {
@@ -112,6 +112,14 @@ a {
   flex-direction: column;
 }
 
+.nav-link {
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: #FF9F0E;
+  transition: color 0.3s ease;
+}
+
 body {
   position: relative;
   font-size: 1.125rem;
@@ -127,4 +135,19 @@ body {
   max-width: 77.25rem;
   padding: 0 16px;
   margin: 0 auto;
+}
+
+.el-input-number--small .el-input-number__decrease, .el-input-number--small .el-input-number__increase {
+  background: #FF9F0E;
+  color: #181817;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.el-input-number--small .el-input--small .el-input__wrapper {
+  outline: 1px solid #FF9F0E;
+}
+
+.el-icon svg {
+  color: #fff;
 }/*# sourceMappingURL=main.css.map */
