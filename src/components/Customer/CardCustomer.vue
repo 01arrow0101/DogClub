@@ -59,20 +59,24 @@ const quality = ref([
 
 .wrapper
   max-width: 344px
+  height: 500px
   background: $bg
   border-radius: 24px
   overflow: hidden
   border-top: 0.3px solid $gold
   border-bottom: 0.3px solid $gold
+  display: flex
+  flex-direction: column
 .img-person
   height: 326px
   overflow: hidden
 .row
-  justify-content: space-around 
+  justify-content: space-around
 .img-person
   margin-bottom: 16px
 .person-info
   margin-bottom: 24px
+  flex: 1 1 auto
 .text
   font-size: 16px
   line-height: 19px
@@ -86,5 +90,5 @@ const quality = ref([
 .quality
   margin-bottom: 16px
 .span-quality
-  color:$gold  
+  color:$gold
 </style>

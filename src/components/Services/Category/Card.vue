@@ -36,7 +36,9 @@ const props = defineProps({
 $primary: #839AA9
 .card
   max-width: 18rem
-  width: 100%r
+  width: 100%
+  display: flex
+  flex-direction: column
 .img
   margin: 0 auto 8px
   width: 160px
@@ -50,6 +52,7 @@ $primary: #839AA9
   line-height: 1rem
   color: $primary
   margin-bottom: 16px
+  flex: 1 1 auto
   & span
     margin-left: 16px
 .text
