@@ -15,10 +15,13 @@ export const useDataBaseStore = defineStore('dataBase', () => {
     querySnapshot.forEach((doc) => {
       cards.value.push({
         id: doc.id,
+        discountPrice: doc.data().price - (doc.data().price * (doc.data().discount / 100)),
         ...doc.data()
       })
     });
     loader.value = false
+    console.log(cards.value);
+
   }
 
   const sortBy = async(arg) =>{

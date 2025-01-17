@@ -4,20 +4,28 @@ import { computed, ref } from 'vue'
 export const useCartStore = defineStore('cartStore', () => {
   const showCart = ref(false)
   const carts = ref([])
+  const num = ref(1)
   const productInToCart = ref(false)
-  const currentCart = computed(() => carts.value.length)
 
-  const addToCart = id => {
+  const addToCart = (product) => {
     // Проверяем, есть ли уже объект с таким id в массиве carts
-    const isAlreadyInCart = carts.value.some(el => el.id === id.id)
+    const existingProduct = carts.value.find(el => el.id === product.id)
 
-    if (!isAlreadyInCart) {
+    if (existingProduct) {
+      console.warn(`Продукт с id ${product.id} уже находится в корзине. Увеличиваем количество.`)
+      existingProduct.num += 1
+      existingProduct.total = existingProduct.num * existingProduct.price
+      existingProduct.discountSum = existingProduct.num * (existingProduct.price - existingProduct.discountPrice)
+    } else {
       productInToCart.value = true
       // Если объекта с таким id нет, добавляем его
-      carts.value.push({ ...id, total: ref(id.discount) })
+      carts.value.push({
+        ...product,
+        num: 1,
+        total: product.price,
+        discountSum: product.price - product.discountPrice
+      })
       console.log('Текущая корзина:', carts.value)
-    } else {
-      console.warn(`Продукт с id ${id.id} уже находится в корзине.`)
     }
   }
 
@@ -26,7 +34,11 @@ export const useCartStore = defineStore('cartStore', () => {
     productInToCart.value = false
   }
 
-const totalAllPrice = computed(()=> carts.value.reduce((acc, el) => acc + Number(el.total), 0))
+  const totalPrice = computed(() => carts.value.reduce((acc, el) => acc + Number(el.total), 0))
+  const discountSum = computed(() => carts.value.reduce((acc, el) => acc + Number(el.discountSum), 0))
+  const totalAllPrice = computed(() => Number(totalPrice.value) - Number(discountSum.value))
 
-  return { showCart, carts, addToCart, deleteProduct, currentCart,productInToCart,totalAllPrice }
+  const currentCart = computed(() => carts.value.length)
+
+  return { showCart, carts, addToCart, deleteProduct, currentCart,productInToCart,totalPrice,totalAllPrice,discountSum,num }
 })

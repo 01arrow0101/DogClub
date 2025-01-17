@@ -10,8 +10,8 @@
   <div class="text">
     {{item.title}}
     </div>
-    <div class="weight">Вес: {{item.weight}}</div>
-    <div class="price">{{item.discount > 0 ? item.discount : item.price}}$ <span v-if="item.discount > 0">{{item.price}}$</span></div>
+    <div class="weight">Вес: {{item.weight}} <span v-if="item.discount != 0" style="color: red; font-size: 14px; font-weight: 900"> - {{ item.discount }}%</span></div>
+    <div class="price">{{item.discountPrice > 0 ? item.discountPrice : item.price}} ₴ <span v-if="item.discount > 0">{{item.price}} ₴</span></div>
     <div class="btn">
       <AppButton @action="addToCart(item)">Купити</AppButton>
     </div>
@@ -65,6 +65,9 @@ $primary: #839AA9
   font-size: 16px
   line-height: 1.1875rem
   margin-bottom: 24px
+  display: flex
+  justify-content: space-between
+  padding: 0 8px
 .price
   font-size: 18px
   line-height: 21px

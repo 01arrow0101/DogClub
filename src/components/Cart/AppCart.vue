@@ -14,9 +14,9 @@
     <p class="text">Додайте товари, що сподобалися в кошик</p>
     </div>
   <div v-else class="cart-total">
-    <div class="sum">Разом: <span> {{ cartStore.totalAllPrice }}$</span></div>
-    <div class="sum">Знижка: <span> {{ cartStore.totalAllPrice }}$</span></div>
-    <div class="sum">Усього: <span class="total_bold"> {{ cartStore.totalAllPrice }}$</span></div>
+    <div class="sum">Разом: <span> {{ totalPrice().toFixed(2)  }} ₴</span></div>
+    <div class="sum">Знижка: <span> {{discountSum().toFixed(2) }} ₴</span></div>
+    <div class="sum">Усього: <span class="total_bold"> {{totalAllPrice().toFixed(2) }} ₴</span></div>
     <div class="cart_total-btn">
       <AppButton @click="submitForm" class="btn_accept">Оформити замовлення</AppButton>
       <AppButton @click="cartClear" class="btn btn_clear">Очистити кошик</AppButton>
@@ -31,6 +31,10 @@ import CartCard from './CartCard.vue';
 import AppButton from '../Button/AppButton.vue';
 
 const cartStore = useCartStore()
+
+const totalPrice = () => Number(cartStore.totalPrice) * Number(cartStore.num)
+const discountSum = () =>  Number(cartStore.discountSum) * Number(cartStore.num)
+const totalAllPrice = () =>   Number(cartStore.totalAllPrice) * Number(cartStore.num)
 
 const submitForm = () => {
   alert('Замовлення оформлено')

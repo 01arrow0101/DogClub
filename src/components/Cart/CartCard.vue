@@ -9,44 +9,56 @@
           <a href="#">{{ card.title }}</a>
         </h3>
         <p class="title-h3">
-          Вес: {{card.weight}}
+          Вес: {{ card.weight }}
         </p>
       </div>
     </div>
     <div class="price">
       <el-input-number
-      class="input"
+        class="input"
         size="small"
         style="width: 80px"
         v-model="num"
         :min="1"
         :max="10"
-        @change="handleChange(num, card.discount, card.id)"
+        @change="handleChange"
       />
-      <p class="total-price">{{ parseFloat(card.total).toFixed(2) }} $</p>
+      <p class="total-price">{{ parseFloat(card.total).toFixed(2) }} ₴</p>
     </div>
     <div class="delete">
-      <el-button type="danger"  @click="cartStore.deleteProduct(card.id)">Delete</el-button>
+      <el-button type="danger" @click="cartStore.deleteProduct(card.id)">Delete</el-button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useCartStore } from '@/stores/cartStore'
 
-const cartStore = useCartStore()
-const num = ref(1)
-const handleChange = (num, price, id) => {
-  cartStore.carts.forEach(item => {
-    if (item.id === id) {
-      item.total = num * price
-    }
-  })
-}
+
+import { ref, watch } from 'vue'
+import { useCartStore } from '@/stores/cartStore'
 const props = defineProps({
   card: Object,
 })
+
+const cartStore = useCartStore()
+const num = ref(props.card.num)
+
+const handleChange = () => {
+  const product = cartStore.carts.find(el => el.id === props.card.id)
+  if (product) {
+    product.num = num.value
+    product.total = product.num * product.price
+    product.discountSum = product.num * (product.price - product.discountPrice)
+  }
+}
+
+
+watch(
+  () => props.card.num,
+  (newVal) => {
+    num.value = newVal
+  }
+)
 </script>
 
 <style lang="sass" scoped>
@@ -66,7 +78,6 @@ const props = defineProps({
   background: #000
 .row
   gap: 16px
-  // justify-content: space-between
   align-items: center
 .cart-card
   border: 1px solid #fff
