@@ -1,34 +1,50 @@
 <template>
-<div class="card center">
-  <div class="img">
-    <img :src="item.path" :alt="item.id">
-  </div>
-  <div class="code">
-    <span v-if="item.new" style="color: red">NEW</span>
-    vendor code: {{item.id}} <span>{{item.stars}} stars</span>
-  </div>
-  <div class="text">
-    {{item.title}}
+  <div class="card center">
+    <div class="img">
+      <img :src="item.path" :alt="item.id" />
     </div>
-    <div class="weight">Вес: {{item.weight}} <span v-if="item.discount != 0" style="color: red; font-size: 14px; font-weight: 900"> - {{ item.discount }}%</span></div>
-    <div class="price">{{item.discountPrice > 0 ? item.discountPrice : item.price}} ₴ <span v-if="item.discount > 0">{{item.price}} ₴</span></div>
+    <div class="code">
+      <span v-if="item.new" style="color: red">NEW</span>
+      vendor code: {{ item.id }} <span>{{ item.stars }} stars</span>
+    </div>
+    <div class="text">
+      {{ item.title }}
+    </div>
+    <div class="weight">
+      Вес: {{ item.weight }}
+      <span
+        v-if="item.discount != 0"
+        style="color: red; font-size: 14px; font-weight: 900"
+      >
+        - {{ item.discount }}%</span
+      >
+    </div>
+    <div class="price">
+      {{ item.discountPrice > 0 ? item.discountPrice : item.price }} ₴
+      <span v-if="item.discount > 0">{{ item.price }} ₴</span>
+    </div>
     <div class="btn">
-      <AppButton @action="addToCart(item)">Купити</AppButton>
+      <AppButton v-if="!item.inCart"  @action="addToCart(item)"
+        >Купити</AppButton
+      >
+      <AppButton v-else @click="cartStore.showCart = !cartStore.showCart">У кошику</AppButton>
     </div>
-</div>
+  </div>
 </template>
 <script setup>
 import AppButton from '/src/components/Button/AppButton.vue'
-import { useCartStore } from '@/stores/cartStore';
+import { useCartStore } from '@/stores/cartStore'
 
 const cartStore = useCartStore()
 
-const addToCart = (item)=>{
+const addToCart = item => {
   cartStore.addToCart(item)
+  console.log(item);
+
 }
 
 const props = defineProps({
-  item: Object
+  item: Object,
 })
 </script>
 

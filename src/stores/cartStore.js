@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import { useDataBaseStore } from './dataBaseStore'
 
 export const useCartStore = defineStore('cartStore', () => {
   const showCart = ref(false)
   const carts = ref([])
   const num = ref(1)
-  const productInToCart = ref(false)
 
   const addToCart = (product) => {
     // Проверяем, есть ли уже объект с таким id в массиве carts
@@ -13,25 +13,26 @@ export const useCartStore = defineStore('cartStore', () => {
 
     if (existingProduct) {
       console.warn(`Продукт с id ${product.id} уже находится в корзине. Увеличиваем количество.`)
-      existingProduct.num += 1
+      // existingProduct.num += 1
       existingProduct.total = existingProduct.num * existingProduct.price
       existingProduct.discountSum = existingProduct.num * (existingProduct.price - existingProduct.discountPrice)
     } else {
-      productInToCart.value = true
       // Если объекта с таким id нет, добавляем его
       carts.value.push({
         ...product,
+        inCart: true,
         num: 1,
         total: product.price,
         discountSum: product.price - product.discountPrice
       })
       console.log('Текущая корзина:', carts.value)
+      const dataBase = useDataBaseStore()
+      dataBase.cards.find(el => el.id === product.id).inCart = true
     }
   }
 
   const deleteProduct = id => {
     carts.value = carts.value.filter(el => el.id !== id)
-    productInToCart.value = false
   }
 
   const totalPrice = computed(() => carts.value.reduce((acc, el) => acc + Number(el.total), 0))
@@ -40,5 +41,5 @@ export const useCartStore = defineStore('cartStore', () => {
 
   const currentCart = computed(() => carts.value.length)
 
-  return { showCart, carts, addToCart, deleteProduct, currentCart,productInToCart,totalPrice,totalAllPrice,discountSum,num }
+  return { showCart, carts, addToCart, deleteProduct, currentCart,totalPrice,totalAllPrice,discountSum,num }
 })

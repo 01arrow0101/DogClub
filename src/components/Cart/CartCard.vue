@@ -26,7 +26,7 @@
       <p class="total-price">{{ parseFloat(card.total).toFixed(2) }} ₴</p>
     </div>
     <div class="delete">
-      <el-button type="danger" @click="cartStore.deleteProduct(card.id)">Delete</el-button>
+      <el-button type="danger" @click="removeProduct(card.id)">Delete</el-button>
     </div>
   </div>
 </template>
@@ -36,12 +36,19 @@
 
 import { ref, watch } from 'vue'
 import { useCartStore } from '@/stores/cartStore'
+import { useDataBaseStore } from '@/stores/dataBaseStore'
 const props = defineProps({
   card: Object,
 })
 
 const cartStore = useCartStore()
+const dataBaseStore = useDataBaseStore()
 const num = ref(props.card.num)
+
+const removeProduct = (removeId) => {
+  cartStore.deleteProduct(props.card.id)
+  dataBaseStore.cards.find(el => el.id === removeId).inCart = false
+}
 
 const handleChange = () => {
   const product = cartStore.carts.find(el => el.id === props.card.id)
