@@ -37,7 +37,9 @@ const discountSum = () =>  Number(cartStore.discountSum) * Number(cartStore.num)
 const totalAllPrice = () =>   Number(cartStore.totalAllPrice) * Number(cartStore.num)
 
 const submitForm = () => {
-  alert('Замовлення оформлено')
+  alert(`Замовлення оформлено`)
+  console.log(cartStore.carts)
+
 }
 const cartClear = () =>{
   alert('Кошик очищений')

@@ -1,9 +1,5 @@
 <script setup>
 import Services from '@/components/Services/Services.vue'
-import Nutrition from '../components/Services/Category/Nutrition.vue'
-import Grooming from '@/components/Services/Category/Grooming.vue'
-import Training from '@/components/Services/Category/Training.vue'
-import Bathing from '@/components/Services/Category/Bathing.vue'
 
 import { useDataBaseStore } from '../stores/dataBaseStore'
 import Card from '../components/Services/Category/Card.vue'

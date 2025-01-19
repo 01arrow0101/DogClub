@@ -24,10 +24,10 @@
       <span v-if="item.discount > 0">{{ item.price }} ₴</span>
     </div>
     <div class="btn">
-      <AppButton v-if="!item.inCart"  @action="addToCart(item)"
+      <AppButton v-if="!item.inCart" @action="addToCart(item)"
         >Купити</AppButton
       >
-      <AppButton v-else @click="cartStore.showCart = !cartStore.showCart">У кошику</AppButton>
+      <AppButton v-else @click="showCart"> У кошику </AppButton>
     </div>
   </div>
 </template>
@@ -37,10 +37,10 @@ import { useCartStore } from '@/stores/cartStore'
 
 const cartStore = useCartStore()
 
+const showCart = () => (cartStore.showCart = !cartStore.showCart)
+
 const addToCart = item => {
   cartStore.addToCart(item)
-  console.log(item);
-
 }
 
 const props = defineProps({
