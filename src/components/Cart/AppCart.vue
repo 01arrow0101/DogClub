@@ -27,6 +27,7 @@
 
 <script setup>
 import { useCartStore } from '@/stores/cartStore';
+import { useDataBaseStore } from '@/stores/dataBaseStore';
 import CartCard from './CartCard.vue';
 import AppButton from '../Button/AppButton.vue';
 
@@ -43,6 +44,8 @@ const submitForm = () => {
 }
 const cartClear = () =>{
   alert('Кошик очищений')
+  const dataBase = useDataBaseStore()
+  dataBase.cards.find(el => el.inCart = false)
   cartStore.carts = []
 }
 </script>

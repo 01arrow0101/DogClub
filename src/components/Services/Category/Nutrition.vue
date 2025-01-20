@@ -19,8 +19,7 @@
       <div class="loader"></div>
     </div>
     <div v-if="nutritionStore.cards.length !== 0" class="grid">
-      <Card v-for="item in nutritionStore.cards" :key="item.id" :item="item"/>
-      <Card v-for="item in nutritionStore.sortCategory" :key="item.id" :item="item"/>
+      <Card v-for="item in nutritionStore.filterCards" :key="item.id" :item="item"/>
           </div>
     <div v-else>
       <p>Елементів не знайдено.</p>

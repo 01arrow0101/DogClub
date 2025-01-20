@@ -64,23 +64,38 @@ const services = ref([
 
 const goTo = (category, path) => {
   moduleStore.setCategory(category)
-  const serviceExists = services.value.some(el => el.path === path)
+  const serviceExists = services.value.find(el => el.path === path)
 
   if (serviceExists) {
-    nutritionStore.cards = []
-
+    nutritionStore.filterCards = []
     switch (path) {
       case '/nutrition':
-        nutritionStore.getDataBase('nutritions')
+      nutritionStore.loader = true
+        setTimeout(() => {
+          nutritionStore.filterCards = nutritionStore.cards.filter(el => el.collection === 'nutrition')
+          nutritionStore.loader = false
+        },1500)
         break
       case '/bathing':
-        nutritionStore.getDataBase('bathing')
+        nutritionStore.loader = true
+        setTimeout(() => {
+          nutritionStore.filterCards = nutritionStore.cards.filter(el => el.collection === 'bathing')
+          nutritionStore.loader = false
+        },1500)
         break
       case '/training':
-        nutritionStore.getDataBase('training')
+      nutritionStore.loader = true
+        setTimeout(() => {
+          nutritionStore.filterCards = nutritionStore.cards.filter(el => el.collection === 'training')
+          nutritionStore.loader = false
+        },1500)
         break
       case '/grooming':
-        nutritionStore.getDataBase('grooming')
+      nutritionStore.loader = true
+        setTimeout(() => {
+          nutritionStore.filterCards = nutritionStore.cards.filter(el => el.collection === 'grooming')
+          nutritionStore.loader = false
+        },1500)
         break
       default:
         console.error('Error: Unknown path')

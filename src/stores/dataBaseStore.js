@@ -6,6 +6,7 @@ import { db } from '../firebase'
 export const useDataBaseStore = defineStore('dataBase', () => {
   const loader = ref(false)
   const cards = ref([])
+  const filterCards = ref([])
   const activeTab = ref('stars')
 
   const getDataBase = async collectionBase => {
@@ -41,5 +42,13 @@ export const useDataBaseStore = defineStore('dataBase', () => {
     loader.value = false
   }
 
-  return { cards, getDataBase, sortBy, sortByName, activeTab, loader }
+  return {
+    cards,
+    filterCards,
+    getDataBase,
+    sortBy,
+    sortByName,
+    activeTab,
+    loader,
+  }
 })
