@@ -6,20 +6,20 @@
         <div class="col">
           <div class="title-h3 center">Сортування:</div>
           <div  class="category">
-            <AppButton class="btn filter" :class="nutritionStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('stars')"><span>Популярність</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('discount')"><span>Спочатку дешевше</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="nutritionStore.sortBy('price')"><span>Спочатку дорожче</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'title' ? 'btn active-tab' : ''"  @click="nutritionStore.sortByName('title')"><span>По імені</span></AppButton>
-            <AppButton class="btn" :class="nutritionStore.activeTab === 'new' ? 'btn active-tab' : ''"  @click="nutritionStore.sortBy('new')"><span>Спершу нові</span></AppButton>
+            <AppButton class="btn filter" :class="dataBaseStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('stars')"><span>Популярність</span></AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('discount')"><span>Спочатку дешевше</span></AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('price')"><span>Спочатку дорожче</span></AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'title' ? 'btn active-tab' : ''"  @click="dataBaseStore.sortByName('title')"><span>По імені</span></AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'new' ? 'btn active-tab' : ''"  @click="dataBaseStore.sortBy('new')"><span>Спершу нові</span></AppButton>
           </div>
         </div>
       </div>
     </div>
-    <div v-if="nutritionStore.loader" class="loading">
+    <div v-if="dataBaseStore.loader" class="loading">
       <div class="loader"></div>
     </div>
-    <div v-if="nutritionStore.cards.length !== 0" class="grid">
-      <Card v-for="item in nutritionStore.filterCards" :key="item.id" :item="item"/>
+    <div v-if="dataBaseStore.cards.length !== 0" class="grid">
+      <Card v-for="item in dataBaseStore.filterCards" :key="item.id" :item="item"/>
           </div>
     <div v-else>
       <p>No items found.</p>
@@ -37,7 +37,7 @@ import { useDataBaseStore } from '/src/stores/dataBaseStore'
 import Card from './Card.vue'
 import AppButton from '@/components/Button/AppButton.vue';
 
-const nutritionStore = useDataBaseStore()
+const dataBaseStore = useDataBaseStore()
 
 defineProps({
   tabIsShow: {

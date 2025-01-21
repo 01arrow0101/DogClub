@@ -45,23 +45,24 @@ const inputItems = ref([
     valueInput: '',
     iconName: 'phone',
     iconPath: '/src/assets/img/Modal',
-    type: 'text',
+    type: 'tel',
   },
   {
     label: 'Ваш пошта',
     valueInput: '',
     iconName: 'mail',
     iconPath: '/src/assets/img/Modal',
-    type: 'text',
+    type: 'mail',
   },
 ])
 
 const showModal = () => {
   isOpenModalWindow.value = ! isOpenModalWindow.value
 }
-
 const  submitForm = () =>{
+  alert('Дякуємо заявка прийнята!')
   inputItems.value.forEach(el =>{
+    el.valueInput = ''
     if(isAgree.value){
       console.log(el.valueInput);
     }else{
