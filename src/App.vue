@@ -6,9 +6,16 @@ import AppFooter from './components/Footer/AppFooter.vue'
 import Modal from './components/Modal/Modal.vue'
 import { useCartStore } from './stores/cartStore'
 import { useModuleStore } from './stores/modulesStore'
+import { onMounted } from 'vue'
+import { useDataBaseStore } from './stores/dataBaseStore'
 
+const dataBaseStore = useDataBaseStore()
 const moduleStore = useModuleStore()
 const cartStore = useCartStore()
+
+onMounted(() => {
+  dataBaseStore.getDataBase()
+})
 </script>
 
 <template>

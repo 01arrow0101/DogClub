@@ -1,19 +1,18 @@
 <script setup>
-import Services from '@/components/Services/Services.vue'
-
-import { useDataBaseStore } from '../stores/dataBaseStore'
-import Card from '../components/Services/Category/Card.vue'
 import { onMounted, ref } from 'vue'
+import { useDataBaseStore } from '../stores/dataBaseStore'
+import Services from '@/components/Services/Services.vue'
+import Card from '../components/Services/Category/Card.vue'
 
-const base  = ref([])
+const allProducts  = ref([])
 const nutritionStore = useDataBaseStore()
 onMounted(()=>{
-  nutritionStore.cards = []
-  nutritionStore.getDataBase('bathing')
-  nutritionStore.getDataBase('grooming')
-  nutritionStore.getDataBase('nutritions')
-  nutritionStore.getDataBase('training')
-  base.value = nutritionStore.cards
+  allProducts.value = []
+  nutritionStore.loader = true
+  setTimeout(() =>{
+    allProducts.value = nutritionStore.cards
+  nutritionStore.loader = false
+  },1000)
 })
 
 
@@ -22,8 +21,6 @@ onMounted(()=>{
 <template>
   <main>
     <Services :is-show="false" />
-
-
     <section>
       <div class="container">
     <h2 class="title-h2 center">Усі Товари</h2>
@@ -31,7 +28,7 @@ onMounted(()=>{
       <div class="loader"></div>
     </div>
     <div class="grid">
-      <Card v-for="item in base" :key="item.id" :item="item"/>
+      <Card v-for="item in allProducts" :key="item.id" :item="item"/>
           </div>
 </div>
 </section>

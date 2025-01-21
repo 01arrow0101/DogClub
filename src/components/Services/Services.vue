@@ -34,7 +34,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const moduleStore = useModuleStore()
-const nutritionStore = useDataBaseStore()
+const dataBaseStore = useDataBaseStore()
 const services = ref([
   {
     folderIcon: '/src/assets/img/Main/Services',
@@ -67,35 +67,35 @@ const goTo = (category, path) => {
   const serviceExists = services.value.find(el => el.path === path)
 
   if (serviceExists) {
-    nutritionStore.filterCards = []
+    dataBaseStore.filterCards = []
     switch (path) {
       case '/nutrition':
-      nutritionStore.loader = true
+      dataBaseStore.loader = true
         setTimeout(() => {
-          nutritionStore.filterCards = nutritionStore.cards.filter(el => el.collection === 'nutrition')
-          nutritionStore.loader = false
-        },1500)
+          dataBaseStore.filterCards = dataBaseStore.cards.filter(el => el.collection === 'nutrition')
+          dataBaseStore.loader = false
+        },1000)
         break
       case '/bathing':
-        nutritionStore.loader = true
+        dataBaseStore.loader = true
         setTimeout(() => {
-          nutritionStore.filterCards = nutritionStore.cards.filter(el => el.collection === 'bathing')
-          nutritionStore.loader = false
-        },1500)
+          dataBaseStore.filterCards = dataBaseStore.cards.filter(el => el.collection === 'bathing')
+          dataBaseStore.loader = false
+        },1000)
         break
       case '/training':
-      nutritionStore.loader = true
+      dataBaseStore.loader = true
         setTimeout(() => {
-          nutritionStore.filterCards = nutritionStore.cards.filter(el => el.collection === 'training')
-          nutritionStore.loader = false
-        },1500)
+          dataBaseStore.filterCards = dataBaseStore.cards.filter(el => el.collection === 'training')
+          dataBaseStore.loader = false
+        },1000)
         break
       case '/grooming':
-      nutritionStore.loader = true
+      dataBaseStore.loader = true
         setTimeout(() => {
-          nutritionStore.filterCards = nutritionStore.cards.filter(el => el.collection === 'grooming')
-          nutritionStore.loader = false
-        },1500)
+          dataBaseStore.filterCards = dataBaseStore.cards.filter(el => el.collection === 'grooming')
+          dataBaseStore.loader = false
+        },1000)
         break
       default:
         console.error('Error: Unknown path')

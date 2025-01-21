@@ -8,20 +8,23 @@ export const useDataBaseStore = defineStore('dataBase', () => {
   const cards = ref([])
   const filterCards = ref([])
   const activeTab = ref('stars')
+  const collections = ['training', 'bathing', 'nutritions', 'grooming']
 
-  const getDataBase = async collectionBase => {
+  const getDataBase = async () => {
     loader.value = true
-    const querySnapshot = await getDocs(collection(db, collectionBase))
+    for(const collectionProduct of collections){
+      const querySnapshot = await getDocs(collection(db, collectionProduct))
 
-    querySnapshot.forEach(doc => {
-      cards.value.push({
-        id: doc.id,
-        discountPrice:
-          doc.data().price - doc.data().price * (doc.data().discount / 100),
-        ...doc.data(),
+      querySnapshot.forEach(doc => {
+        cards.value.push({
+          id: doc.id,
+          discountPrice:
+            doc.data().price - doc.data().price * (doc.data().discount / 100),
+          ...doc.data(),
+        })
       })
-    })
-    loader.value = false
+      loader.value = false
+    }
   }
 
   const sortBy = async arg => {
@@ -50,5 +53,6 @@ export const useDataBaseStore = defineStore('dataBase', () => {
     sortByName,
     activeTab,
     loader,
+    collections
   }
 })
