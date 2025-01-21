@@ -1,33 +1,104 @@
 <template>
   <div class="container">
     <div class="row mb">
-      <div class="title-h2">Харчування</div>
+      <div class="title-h2">Харчування для собак</div>
       <div v-if="tabIsShow" class="sort">
         <div class="col">
           <div class="title-h3 center">Сортування:</div>
-          <div  class="category">
-            <AppButton class="btn filter" :class="dataBaseStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('stars')"><span>Популярність</span></AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('discount')"><span>Спочатку дешевше</span></AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('price')"><span>Спочатку дорожче</span></AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'title' ? 'btn active-tab' : ''"  @click="dataBaseStore.sortByName('title')"><span>По імені</span></AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'new' ? 'btn active-tab' : ''"  @click="dataBaseStore.sortBy('new')"><span>Спершу нові</span></AppButton>
+          <div class="category">
+            <AppButton class="btn filter" :class="dataBaseStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('stars')">
+              <span>Популярність</span>
+            </AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('discount')">
+              <span>Спочатку дешевше</span>
+            </AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('price')">
+              <span>Спочатку дорожче</span>
+            </AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'title' ? 'btn active-tab' : ''" @click="dataBaseStore.sortByName('title')">
+              <span>По імені</span>
+            </AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'new' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('new')">
+              <span>Спершу нові</span>
+            </AppButton>
           </div>
         </div>
       </div>
     </div>
+
     <div v-if="dataBaseStore.loader" class="loading">
       <div class="loader"></div>
     </div>
     <div v-if="dataBaseStore.cards.length !== 0" class="grid">
-      <Card v-for="item in dataBaseStore.filterCards" :key="item.id" :item="item"/>
-          </div>
+      <Card v-for="item in dataBaseStore.filterCards" :key="item.id" :item="item" />
+    </div>
     <div v-else>
-      <p>Елементів не знайдено.</p>
+      <p>Немає доступних послуг.</p>
     </div>
     <div v-if="tabIsShow" class="pagination">
-      <button>Попередній</button>
+      <button>Попередня</button>
       <button>1</button>
-      <button>Далі</button>
+      <button>Наступна</button>
+    </div>
+
+    <!-- Доданий контент про харчування -->
+    <div class="additional-info">
+      <!-- Блок про вибір корму -->
+      <div class="info-section">
+        <h3 class="info-title">Як вибрати корм для собаки?</h3>
+        <div class="info-block">
+          <div class="info-image">
+            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Корм для собак" />
+          </div>
+          <div class="info-content">
+            <p class="info-text">
+              Вибір корму для собаки — це важливий крок для її здоров'я. Ось кілька порад:
+            </p>
+            <ul class="info-list">
+              <li><strong>Вік собаки:</strong> Вибирайте корм, який відповідає віку вашої собаки (цуценя, доросла, літня).</li>
+              <li><strong>Розмір собаки:</strong> Великі та малі породи потребують різного корму.</li>
+              <li><strong>Активність:</strong> Якщо ваша собака дуже активна, оберіть корм з високим вмістом білків.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок про натуральне харчування -->
+      <div class="info-section">
+        <h3 class="info-title">Натуральне харчування для собак</h3>
+        <div class="info-block">
+          <div class="info-image">
+            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Натуральне харчування" />
+          </div>
+          <div class="info-content">
+            <p class="info-text">
+              Натуральне харчування — це чудовий спосіб забезпечити собаці всі необхідні поживні речовини. Ось кілька порад:
+            </p>
+            <ul class="info-list">
+              <li><strong>М'ясо:</strong> Використовуйте якісне м'ясо, наприклад, курку, яловичину або індичку.</li>
+              <li><strong>Овочі:</strong> Додавайте до раціону моркву, кабачки та інші овочі.</li>
+              <li><strong>Крупи:</strong> Використовуйте рис або гречку як джерело вуглеводів.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок про цікаві факти -->
+      <div class="info-section">
+        <h3 class="info-title">Цікаві факти про харчування собак</h3>
+        <div class="info-block">
+          <div class="info-image">
+            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Цікаві факти про харчування" />
+          </div>
+          <div class="info-content">
+            <ul class="info-list">
+              <li>Собаки можуть їсти деякі фрукти та овочі, наприклад, яблука та моркву.</li>
+              <li>Шоколад є токсичним для собак, тому його слід уникати.</li>
+              <li>Деякі породи собак потребують спеціального дієтичного харчування через схильність до алергій.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,22 +118,26 @@ defineProps({
 })
 </script>
 
+
 <style lang="sass" scoped>
 $primary: #FF9F0E
-.btn
-  color: #000
+/* Ваші стилі залишаються незмінними */
 .container
   padding-top: 72px
   padding-bottom: 88px
+
 .col
   gap: 16px
+
 .row
   justify-content: space-between
   align-items: center
+
 .container .row.mb
   @media (max-width: 768px)
     flex-direction: column
     justify-content: flex-start
+
 .grid
   display: grid
   grid-template-columns: repeat(4, 1fr)
@@ -74,7 +149,6 @@ $primary: #FF9F0E
   @media (max-width: 480px)
     grid-template-columns: repeat(1, 1fr)
 
-
 .mb
   margin-bottom: 72px
 
@@ -82,12 +156,14 @@ $primary: #FF9F0E
 .title-h3
   color: $primary
   margin: 0
+
 .title-h2
-  @media (max-width:768px)
+  @media (max-width: 768px)
     margin-bottom: 16px
     font-size: 2rem
     line-height: 40px
     text-align: start
+
 .title-h3
   margin-bottom: 8px
   font-size: 22px
@@ -148,4 +224,53 @@ $primary: #FF9F0E
   background-color: #f3f3f3
   color: #ccc
   cursor: not-allowed
+
+/* Стилі для додаткового контенту */
+.additional-info
+  margin-top: 48px
+
+.info-section
+  margin-bottom: 48px
+
+.info-title
+  color: $primary
+  font-size: 24px
+  margin-bottom: 16px
+
+.info-text
+  font-size: 16px
+  line-height: 1.6
+  margin-bottom: 16px
+
+.info-list
+  list-style-type: disc
+  padding-left: 24px
+  margin-bottom: 24px
+
+.info-list li
+  font-size: 16px
+  line-height: 1.6
+  margin-bottom: 8px
+
+.info-list li strong
+  color: $primary
+
+.info-block
+  display: flex
+  gap: 24px
+  align-items: center
+  @media (max-width: 768px)
+    flex-direction: column
+
+.info-image
+  flex: 1
+  max-width: 400px
+  img
+    width: 100%
+    border-radius: 8px
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+
+.info-content
+  flex: 2
 </style>
+
