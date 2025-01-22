@@ -1,50 +1,11 @@
 <template>
   <div class="container">
-    <div class="row mb">
-      <div class="title-h2">Харчування для собак</div>
-      <div v-if="tabIsShow" class="sort">
-        <div class="col">
-          <div class="title-h3 center">Сортування:</div>
-          <div class="category">
-            <AppButton class="btn filter" :class="dataBaseStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('stars')">
-              <span>Популярність</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('discount')">
-              <span>Спочатку дешевше</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('price')">
-              <span>Спочатку дорожче</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'title' ? 'btn active-tab' : ''" @click="dataBaseStore.sortByName('title')">
-              <span>По імені</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'new' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('new')">
-              <span>Спершу нові</span>
-            </AppButton>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div v-if="dataBaseStore.loader" class="loading">
-      <div class="loader"></div>
-    </div>
-    <div v-if="dataBaseStore.cards.length !== 0" class="grid">
-      <Card v-for="item in dataBaseStore.filterCards" :key="item.id" :item="item" />
-    </div>
-    <div v-else>
-      <p>Немає доступних послуг.</p>
-    </div>
-    <div v-if="tabIsShow" class="pagination">
-      <button>Попередня</button>
-      <button>1</button>
-      <button>Наступна</button>
-    </div>
 
     <!-- Доданий контент про харчування -->
     <div class="additional-info">
       <!-- Блок про вибір корму -->
       <div class="info-section">
+        <h2 class="title-h2 center mb-50">ХАРЧУВАННЯ</h2>
         <h3 class="info-title">Як вибрати корм для собаки?</h3>
         <div class="info-block">
           <div class="info-image">
@@ -100,6 +61,46 @@
         </div>
       </div>
     </div>
+    <div class="col mb">
+      <div class="title-h2 center">Товари для Харчування
+        {{  }}
+      </div>
+      <div v-if="tabIsShow" class="sort">
+        <div class="col">
+          <div class="title-h3 center">Сортування:</div>
+          <div class="category center">
+            <AppButton class="btn filter" :class="dataBaseStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('stars')">
+              <span>Популярність</span>
+            </AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('discount')">
+              <span>За знижкою</span>
+            </AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('price')">
+              <span>Спочатку дорожче</span>
+            </AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'title' ? 'btn active-tab' : ''" @click="dataBaseStore.sortByName('title')">
+              <span>По імені</span>
+            </AppButton>
+            <AppButton class="btn" :class="dataBaseStore.activeTab === 'new' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('new')">
+              <span>Спершу нові</span>
+            </AppButton>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="dataBaseStore.filterCards.length !== 0" class="grid">
+      <Card v-for="item in dataBaseStore.filterCards" :key="item.id" :item="item" />
+    </div>
+    <div v-else>
+      <p>Немає доступних послуг.</p>
+    </div>
+    <div v-if="tabIsShow" class="pagination">
+      <button>Попередня</button>
+      <button>1</button>
+      <button>Наступна</button>
+    </div>
+
   </div>
 </template>
 
@@ -139,6 +140,7 @@ $primary: #FF9F0E
     justify-content: flex-start
 
 .grid
+  position: relative
   display: grid
   grid-template-columns: repeat(4, 1fr)
   grid-template-rows: repeat(auto, 1fr)
@@ -169,32 +171,11 @@ $primary: #FF9F0E
   font-size: 22px
   font-weight: 600
 
-.loading
-  display: flex
-  justify-content: center
-  align-items: center
-  height: 200px
-
-.loader
-  border: 16px solid #f3f3f3
-  border-top: 16px solid #FF9F0E
-  border-radius: 50%
-  width: 120px
-  height: 120px
-  animation: spin 2s linear infinite
-
-@keyframes spin
-  0%
-    transform: rotate(0deg)
-  100%
-    transform: rotate(360deg)
-
 .category button
   padding: 8px 16px
   margin-right: 8px
-  border: 1px solid #ccc
+  border: 1px solid transparent
   border-radius: 4px
-  background-color: #fff
   cursor: pointer
 
 .category button.active

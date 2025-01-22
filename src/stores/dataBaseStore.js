@@ -14,7 +14,6 @@ export const useDataBaseStore = defineStore('dataBase', () => {
     loader.value = true
     for(const collectionProduct of collections){
       const querySnapshot = await getDocs(collection(db, collectionProduct))
-
       querySnapshot.forEach(doc => {
         cards.value.push({
           id: doc.id,
@@ -27,22 +26,26 @@ export const useDataBaseStore = defineStore('dataBase', () => {
     }
   }
 
-  const sortBy = async arg => {
+  const sortBy =  arg => {
     loader.value = true
-    const sortPrice = await [...cards.value].sort((a, b) => b[arg] - a[arg])
-    cards.value = sortPrice
-    activeTab.value = arg
-    loader.value = false
+    const sortPrice =  [...filterCards.value].sort((a, b) => b[arg] - a[arg])
+    setTimeout(()=>{
+      filterCards.value = sortPrice
+      activeTab.value = arg
+      loader.value = false
+    },1000)
   }
 
-  const sortByName = async title => {
+  const sortByName =  title => {
     loader.value = true
-    const byName = await [...cards.value].sort((a, b) =>
+    const byName =  [...filterCards.value].sort((a, b) =>
       a[title].localeCompare(b[title]),
     )
-    cards.value = byName
-    activeTab.value = title
-    loader.value = false
+    setTimeout(()=>{
+      filterCards.value = byName
+      activeTab.value = title
+      loader.value = false
+    },1000)
   }
 
   return {

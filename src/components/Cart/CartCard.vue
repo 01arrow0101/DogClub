@@ -46,16 +46,24 @@ const dataBaseStore = useDataBaseStore()
 const num = ref(props.card.num)
 
 const removeProduct = (removeId) => {
-  cartStore.deleteProduct(props.card.id)
-  dataBaseStore.cards.find(el => el.id === removeId).inCart = false
+  cartStore.cartLoader = true
+  setTimeout(() => {
+    cartStore.deleteProduct(props.card.id)
+    dataBaseStore.cards.find(el => el.id === removeId).inCart = false
+    cartStore.cartLoader = false
+  },300)
 }
 
 const handleChange = () => {
+  cartStore.cartLoader = true
   const product = cartStore.carts.find(el => el.id === props.card.id)
   if (product) {
-    product.num = num.value
-    product.total = product.num * product.price
-    product.discountSum = product.num * (product.price - product.discountPrice)
+    setTimeout(() => {
+      product.num = num.value
+      product.total = product.num * product.price
+      product.discountSum = product.num * (product.price - product.discountPrice)
+      cartStore.cartLoader = false
+    },300)
   }
 }
 

@@ -50,7 +50,7 @@ const services = ref([
   },
   {
     folderIcon: '/src/assets/img/Main/Services',
-    title: 'Навчання',
+    title: 'Тренування',
     name: 'training',
     path: '/training',
   },

@@ -5,7 +5,8 @@
     </div>
     <div class="cart-content">
     <h2 class="title-h2">{{cartStore.carts.length < 1 ? 'В корзине нет товаров' : 'Моя Корзина'}} </h2>
-    <div v-if="cartStore.carts.length !== 0" >
+    <div class="load" v-if="cartStore.carts.length !== 0" >
+    <AppLoader loader="loader loader_cart" v-if="cartStore.cartLoader"/>
       <CartCard v-for="item in cartStore.carts" :key="item.id" :card="item"/>
       <hr/>
     </div>
@@ -28,6 +29,7 @@
 <script setup>
 import { useCartStore } from '@/stores/cartStore';
 import { useDataBaseStore } from '@/stores/dataBaseStore';
+import AppLoader from '../AppLoader.vue';
 import CartCard from './CartCard.vue';
 import AppButton from '../Button/AppButton.vue';
 
@@ -110,4 +112,8 @@ const cartClear = () =>{
   gap: 16px
 .cart_total-btn .btn_clear
   background: #c45656
+.load
+  position: relative
+  width: 100%
+  height: 100%
 </style>

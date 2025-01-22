@@ -1,13 +1,14 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import AppCart from './components/Cart/AppCart.vue'
-import AppHeader from './components/Header/AppHeader.vue'
-import AppFooter from './components/Footer/AppFooter.vue'
-import Modal from './components/Modal/Modal.vue'
 import { useCartStore } from './stores/cartStore'
 import { useModuleStore } from './stores/modulesStore'
 import { onMounted } from 'vue'
 import { useDataBaseStore } from './stores/dataBaseStore'
+import Modal from './components/Modal/Modal.vue'
+import AppLoader from './components/AppLoader.vue'
+import AppCart from './components/Cart/AppCart.vue'
+import AppHeader from './components/Header/AppHeader.vue'
+import AppFooter from './components/Footer/AppFooter.vue'
 
 const dataBaseStore = useDataBaseStore()
 const moduleStore = useModuleStore()
@@ -20,6 +21,10 @@ onMounted(() => {
 
 <template>
   <Modal v-if="moduleStore.isOpenModalWindow" />
+
+ <div class="loading_overlay" v-if="dataBaseStore.loader">
+    <AppLoader loader=" loader" />
+ </div>
   <header class="header">
     <transition name="swipe">
       <div v-if="cartStore.showCart" class="cart-wrapper animate-cart">
@@ -140,4 +145,12 @@ onMounted(() => {
       padding: 25px
       opacity: 0
       height: 0
+
+// ------------------------------------------------------------
+.loading_overlay
+  position: absolute
+  background: rgba(0, 0, 0, 50%)
+  width: 100%
+  height: 100%
+  z-index: 999
 </style>

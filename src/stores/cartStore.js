@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useDataBaseStore } from './dataBaseStore'
 
 export const useCartStore = defineStore('cartStore', () => {
+  const cartLoader = ref(false)
   const showCart = ref(false)
   const carts = ref([])
   const num = ref(1)
@@ -37,5 +38,5 @@ export const useCartStore = defineStore('cartStore', () => {
 
   const currentCart = computed(() => carts.value.length)
 
-  return { showCart, carts, addToCart, deleteProduct, currentCart,totalPrice,totalAllPrice,discountSum,num }
+  return { cartLoader, showCart, carts, addToCart, deleteProduct, currentCart,totalPrice,totalAllPrice,discountSum,num }
 })

@@ -24,9 +24,6 @@ onMounted(()=>{
     <section>
       <div class="container">
     <h2 class="title-h2 center">Усі Товари</h2>
-    <div v-if="nutritionStore.loader" class="loading">
-      <div class="loader"></div>
-    </div>
     <div class="grid">
       <Card v-for="item in allProducts" :key="item.id" :item="item"/>
           </div>
@@ -70,23 +67,4 @@ $primary: #FF9F0E
     font-size: 2rem
     line-height: 40px
     text-align: start
-.loading
-  display: flex
-  justify-content: center
-  align-items: center
-  height: 200px
-
-.loader
-  border: 16px solid #f3f3f3
-  border-top: 16px solid #FF9F0E
-  border-radius: 50%
-  width: 120px
-  height: 120px
-  animation: spin 2s linear infinite
-
-@keyframes spin
-  0%
-    transform: rotate(0deg)
-  100%
-    transform: rotate(360deg)
 </style>
