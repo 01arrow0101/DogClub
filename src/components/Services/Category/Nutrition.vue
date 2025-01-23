@@ -9,7 +9,7 @@
         <h3 class="info-title">Як вибрати корм для собаки?</h3>
         <div class="info-block">
           <div class="info-image">
-            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Корм для собак" />
+            <img src="https://plus.unsplash.com/premium_photo-1726761692986-6bcde87fc2b8?q=80&w=2001&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Корм для собак" />
           </div>
           <div class="info-content">
             <p class="info-text">
@@ -29,7 +29,7 @@
         <h3 class="info-title">Натуральне харчування для собак</h3>
         <div class="info-block">
           <div class="info-image">
-            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Натуральне харчування" />
+            <img src="https://plus.unsplash.com/premium_photo-1683141107194-61e40e327e2b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Натуральне харчування" />
           </div>
           <div class="info-content">
             <p class="info-text">
@@ -49,7 +49,7 @@
         <h3 class="info-title">Цікаві факти про харчування собак</h3>
         <div class="info-block">
           <div class="info-image">
-            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Цікаві факти про харчування" />
+            <img src="https://plus.unsplash.com/premium_photo-1693265319299-357de02f0a8a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Цікаві факти про харчування" />
           </div>
           <div class="info-content">
             <ul class="info-list">
