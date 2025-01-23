@@ -1,5 +1,67 @@
 <template>
   <div class="container">
+
+    <!-- Доданий контент про грумінг -->
+    <div class="additional-info">
+      <!-- Блок про вибір послуг грумінгу -->
+      <div class="info-section">
+        <h2 class="title-h2 center mb-50">ГРУМІНГ</h2>
+        <h3 class="info-title">Як вибрати послуги грумінгу для собаки?</h3>
+        <div class="info-block">
+          <div class="info-image">
+            <img src="https://plus.unsplash.com/premium_photo-1678697845292-5277d0b0d63f?q=80&w=1960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Грумінг для собак" />
+          </div>
+          <div class="info-content">
+            <p class="info-text">
+              Грумінг — це важлива частина догляду за собакою. Ось кілька порад:
+            </p>
+            <ul class="info-list">
+              <li><strong>Тип шерсті:</strong> Вибирайте послуги, які відповідають типу шерсті вашої собаки (коротка, довга, кучерява).</li>
+              <li><strong>Частота:</strong> Регулярний грумінг допомагає підтримувати здоров'я шерсті та шкіри.</li>
+              <li><strong>Професіоналізм:</strong> Оберіть кваліфікованого грумера, який має досвід роботи з вашою породою.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок про домашній грумінг -->
+      <div class="info-section">
+        <h3 class="info-title">Домашній грумінг для собак</h3>
+        <div class="info-block">
+          <div class="info-image">
+            <img src="https://plus.unsplash.com/premium_photo-1675881733564-a9fb4e223ffe?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Домашній грумінг" />
+          </div>
+          <div class="info-content">
+            <p class="info-text">
+              Домашній грумінг — це зручний спосіб догляду за собакою. Ось кілька порад:
+            </p>
+            <ul class="info-list">
+              <li><strong>Чистка шерсті:</strong> Використовуйте спеціальні щітки для видалення мертвої шерсті.</li>
+              <li><strong>Купання:</strong> Використовуйте шампуні, які підходять для типу шерсті вашої собаки.</li>
+              <li><strong>Стрижка кігтів:</strong> Регулярно підрізайте кігті, щоб уникнути проблем з ходьбою.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок про цікаві факти -->
+      <div class="info-section">
+        <h3 class="info-title">Цікаві факти про грумінг собак</h3>
+        <div class="info-block">
+          <div class="info-image">
+            <img src="https://plus.unsplash.com/premium_photo-1678697845182-6dee32a1c30b?q=80&w=1996&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Цікаві факти про грумінг" />
+          </div>
+          <div class="info-content">
+            <ul class="info-list">
+              <li>Регулярний грумінг допомагає зменшити кількість шерсті в домі.</li>
+              <li>Деякі породи собак потребують професійного грумінгу кожні 4-6 тижнів.</li>
+              <li>Грумінг також включає чистку вух та зубів, що важливо для здоров'я собаки.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="col mb">
       <div class="title-h2 center">Товари для Грумінгу</div>
       <div v-if="tabIsShow" class="sort">
@@ -35,67 +97,6 @@
       <button>Попередня</button>
       <button>1</button>
       <button>Наступна</button>
-    </div>
-
-    <!-- Доданий контент про грумінг -->
-    <div class="additional-info">
-      <!-- Блок про вибір послуг грумінгу -->
-      <div class="info-section">
-        <h2 class="title-h2 center mb-50">ГРУМІНГ</h2>
-        <h3 class="info-title">Як вибрати послуги грумінгу для собаки?</h3>
-        <div class="info-block">
-          <div class="info-image">
-            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Грумінг для собак" />
-          </div>
-          <div class="info-content">
-            <p class="info-text">
-              Грумінг — це важлива частина догляду за собакою. Ось кілька порад:
-            </p>
-            <ul class="info-list">
-              <li><strong>Тип шерсті:</strong> Вибирайте послуги, які відповідають типу шерсті вашої собаки (коротка, довга, кучерява).</li>
-              <li><strong>Частота:</strong> Регулярний грумінг допомагає підтримувати здоров'я шерсті та шкіри.</li>
-              <li><strong>Професіоналізм:</strong> Оберіть кваліфікованого грумера, який має досвід роботи з вашою породою.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Блок про домашній грумінг -->
-      <div class="info-section">
-        <h3 class="info-title">Домашній грумінг для собак</h3>
-        <div class="info-block">
-          <div class="info-image">
-            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Домашній грумінг" />
-          </div>
-          <div class="info-content">
-            <p class="info-text">
-              Домашній грумінг — це зручний спосіб догляду за собакою. Ось кілька порад:
-            </p>
-            <ul class="info-list">
-              <li><strong>Чистка шерсті:</strong> Використовуйте спеціальні щітки для видалення мертвої шерсті.</li>
-              <li><strong>Купання:</strong> Використовуйте шампуні, які підходять для типу шерсті вашої собаки.</li>
-              <li><strong>Стрижка кігтів:</strong> Регулярно підрізайте кігті, щоб уникнути проблем з ходьбою.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Блок про цікаві факти -->
-      <div class="info-section">
-        <h3 class="info-title">Цікаві факти про грумінг собак</h3>
-        <div class="info-block">
-          <div class="info-image">
-            <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Цікаві факти про грумінг" />
-          </div>
-          <div class="info-content">
-            <ul class="info-list">
-              <li>Регулярний грумінг допомагає зменшити кількість шерсті в домі.</li>
-              <li>Деякі породи собак потребують професійного грумінгу кожні 4-6 тижнів.</li>
-              <li>Грумінг також включає чистку вух та зубів, що важливо для здоров'я собаки.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
