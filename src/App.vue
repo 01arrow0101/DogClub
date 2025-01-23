@@ -23,8 +23,9 @@ onMounted(() => {
   <Modal v-if="moduleStore.isOpenModalWindow" />
 
  <div class="loading_overlay" v-if="dataBaseStore.loader">
-    <AppLoader loader=" loader" />
+    <AppLoader loading="loading" loader=" loader" />
  </div>
+
   <header class="header">
     <transition name="swipe">
       <div v-if="cartStore.showCart" class="cart-wrapper animate-cart">
@@ -153,4 +154,8 @@ onMounted(() => {
   width: 100%
   height: 100%
   z-index: 999
+  top: 0
+  left: 0
+  display: flex
+  justify-content: center
 </style>

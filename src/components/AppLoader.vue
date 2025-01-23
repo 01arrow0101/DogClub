@@ -1,10 +1,11 @@
 <template>
-    <div  class="loading">
+    <div  :class="loading">
       <div :class="loader"></div>
     </div>
 </template>
 <script setup>
 defineProps({
+  loading: String,
   loader: String
 })
 </script>
@@ -12,10 +13,13 @@ defineProps({
 <style lang="sass" scoped>
 .loading
   position: fixed
-  inset:50%
-
+  top: 350px
+  &_cart
+    position: fixed
+    right: 250px
+    top: 450px
 .loader
-  border: 16px solid #f3f3f3
+  border: 16px solid #fff
   border-top: 16px solid #FF9F0E
   border-radius: 50%
   width: 120px
@@ -24,8 +28,10 @@ defineProps({
   &_cart
     width: 60px
     height: 60px
-    border: 8px solid #f3f3f3
+    border: 8px solid #fff
     border-top: 8px solid #FF9F0E
+    border-bottom: 8px solid #FF9F0E
+
     animation: spin 2s linear infinite
 
 @keyframes spin

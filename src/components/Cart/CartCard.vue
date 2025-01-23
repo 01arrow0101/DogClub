@@ -62,7 +62,7 @@ const handleChange = () => {
       product.num = num.value
       product.total = product.num * product.price
       product.discountSum = product.num * (product.price - product.discountPrice)
-      cartStore.cartLoader = false
+      // cartStore.cartLoader = false
     },300)
   }
 }
