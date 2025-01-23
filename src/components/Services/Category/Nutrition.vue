@@ -89,17 +89,27 @@
       </div>
     </div>
 
-    <div v-if="dataBaseStore.filterCards.length !== 0" class="grid">
-      <Card v-for="item in dataBaseStore.filterCards" :key="item.id" :item="item" />
+    <!-- Відображення карток -->
+    <div v-if="paginatedItems.length !== 0" class="grid">
+      <Card v-for="item in paginatedItems" :key="item.id" :item="item" />
     </div>
     <div v-else>
       <p>Немає доступних послуг.</p>
     </div>
-    <div v-if="tabIsShow" class="pagination">
-      <button>Попередня</button>
-      <button>1</button>
-      <button>Наступна</button>
-    </div>
+
+  <!-- Пагінація -->
+  <div v-if="tabIsShow" class="pagination">
+      <button @click="prevPage" :disabled="currentPage === 1">Попередня</button>
+      <button
+        v-for="page in totalPages"
+        :key="page"
+        @click="goToPage(page)"
+        :class="{ active: currentPage === page }"
+      >
+        {{ page }}
+      </button>
+      <button @click="nextPage" :disabled="currentPage === totalPages">Наступна</button>
+  </div>
 
   </div>
 </template>
@@ -108,8 +118,12 @@
 import { useDataBaseStore } from '/src/stores/dataBaseStore'
 import Card from './Card.vue'
 import AppButton from '@/components/Button/AppButton.vue';
+import { ref, computed } from 'vue';
 
 const dataBaseStore = useDataBaseStore()
+
+const currentPage = ref(1)
+const itemsPerPage = 8
 
 defineProps({
   tabIsShow: {
@@ -117,6 +131,38 @@ defineProps({
     default: true
   }
 })
+
+// Обчислювана властивість для відображення об'єктів на поточній сторінці
+const paginatedItems = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return dataBaseStore.filterCards.slice(start, end);
+});
+
+// Обчислювана властивість для загальної кількості сторінок
+const totalPages = computed(() => {
+  return Math.ceil(dataBaseStore.filterCards.length / itemsPerPage);
+});
+
+// Перехід на попередню сторінку
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
+
+// Перехід на наступну сторінку
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+
+// Перехід на конкретну сторінку
+const goToPage = (page) => {
+  currentPage.value = page;
+};
+
 </script>
 
 
