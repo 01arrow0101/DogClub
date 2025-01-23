@@ -9,7 +9,6 @@
         <h3 class="info-title">Як правильно купати собаку?</h3>
         <div class="info-block">
           <div class="info-image">
-            <!-- <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Купання собаки" /> -->
             <img src="https://plus.unsplash.com/premium_photo-1664303025616-a8f3b7114e10?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Купання собаки" />
           </div>
           <div class="info-content">
@@ -38,7 +37,6 @@
         <h3 class="info-title">Як вибрати шампунь для собаки?</h3>
         <div class="info-block">
           <div class="info-image">
-            <!-- <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Шампунь для собак" /> -->
             <img src="https://images.unsplash.com/photo-1647002380358-fc70ed2f04e0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Шампунь для собак" />
           </div>
           <div class="info-content">
@@ -59,7 +57,6 @@
         <h3 class="info-title">Як правильно сушити собаку?</h3>
         <div class="info-block">
           <div class="info-image">
-            <!-- <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Сушка собаки" /> -->
             <img src="https://images.unsplash.com/photo-1686928124138-a69b398dd657?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Сушка собаки" />
           </div>
           <div class="info-content">
@@ -80,7 +77,6 @@
         <h3 class="info-title">Цікаві факти про купання собак</h3>
         <div class="info-block">
           <div class="info-image">
-            <!-- <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Цікаві факти про купання" /> -->
             <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Цікаві факти про купання" />
           </div>
           <div class="info-content">
