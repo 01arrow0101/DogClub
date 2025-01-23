@@ -1,12 +1,16 @@
 <template>
   <div class="cart">
     <div class="cart-btn">
-      <AppButton  @click="cartStore.showCart = !cartStore.showCart" class="close-btn">X</AppButton>
+      <AppButton  @click="cartStore.showCart = !cartStore.showCart"
+      class="close-btn">X</AppButton>
     </div>
+
     <div class="cart-content">
     <h2 class="title-h2">{{cartStore.carts.length < 1 ? 'В корзине нет товаров' : 'Моя Корзина'}} </h2>
     <div class="load" v-if="cartStore.carts.length !== 0" >
-    <AppLoader loading="loading_cart" loader="loader loader_cart" v-if="cartStore.cartLoader"/>
+      <div class="loading">
+        <AppLoader loading="loading_cart" loader="loader loader_cart" v-if="cartStore.cartLoader"/>
+      </div>
       <CartCard v-for="item in cartStore.carts" :key="item.id" :card="item"/>
       <hr/>
     </div>
@@ -114,9 +118,9 @@ const cartClear = () =>{
   background: #c45656
 .load
   position: relative
-  width: 100%
-  height: 100%
 .loading
-  right: 10px
-  top: 0
+  position: absolute
+  left: 50%
+  right: 50px
+  
 </style>

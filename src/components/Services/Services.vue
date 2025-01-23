@@ -41,24 +41,28 @@ const services = ref([
     title: 'Грумінг',
     name: 'Grooming',
     path: '/grooming',
+    isShow: 'Грумінг'
   },
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Харчування',
     name: 'nutrition',
     path: '/nutrition',
+    isShow: 'Харчування'
   },
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Тренування',
     name: 'training',
     path: '/training',
+    isShow: 'Тренування'
   },
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Купання',
     name: 'bathing',
     path: '/bathing',
+    isShow: 'Купання'
   },
 ])
 

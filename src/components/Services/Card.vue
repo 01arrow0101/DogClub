@@ -11,7 +11,8 @@
 
 <script setup>
 import Svg from '@/components/Svg/Svg.vue'
-const props = defineProps({
+
+ defineProps({
   service: Object
 })
 

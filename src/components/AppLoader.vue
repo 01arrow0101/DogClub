@@ -16,8 +16,8 @@ defineProps({
   top: 350px
   &_cart
     position: fixed
-    right: 250px
-    top: 450px
+    right: 14vw
+    top:38vh
 .loader
   border: 16px solid #fff
   border-top: 16px solid #FF9F0E
