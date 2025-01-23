@@ -90,8 +90,8 @@
     </div>
 
     <!-- Відображення карток -->
-    <div v-if="paginatedItems.length !== 0" class="grid">
-      <Card v-for="item in paginatedItems" :key="item.id" :item="item" />
+    <div v-if="modelStore.paginatedItems.length !== 0" class="grid">
+      <Card v-for="item in modelStore.paginatedItems" :key="item.id" :item="item" />
     </div>
     <div v-else>
       <p>Немає доступних послуг.</p>
@@ -99,16 +99,16 @@
 
   <!-- Пагінація -->
   <div v-if="tabIsShow" class="pagination">
-      <button @click="prevPage" :disabled="currentPage === 1">Попередня</button>
+      <button @click="modelStore.prevPage" :disabled="modelStore.currentPage === 1">Попередня</button>
       <button
-        v-for="page in totalPages"
+        v-for="page in modelStore.totalPages"
         :key="page"
-        @click="goToPage(page)"
-        :class="{ active: currentPage === page }"
+        @click="modelStore.goToPage(page)"
+        :class="{ active: modelStore.currentPage === page }"
       >
         {{ page }}
       </button>
-      <button @click="nextPage" :disabled="currentPage === totalPages">Наступна</button>
+      <button @click="modelStore.nextPage" :disabled="modelStore.currentPage === modelStore.totalPages">Наступна</button>
   </div>
 
   </div>
@@ -116,14 +116,12 @@
 
 <script setup>
 import { useDataBaseStore } from '/src/stores/dataBaseStore'
+import { useModuleStore } from '@/stores/modulesStore';
 import Card from './Card.vue'
 import AppButton from '@/components/Button/AppButton.vue';
-import { ref, computed } from 'vue';
 
 const dataBaseStore = useDataBaseStore()
-
-const currentPage = ref(1)
-const itemsPerPage = 8
+const modelStore = useModuleStore()
 
 defineProps({
   tabIsShow: {
@@ -131,38 +129,6 @@ defineProps({
     default: true
   }
 })
-
-// Обчислювана властивість для відображення об'єктів на поточній сторінці
-const paginatedItems = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  return dataBaseStore.filterCards.slice(start, end);
-});
-
-// Обчислювана властивість для загальної кількості сторінок
-const totalPages = computed(() => {
-  return Math.ceil(dataBaseStore.filterCards.length / itemsPerPage);
-});
-
-// Перехід на попередню сторінку
-const prevPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--;
-  }
-};
-
-// Перехід на наступну сторінку
-const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++;
-  }
-};
-
-// Перехід на конкретну сторінку
-const goToPage = (page) => {
-  currentPage.value = page;
-};
-
 </script>
 
 

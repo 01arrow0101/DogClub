@@ -1,10 +1,16 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useDataBaseStore } from "./dataBaseStore";
 
 export const useModuleStore = defineStore('moduleStore', () =>{
+const dataBaseStore = useDataBaseStore()
+// ============================================
+
 const isOpenModalWindow = ref(false)
-const isAgree = ref(false)
-const activeTabCategory = ref('Харчування')
+const showModal = () => {
+  isOpenModalWindow.value = ! isOpenModalWindow.value
+}
+// ============================================
 
 const linkItems = ref([
   { title: 'Менше розмов',
@@ -24,6 +30,18 @@ const linkItems = ref([
     isActive: false
    },
 ])
+
+// ============================================
+
+const isAgree = ref(false)
+
+// ============================================
+
+const activeTabCategory = ref('Харчування')
+const setCategory = (arg) => {
+  activeTabCategory.value = arg
+}
+// ============================================
 
 const inputItems = ref([
   {
@@ -56,9 +74,39 @@ const inputItems = ref([
   },
 ])
 
-const showModal = () => {
-  isOpenModalWindow.value = ! isOpenModalWindow.value
-}
+// ============================================
+
+const currentPage = ref(1)
+const itemsPerPage = 8
+// Обчислювана властивість для відображення об'єктів на поточній сторінці
+const paginatedItems = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return dataBaseStore.filterCards.slice(start, end);
+});
+// Обчислювана властивість для загальної кількості сторінок
+const totalPages = computed(() => {
+  return Math.ceil(dataBaseStore.filterCards.length / itemsPerPage);
+});
+// Перехід на попередню сторінку
+const prevPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+  }
+};
+// Перехід на наступну сторінку
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+  }
+};
+// Перехід на конкретну сторінку
+const goToPage = (page) => {
+  currentPage.value = page;
+};
+
+// ============================================
+
 const  submitForm = () =>{
   alert('Дякуємо заявка прийнята!')
   inputItems.value.forEach(el =>{
@@ -70,8 +118,8 @@ const  submitForm = () =>{
     }
   })
   }
-const setCategory = (arg) => {
-  activeTabCategory.value = arg
-}
-return {isOpenModalWindow,showModal,linkItems,inputItems,submitForm,isAgree,activeTabCategory,setCategory}
+  
+  // ============================================
+
+return {isOpenModalWindow,showModal,linkItems,inputItems,submitForm,isAgree,activeTabCategory,setCategory, currentPage, itemsPerPage, paginatedItems, totalPages, prevPage, nextPage, goToPage}
 })
