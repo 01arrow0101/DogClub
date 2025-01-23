@@ -90,19 +90,31 @@ const totalPages = computed(() => {
 });
 // Перехід на попередню сторінку
 const prevPage = () => {
-  if (currentPage.value > 1) {
-    currentPage.value--;
-  }
+  dataBaseStore.loader = true
+  setTimeout(()=>{
+    if (currentPage.value > 1) {
+      currentPage.value--;
+    }
+    dataBaseStore.loader = false
+  },500)
 };
 // Перехід на наступну сторінку
 const nextPage = () => {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++;
-  }
+  dataBaseStore.loader = true
+  setTimeout(()=>{
+    if (currentPage.value < totalPages.value) {
+      currentPage.value++;
+    }
+  dataBaseStore.loader = false
+  },500)
 };
 // Перехід на конкретну сторінку
 const goToPage = (page) => {
-  currentPage.value = page;
+  dataBaseStore.loader = true
+  setTimeout(()=>{
+    currentPage.value = page;
+    dataBaseStore.loader = false
+  },500)
 };
 
 // ============================================
@@ -118,7 +130,7 @@ const  submitForm = () =>{
     }
   })
   }
-  
+
   // ============================================
 
 return {isOpenModalWindow,showModal,linkItems,inputItems,submitForm,isAgree,activeTabCategory,setCategory, currentPage, itemsPerPage, paginatedItems, totalPages, prevPage, nextPage, goToPage}
