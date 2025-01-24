@@ -62,152 +62,33 @@
       </div>
     </div>
 
-    <div class="col mb">
-      <div class="title-h2 center">Товари для Грумінгу</div>
-      <div v-if="tabIsShow" class="sort">
-        <div class="col">
-          <div class="title-h3 center">Сортування:</div>
-          <div class="category center col">
-            <AppButton class="btn filter" :class="dataBaseStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('stars')">
-              <span>Популярність</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('discount')">
-              <span>Спочатку дешевше</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('price')">
-              <span>Спочатку дорожче</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'title' ? 'btn active-tab' : ''" @click="dataBaseStore.sortByName('title')">
-              <span>По імені</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'new' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('new')">
-              <span>Спершу нові</span>
-            </AppButton>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-if="dataBaseStore.filterCards.length !== 0" class="grid">
-      <Card v-for="item in dataBaseStore.filterCards" :key="item.id" :item="item" />
-    </div>
-    <div v-else>
-      <p>Немає доступних послуг.</p>
-    </div>
-    <div v-if="tabIsShow" class="pagination">
-      <button>Попередня</button>
-      <button>1</button>
-      <button>Наступна</button>
-    </div>
+
+<PaginationPageWithCard />
   </div>
 </template>
 
 <script setup>
-import { useDataBaseStore } from '/src/stores/dataBaseStore'
-import Card from './Card.vue'
-import AppButton from '@/components/Button/AppButton.vue';
-
-const dataBaseStore = useDataBaseStore()
-
-defineProps({
-  tabIsShow: {
-    type: Boolean,
-    default: true
-  }
-})
+import PaginationPageWithCard from './PaginationPageWithCard.vue';
 </script>
 
 <style lang="sass" scoped>
 $primary: #FF9F0E
-/* Ваші стилі залишаються незмінними */
 .container
   padding-top: 72px
   padding-bottom: 88px
 
-.col
-  gap: 16px
-
-.row
-  justify-content: space-between
-  align-items: center
-
-.container .row.mb
-  @media (max-width: 768px)
-    flex-direction: column
-    justify-content: flex-start
-
-.grid
-  display: grid
-  grid-template-columns: repeat(4, 1fr)
-  grid-template-rows: repeat(auto, 1fr)
-  justify-items: center
-  gap: 32px
-  @media (max-width: 768px)
-    grid-template-columns: repeat(2, 1fr)
-  @media (max-width: 480px)
-    grid-template-columns: repeat(1, 1fr)
-
-.mb
-  margin-bottom: 72px
-
-.title-h2,
-.title-h3
-  color: $primary
-  margin: 0
-
-.title-h2
-  @media (max-width: 768px)
-    margin-bottom: 16px
-    font-size: 2rem
-    line-height: 40px
-    text-align: start
-
-.title-h3
-  margin-bottom: 8px
-  font-size: 22px
-  font-weight: 600
-
-.category button
-  padding: 8px 16px
-  margin-right: 8px
-  border: 1px solid transparent
-  border-radius: 4px
-  cursor: pointer
-
-.category button.active
-  background-color: $primary
-  color: #fff
-  border-color: $primary
-
-.pagination
-  display: flex
-  justify-content: center
-  margin-top: 24px
-
-.pagination button
-  padding: 8px 16px
-  margin-right: 8px
-  border: 1px solid #ccc
-  border-radius: 4px
-  background-color: #fff
-  cursor: pointer
-
-.pagination button.active
-  background-color: $primary
-  color: #fff
-  border-color: $primary
-
-.pagination button:disabled
-  background-color: #f3f3f3
-  color: #ccc
-  cursor: not-allowed
-
-/* Стилі для додаткового контенту */
 .additional-info
   margin-top: 48px
 
 .info-section
   margin-bottom: 48px
-
+.title-h2
+  color: $primary
+  @media (max-width: 768px)
+    margin-bottom: 16px
+    font-size: 2rem
+    line-height: 40px
+    text-align: start
 .info-title
   color: $primary
   font-size: 24px
@@ -230,7 +111,7 @@ $primary: #FF9F0E
 
 .info-list li strong
   color: $primary
-
+  font-weight: 700
 .info-block
   display: flex
   gap: 24px
