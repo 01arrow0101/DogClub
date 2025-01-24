@@ -116,7 +116,7 @@ const goToPage = (page) => {
     dataBaseStore.loader = false
 
       window.scrollTo({
-        top: 0,
+        top: 1450,
         behavior: 'smooth'
       })
   },500)

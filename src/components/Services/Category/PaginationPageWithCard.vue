@@ -22,6 +22,8 @@
         </div>
       </div>
 
+<SelectSort />
+
     <!-- Відображення карток -->
     <div v-if="modelStore.paginatedItems.length !== 0" class="grid">
       <Card v-for="item in modelStore.paginatedItems" :key="item.id" :item="item" />
@@ -50,6 +52,7 @@ import { useDataBaseStore } from '/src/stores/dataBaseStore'
 import { useModuleStore } from '@/stores/modulesStore';
 import Card from './Card.vue'
 import AppButton from '@/components/Button/AppButton.vue';
+import SelectSort from './SelectSort.vue';
 
 const dataBaseStore = useDataBaseStore()
 const modelStore = useModuleStore()
