@@ -2,13 +2,14 @@
 import { RouterView } from 'vue-router'
 import { useCartStore } from './stores/cartStore'
 import { useModuleStore } from './stores/modulesStore'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useDataBaseStore } from './stores/dataBaseStore'
 import Modal from './components/Modal/Modal.vue'
 import AppLoader from './components/AppLoader.vue'
 import AppCart from './components/Cart/AppCart.vue'
 import AppHeader from './components/Header/AppHeader.vue'
 import AppFooter from './components/Footer/AppFooter.vue'
+import AppButton from './components/Button/AppButton.vue'
 
 const dataBaseStore = useDataBaseStore()
 const moduleStore = useModuleStore()
@@ -16,10 +17,26 @@ const cartStore = useCartStore()
 
 onMounted(() => {
   dataBaseStore.getDataBase()
+  window.addEventListener('scroll',showScroll)
 })
+const btnShow =ref(false)
+
+const showScroll = () =>{
+
+    btnShow.value = window.scrollY > 200
+
+}
+const upTo = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
 </script>
 
 <template>
+  <AppButton class="abaol" v-if="btnShow" @click="upTo">UP</AppButton>
+
   <Modal v-if="moduleStore.isOpenModalWindow" />
 
  <div class="loading_overlay" v-if="dataBaseStore.loader">
@@ -42,6 +59,10 @@ onMounted(() => {
 
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'
+.abaol
+  position: fixed
+  bottom: 100px
+  right: 100px
 .header
   position: sticky
   top: 0

@@ -42,6 +42,10 @@ const isOpen = ref(false)
 const updateActiveLink = (path) => {
   moduleStore.linkItems.forEach((el) => {
     el.isActive = el.path === path;
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
   });
 };
 
