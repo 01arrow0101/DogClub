@@ -4,8 +4,14 @@
       <img :src="item.path" :alt="item.id" />
     </div>
     <div class="code">
-      <span v-if="item.new" style="color: red">NEW</span>
-      vendor code: {{ item.code }} <span>{{ item.stars }} stars</span>
+      <div v-if="item.new" style="color: red">NEW</div>
+      vendor code: {{ item.code }} <span>
+         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars >= 1 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars > 2 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars > 3 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars > 4 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars == 5 ? 'gold' : 'grey'"></Svg>
+        </span>
     </div>
     <div class="text">
       {{ item.title }}
@@ -32,8 +38,9 @@
   </div>
 </template>
 <script setup>
-import AppButton from '/src/components/Button/AppButton.vue'
 import { useCartStore } from '@/stores/cartStore'
+import AppButton from '/src/components/Button/AppButton.vue'
+import Svg from '@/components/Svg/Svg.vue'
 
 const cartStore = useCartStore()
 
@@ -42,14 +49,18 @@ const showCart = () => (cartStore.showCart = !cartStore.showCart)
 const addToCart = item => {
   cartStore.addToCart(item)
 }
-
-const props = defineProps({
+defineProps({
   item: Object,
 })
 </script>
 
 <style lang="sass" scoped>
 $primary: #839AA9
+$second: #FF9F0E
+.gold
+  color:  $second
+.grey
+  color: $primary
 .card
   max-width: 18rem
   width: 100%

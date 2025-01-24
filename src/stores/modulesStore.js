@@ -114,6 +114,11 @@ const goToPage = (page) => {
   setTimeout(()=>{
     currentPage.value = page;
     dataBaseStore.loader = false
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
   },500)
 };
 

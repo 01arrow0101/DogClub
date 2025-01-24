@@ -37,19 +37,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import Svg from '../Svg/Svg.vue'
 
-const props = defineProps({
+defineProps({
   person: Object,
 })
 
-const quality = ref([
-  {
-    folder: '',
-    name: '',
-  },
-])
+
 </script>
 <style lang="sass" scoped>
   $bg: rgb(131, 154, 169)
@@ -88,6 +82,8 @@ const quality = ref([
   font-weight: 600
   color: $primary
 .quality
+  display: flex
+  gap: 8px
   margin-bottom: 16px
 .span-quality
   color:$gold
