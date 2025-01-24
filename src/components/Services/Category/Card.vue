@@ -73,7 +73,7 @@ $second: #FF9F0E
   & img
     width: 100%
     height: 100%
-    object-fit: cover
+    object-fit: contain
 .code
   font-size: 14px
   line-height: 1rem
