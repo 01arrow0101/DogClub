@@ -5,7 +5,7 @@
     </div>
     <div class="code">
       <span v-if="item.new" style="color: red">NEW</span>
-      vendor code: {{ item.id }} <span>{{ item.stars }} stars</span>
+      vendor code: {{ item.code }} <span>{{ item.stars }} stars</span>
     </div>
     <div class="text">
       {{ item.title }}

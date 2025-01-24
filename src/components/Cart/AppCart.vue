@@ -6,7 +6,7 @@
     </div>
 
     <div class="cart-content">
-    <h2 class="title-h2">{{cartStore.carts.length < 1 ? 'В корзине нет товаров' : 'Моя Корзина'}} </h2>
+    <h2 class="title-h2">{{cartStore.carts.length < 1 ? 'На жаль ваш кошик пустий ' : 'Мій Кошик'}} </h2>
     <div class="load" v-if="cartStore.carts.length !== 0" >
       <div class="loading">
         <AppLoader loading="loading_cart" loader="loader loader_cart" v-if="cartStore.cartLoader"/>
@@ -122,5 +122,5 @@ const cartClear = () =>{
   position: absolute
   left: 50%
   right: 50px
-  
+
 </style>

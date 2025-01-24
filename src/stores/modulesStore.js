@@ -77,7 +77,7 @@ const inputItems = ref([
 // ============================================
 
 const currentPage = ref(1)
-const itemsPerPage = 8
+const itemsPerPage = 4
 // Обчислювана властивість для відображення об'єктів на поточній сторінці
 const paginatedItems = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;

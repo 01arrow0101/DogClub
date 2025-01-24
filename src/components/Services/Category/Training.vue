@@ -63,7 +63,7 @@
       </div>
     </div>
 
-
+    <div class="title-h2 center">Товари для Тренування</div>
 <PaginationPageWithCard />
   </div>
 </template>

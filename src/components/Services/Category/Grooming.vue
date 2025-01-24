@@ -62,7 +62,7 @@
       </div>
     </div>
 
-
+    <div class="title-h2 center">Товари для Грумінгу</div>
 <PaginationPageWithCard />
   </div>
 </template>

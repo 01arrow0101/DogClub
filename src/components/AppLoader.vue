@@ -18,6 +18,8 @@ defineProps({
     position: fixed
     right: 14vw
     top:38vh
+    @media(max-width: 768px)
+      right: 45vw
 .loader
   border: 16px solid #fff
   border-top: 16px solid #FF9F0E
@@ -31,8 +33,9 @@ defineProps({
     border: 8px solid #fff
     border-top: 8px solid #FF9F0E
     border-bottom: 8px solid #FF9F0E
-
     animation: spin 2s linear infinite
+
+
 
 @keyframes spin
   0%

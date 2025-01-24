@@ -90,7 +90,7 @@
       </div>
     </div>
 
-
+    <div class="title-h2 center">Товари для Купання </div>
     <PaginationPageWithCard />
   </div>
 </template>

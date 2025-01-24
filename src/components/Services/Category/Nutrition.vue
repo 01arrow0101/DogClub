@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-
+    <div class="title-h2 center">Товари для Харчування</div>
 <PaginationPageWithCard />
   </div>
 </template>
