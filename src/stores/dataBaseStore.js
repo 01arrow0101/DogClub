@@ -5,6 +5,7 @@ import { db } from '../firebase'
 
 export const useDataBaseStore = defineStore('dataBase', () => {
   const loader = ref(false)
+  const showSort =ref(false)
   const cards = ref([])
   const filterCards = ref([])
   const activeTab = ref('stars')
@@ -56,6 +57,7 @@ export const useDataBaseStore = defineStore('dataBase', () => {
     sortByName,
     activeTab,
     loader,
-    collections
+    collections,
+    showSort
   }
 })

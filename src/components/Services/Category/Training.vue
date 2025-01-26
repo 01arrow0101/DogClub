@@ -70,6 +70,7 @@
 
 <script setup>
 import PaginationPageWithCard from './PaginationPageWithCard.vue';
+
 </script>
 
 <style lang="sass" scoped>

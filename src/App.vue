@@ -35,7 +35,7 @@ const upTo = () => {
 </script>
 
 <template>
-  <AppButton class="abaol" v-if="btnShow" @click="upTo">UP</AppButton>
+  <AppButton class="buttonUp" v-if="btnShow" @click="upTo">UP</AppButton>
 
   <Modal v-if="moduleStore.isOpenModalWindow" />
 
@@ -59,10 +59,13 @@ const upTo = () => {
 
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'
-.abaol
+.buttonUp
   position: fixed
   bottom: 100px
   right: 100px
+  z-index: 9999
+  padding: 4px
+  border-radius: 25%
 .header
   position: sticky
   top: 0

@@ -1,72 +1,130 @@
 <template>
-    <div  class="sort">
-        <div class="col">
-          <div class="title-h3 center">Сортування:</div>
-          <div class="category center">
-            <AppButton class="btn filter" :class="dataBaseStore.activeTab === 'stars' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('stars')">
-              <span>Популярність</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'discount' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('discount')">
-              <span>За знижкою</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'price' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('price')">
-              <span>Спочатку дорожче</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'title' ? 'btn active-tab' : ''" @click="dataBaseStore.sortByName('title')">
-              <span>По імені</span>
-            </AppButton>
-            <AppButton class="btn" :class="dataBaseStore.activeTab === 'new' ? 'btn active-tab' : ''" @click="dataBaseStore.sortBy('new')">
-              <span>Спершу нові</span>
-            </AppButton>
-          </div>
-        </div>
+  <div class="sort desktop">
+    <div class="col">
+      <div class="title-h3 center">Сортування:</div>
+      <div class="category center">
+        <AppButton
+          class="btn filter"
+          :class="dataBaseStore.activeTab === 'stars' ? 'btn active-tab' : ''"
+          @click="dataBaseStore.sortBy('stars')"
+        >
+          <span>Популярність</span>
+        </AppButton>
+        <AppButton
+          class="btn"
+          :class="
+            dataBaseStore.activeTab === 'discount' ? 'btn active-tab' : ''
+          "
+          @click="dataBaseStore.sortBy('discount')"
+        >
+          <span>За знижкою</span>
+        </AppButton>
+        <AppButton
+          class="btn"
+          :class="dataBaseStore.activeTab === 'price' ? 'btn active-tab' : ''"
+          @click="dataBaseStore.sortBy('price')"
+        >
+          <span>Спочатку дорожче</span>
+        </AppButton>
+        <AppButton
+          class="btn"
+          :class="dataBaseStore.activeTab === 'title' ? 'btn active-tab' : ''"
+          @click="dataBaseStore.sortByName('title')"
+        >
+          <span>По імені</span>
+        </AppButton>
+        <AppButton
+          class="btn"
+          :class="dataBaseStore.activeTab === 'new' ? 'btn active-tab' : ''"
+          @click="dataBaseStore.sortBy('new')"
+        >
+          <span>Спершу нові</span>
+        </AppButton>
       </div>
-
-<SelectSort />
-
-    <!-- Відображення карток -->
-    <div v-if="modelStore.paginatedItems.length !== 0" class="grid">
-      <Card v-for="item in modelStore.paginatedItems" :key="item.id" :item="item" />
     </div>
-    <div v-else>
-      <p>Немає доступних послуг.</p>
-    </div>
+  </div>
+
+  <div class="select-sort mobile" v-if="isMobile">
+    <AppButton @click="showSorting">Сортування</AppButton>
+    <SelectSort />
+  </div>
+
+  <!-- Відображення карток -->
+  <div v-if="modelStore.paginatedItems.length !== 0" class="grid">
+    <Card
+      v-for="item in modelStore.paginatedItems"
+      :key="item.id"
+      :item="item"
+    />
+  </div>
+  <div v-else>
+    <p>Немає доступних послуг.</p>
+  </div>
 
   <!-- Пагінація -->
   <div v-if="tabIsShow" class="pagination">
-      <button @click="modelStore.prevPage" :disabled="modelStore.currentPage === 1">Попередня</button>
-      <button
-        v-for="page in modelStore.totalPages"
-        :key="page"
-        @click="modelStore.goToPage(page)"
-        :class="{ active: modelStore.currentPage === page }"
-      >
-        {{ page }}
-      </button>
-      <button @click="modelStore.nextPage" :disabled="modelStore.currentPage === modelStore.totalPages">Наступна</button>
+    <button
+      @click="modelStore.prevPage"
+      :disabled="modelStore.currentPage === 1"
+    >
+      Попередня
+    </button>
+    <button
+      v-for="page in modelStore.totalPages"
+      :key="page"
+      @click="modelStore.goToPage(page)"
+      :class="{ active: modelStore.currentPage === page }"
+    >
+      {{ page }}
+    </button>
+    <button
+      @click="modelStore.nextPage"
+      :disabled="modelStore.currentPage === modelStore.totalPages"
+    >
+      Наступна
+    </button>
   </div>
 </template>
 
 <script setup>
+import { onMounted, onUnmounted, ref } from 'vue'
 import { useDataBaseStore } from '/src/stores/dataBaseStore'
-import { useModuleStore } from '@/stores/modulesStore';
+import { useModuleStore } from '@/stores/modulesStore'
 import Card from './Card.vue'
-import AppButton from '@/components/Button/AppButton.vue';
-import SelectSort from './SelectSort.vue';
+import AppButton from '@/components/Button/AppButton.vue'
+import SelectSort from './SelectSort.vue'
 
 const dataBaseStore = useDataBaseStore()
 const modelStore = useModuleStore()
+const isMobile = ref(window.innerWidth < 768)
+
+const showSorting = () => (dataBaseStore.showSort = !dataBaseStore.showSort)
 
 defineProps({
   tabIsShow: {
     type: Boolean,
-    default: true
-  }
+    default: true,
+  },
+})
+const hendleResize = () => {
+  isMobile.value = window.innerWidth <= 768
+}
+onMounted(() => {
+  window.addEventListener('resize', hendleResize)
+})
+onUnmounted(() => {
+  window.removeEventListener('resize', hendleResize)
 })
 </script>
 
 <style lang="sass" scoped>
 $primary: #FF9F0E
+.desktop
+  @media (max-width: 768px)
+    display: none
+.mobile
+  @media (max-width: 768px)
+    display: block    
 .col
   gap: 16px
 
@@ -127,4 +185,3 @@ $primary: #FF9F0E
   color: #ccc
   cursor: not-allowed
 </style>
-
