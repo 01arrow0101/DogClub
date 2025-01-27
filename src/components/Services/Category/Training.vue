@@ -1,8 +1,13 @@
 <template>
   <div class="container">
-
-    <!-- Доданий контент про тренування -->
-    <div class="additional-info">
+    <div class="info-product">
+  <div class="title-h2 center">Товари для Тренування</div>
+  <PaginationPageWithCard />
+</div>
+<hr class="hr"/>
+ <div class="info-category">
+     <!-- Доданий контент про тренування -->
+     <div class="additional-info">
       <!-- Блок про базові команди -->
       <div class="info-section">
         <h2 class="title-h2 center mb-50">ТРЕНУВАННЯ</h2>
@@ -63,8 +68,8 @@
       </div>
     </div>
 
-    <div class="title-h2 center">Товари для Тренування</div>
-<PaginationPageWithCard />
+ </div>
+<hr class="hr"/>
   </div>
 </template>
 

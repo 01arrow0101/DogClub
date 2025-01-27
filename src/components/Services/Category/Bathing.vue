@@ -1,8 +1,12 @@
 <template>
   <div class="container">
-
-    <!-- Доданий контент про купання -->
-    <div class="additional-info">
+<div class="info-product">
+  <div class="title-h2 center">Товари для Купання </div>
+  <PaginationPageWithCard />
+</div>
+<hr class="hr"/>
+<div class="info-category">
+  <div class="additional-info">
       <!-- Блок про купання -->
       <div class="info-section">
         <h2 class="title-h2 center mb-50">КУПАННЯ</h2>
@@ -90,8 +94,10 @@
       </div>
     </div>
 
-    <div class="title-h2 center">Товари для Купання </div>
-    <PaginationPageWithCard />
+
+</div>
+    <!-- Доданий контент про купання -->
+<hr class="hr"/>
   </div>
 </template>
 
@@ -102,8 +108,8 @@ import PaginationPageWithCard from './PaginationPageWithCard.vue';
 <style lang="sass" scoped>
 $primary: #FF9F0E
 .container
-  padding-top: 72px
-  padding-bottom: 88px
+  padding-top: 50px
+  padding-bottom: 50px
 
 .additional-info
   margin-top: 48px

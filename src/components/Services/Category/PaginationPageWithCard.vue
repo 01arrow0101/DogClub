@@ -124,7 +124,7 @@ $primary: #FF9F0E
     display: none
 .mobile
   @media (max-width: 768px)
-    display: block    
+    display: block
 .col
   gap: 16px
 
@@ -166,6 +166,7 @@ $primary: #FF9F0E
   display: flex
   justify-content: center
   margin-top: 24px
+  margin-bottom: 50px
 
 .pagination button
   padding: 8px 16px

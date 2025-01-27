@@ -1,8 +1,17 @@
 <template>
   <div class="container">
+<div class="col">
 
-    <!-- Доданий контент про грумінг -->
-    <div class="additional-info">
+
+<div class="info-product">
+  <div class="title-h2 center">Товари для Грумінгу</div>
+<PaginationPageWithCard />
+  </div>
+  <hr class="hr"/>
+
+  <div class="info-category">
+     <!-- Доданий контент про грумінг -->
+     <div class="additional-info">
       <!-- Блок про вибір послуг грумінгу -->
       <div class="info-section">
         <h2 class="title-h2 center mb-50">ГРУМІНГ</h2>
@@ -61,10 +70,10 @@
         </div>
       </div>
     </div>
-
-    <div class="title-h2 center">Товари для Грумінгу</div>
-<PaginationPageWithCard />
-  </div>
+   </div>
+   <hr class="hr"/>
+</div>
+</div>
 </template>
 
 <script setup>
@@ -73,6 +82,9 @@ import PaginationPageWithCard from './PaginationPageWithCard.vue';
 
 <style lang="sass" scoped>
 $primary: #FF9F0E
+.col
+  flex-direction: column
+
 .container
   padding-top: 72px
   padding-bottom: 88px

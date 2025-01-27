@@ -1,7 +1,14 @@
 <template>
   <div class="container">
-    <!-- Доданий контент про харчування -->
-    <div class="additional-info">
+<div class="info-product">
+  <div class="title-h2 center">Товари для Харчування</div>
+  <PaginationPageWithCard />
+</div>
+<hr class="hr"/>
+
+<div class="info-category">
+     <!-- Доданий контент про харчування -->
+     <div class="additional-info">
       <!-- Блок про вибір корму -->
       <div class="info-section">
         <h2 class="title-h2 center mb-50">ХАРЧУВАННЯ</h2>
@@ -60,8 +67,8 @@
         </div>
       </div>
     </div>
-    <div class="title-h2 center">Товари для Харчування</div>
-<PaginationPageWithCard />
+</div>
+<hr class="hr"/>
   </div>
 </template>
 
