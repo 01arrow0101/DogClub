@@ -81,8 +81,8 @@ import PaginationPageWithCard from './PaginationPageWithCard.vue';
 <style lang="sass" scoped>
 $primary: #FF9F0E
 .container
-  padding-top: 72px
-  padding-bottom: 88px
+  padding-top: 50px
+  padding-bottom: 50px
 
 .additional-info
   margin-top: 48px

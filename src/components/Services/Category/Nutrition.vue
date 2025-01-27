@@ -80,8 +80,8 @@ import PaginationPageWithCard from './PaginationPageWithCard.vue';
 $primary: #FF9F0E
 .container
   position: relative
-  padding-top: 72px
-  padding-bottom: 88px
+  padding-top: 50px
+  padding-bottom: 50px
 
 .additional-info
   margin-top: 48px

@@ -86,8 +86,8 @@ $primary: #FF9F0E
   flex-direction: column
 
 .container
-  padding-top: 72px
-  padding-bottom: 88px
+  padding-top: 50px
+  padding-bottom: 50px
 
 .additional-info
   margin-top: 48px
