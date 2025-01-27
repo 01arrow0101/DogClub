@@ -66,6 +66,9 @@ const upTo = () => {
   z-index: 9999
   padding: 4px
   border-radius: 25%
+  @media (max-width: 768px)
+  bottom: 50px
+  right: 20px
 .header
   position: sticky
   top: 0

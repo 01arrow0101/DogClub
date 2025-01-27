@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="container">
-    <BurgerMenu @close="isOpen = false" :links="moduleStore.linkItems" @action="isOpen = false" v-if="isOpen" />
+    <BurgerMenu :links="moduleStore.linkItems" @close="isOpen = false" v-if="isOpen" />
   </div>
 </template>
 
@@ -38,6 +38,7 @@ const cartStore = useCartStore()
 const moduleStore = useModuleStore()
 
 const isOpen = ref(false)
+
 
 const updateActiveLink = (path) => {
   moduleStore.linkItems.forEach((el) => {

@@ -61,7 +61,7 @@ $primary: #839AA9
   right: 100px
   @media (max-width: 30rem)
     top: -90px
-    right: 10%
+    right: 0
 .videoButton
   color: $primary
   cursor: pointer

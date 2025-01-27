@@ -1,9 +1,10 @@
 <template>
+<transition enter-active-class="show-burger">
   <div class="content">
     <div class="container">
       <div class="col">
         <AppLogo />
-        <AppButton @action="$emit('action')" class="burger btn">
+        <AppButton @action="$emit('close')" class="burger btn">
           <span></span>
         </AppButton>
         <nav class="nav col gap p-t">
@@ -19,6 +20,7 @@
       </div>
     </div>
   </div>
+</transition>
 </template>
 <script setup>
 import { ref } from 'vue'
@@ -34,7 +36,7 @@ const links = ref(props.links)
 
 
 
-defineEmits(['action','close'])
+defineEmits(['close'])
 </script>
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'
@@ -96,4 +98,6 @@ $second: #fff
   width: 100vw
   height: 100vh
   z-index: 9999
+.contact-btn
+  margin-bottom: 16px
 </style>
