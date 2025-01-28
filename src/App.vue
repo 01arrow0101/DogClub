@@ -10,6 +10,7 @@ import AppCart from './components/Cart/AppCart.vue'
 import AppHeader from './components/Header/AppHeader.vue'
 import AppFooter from './components/Footer/AppFooter.vue'
 import AppButton from './components/Button/AppButton.vue'
+import Svg from './components/Svg/Svg.vue'
 
 const dataBaseStore = useDataBaseStore()
 const moduleStore = useModuleStore()
@@ -17,31 +18,32 @@ const cartStore = useCartStore()
 
 onMounted(() => {
   dataBaseStore.getDataBase()
-  window.addEventListener('scroll',showScroll)
+  window.addEventListener('scroll', showScroll)
 })
-const btnShow =ref(false)
+const btnShow = ref(false)
 
-const showScroll = () =>{
-
-    btnShow.value = window.scrollY > 200
-
+const showScroll = () => {
+  btnShow.value = window.scrollY > 200
 }
 const upTo = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: 'smooth',
   })
 }
 </script>
 
 <template>
-  <AppButton class="buttonUp" v-if="btnShow" @click="upTo">UP</AppButton>
+ <div class="scroll_to_up" v-if="btnShow">
+  <AppButton class="buttonUp" @click="upTo">UP</AppButton>
+  <Svg folder="/src/assets/img/Main/Services" name="Arrow" class="arrow"></Svg>
+ </div>
 
   <Modal v-if="moduleStore.isOpenModalWindow" />
 
- <div class="loading_overlay" v-if="dataBaseStore.loader">
+  <div class="loading_overlay" v-if="dataBaseStore.loader">
     <AppLoader loading="loading" loader=" loader" />
- </div>
+  </div>
 
   <header class="header">
     <transition name="swipe">
@@ -59,16 +61,24 @@ const upTo = () => {
 
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'
-.buttonUp
+.arrow
+  position: absolute
+  left: 0px
+  top: -30px
+  color: $hover
+  transform: rotate(-90deg)
+.scroll_to_up
   position: fixed
   bottom: 100px
   right: 100px
-  z-index: 9999
+  z-index: 555
   padding: 4px
   border-radius: 25%
   @media (max-width: 768px)
   bottom: 50px
   right: 20px
+.buttonUp
+  padding: 4px
 .header
   position: sticky
   top: 0
@@ -185,4 +195,15 @@ const upTo = () => {
   left: 0
   display: flex
   justify-content: center
+
+.buttonUp
+  &:hover + .arrow
+    animation: toUp 1.5s ease infinite
+@keyframes toUp
+  0%
+    top: -30px
+  50%
+    top: -50px
+  100%
+    top: -30px
 </style>
