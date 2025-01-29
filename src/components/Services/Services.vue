@@ -155,9 +155,9 @@ defineProps({
   font-style: 18px
   line-height: 24px
   letter-spacing: 0.05em
-  &:hover,
+  // &:hover,
   &:hover .arrow
-    animation: arrow 0.5s ease
+    animation: arrow 1.5s ease infinite
 .arrow
   color: $hover
   &:hover
