@@ -132,19 +132,43 @@ const upTo = () => {
 // Анимация для исчезновения
 .swipe-leave-active
   animation: swipe-reverse 1.5s ease forwards
+
 @keyframes swipe-reverse
+  // 0%
+  //   width: 30%
+  //   height: 100vh
+  //   overflow: hidden
+  // 75%
+  //   width: 30%
+  //   padding: 25px
+  //   opacity: 1
+  // 100%
+  //   padding: 25px
+  //   opacity: 0
+  //   overflow: hidden
+
   0%
     width: 30%
     height: 100vh
+    padding: 0
+    opacity: 1
     overflow: hidden
+
   75%
     width: 30%
+    height: 5vh
     padding: 25px
     opacity: 1
-  100%
-    padding: 25px
-    opacity: 0
+
+  99%
     overflow: hidden
+    padding: 25px
+
+  100%
+    width: 0
+    height: 0
+    padding: 25px
+    overflow: auto
 
 @media (max-width: 768px)
   .animate-cart
