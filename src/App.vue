@@ -71,7 +71,7 @@ const upTo = () => {
   position: fixed
   bottom: 100px
   right: 100px
-  z-index: 555
+  z-index: 10
   padding: 4px
   border-radius: 25%
   @media (max-width: 768px)
@@ -93,8 +93,9 @@ const upTo = () => {
   background: rgba(255, 255, 255, 80% )
   width: 50px
   border-radius: 32px 0 0 32px
-  border: 3px solid $hover
+  border: 8px solid $hover
   border-right: 1px solid transparent
+  z-index: 999999999
 
 
   z-index: 2000

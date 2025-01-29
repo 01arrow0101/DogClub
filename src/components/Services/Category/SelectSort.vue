@@ -80,7 +80,7 @@ $primary: #FF9F0E
   background: rgba(255, 255, 255, 100%)
   backdrop-filter: blur(10px)
   height: 50vh
-  z-index: 9999
+  z-index: 1
   width: 100%
   height: 340px
   padding: 16px
