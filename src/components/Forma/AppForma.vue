@@ -4,10 +4,10 @@
         <div class="modal-content center">
           <h2 class="title-h2">Наші фахівці подбають про вашого друга</h2>
           <p class="text">Заповніть форму, щоб ми могли з вами зв'язатися!</p>
-          <form @submit.prevent="moduleStore.submitForm">
+          <form @submit.prevent="submitForm">
             <div class="inputs">
               <Input
-                v-for="input in moduleStore.inputItems"
+                v-for="input in inputItems"
                 :key="input.label"
                 :input="input"
               />
@@ -17,7 +17,7 @@
             </div>
             <div class="license">
               <label class="text-license" for="check">
-                <input required v-model="moduleStore.isAgree" :checked="moduleStore.isAgree" type="checkbox" name="check" />
+                <input required v-model="isAgree" :checked="isAgree" type="checkbox" name="check" />
                 Я згоден з політикою конфіденційності
               </label>
             </div>
@@ -28,11 +28,64 @@
 </template>
 
 <script setup>
-import { useModuleStore } from '@/stores/modulesStore';
+import {ref} from 'vue'
 import AppButton from '../Button/AppButton.vue'
 import Input from '../Modal/Input.vue'
 
-const moduleStore = useModuleStore()
+const isAgree = ref(false)
+const inputItems = ref([
+  {
+    label: "Ваше ім'я",
+    valueInput: '',
+    iconName: 'user',
+    iconPath: '/src/assets/img/Modal',
+    type: 'text'
+  },
+  {
+    label: "Ім'я улюбленця",
+    valueInput: '',
+    iconName: 'pet',
+    iconPath: '/src/assets/img/Modal',
+    type: 'text',
+  },
+  {
+    label: 'Ваш телефон',
+    valueInput: '',
+    iconName: 'phone',
+    iconPath: '/src/assets/img/Modal',
+    type: 'tel',
+  },
+  {
+    label: 'Ваш пошта',
+    valueInput: '',
+    iconName: 'mail',
+    iconPath: '/src/assets/img/Modal',
+    type: 'mail',
+  },
+])
+
+const submitForm = () => {
+  if (!isAgree.value) {
+    console.log('Error: License not read, please check the license');
+    return;
+  }
+
+  // Створюємо об'єкт із введеними даними
+  const formData = {
+    name: inputItems.value[0].valueInput,
+    pet: inputItems.value[1].valueInput,
+    tel: inputItems.value[2].valueInput,
+    mail: inputItems.value[3].valueInput
+  };
+
+  console.log('Отримані дані:', formData);
+  alert('Дякуємо, заявка прийнята!');
+
+  inputItems.value.forEach(el => {
+    el.valueInput = '';
+    isAgree.value = false
+  });
+};
 </script>
 
 <style lang="sass" scoped>
