@@ -12,6 +12,7 @@
                 v-for="input in inputItems"
                 :key="input.label"
                 :input="input"
+                @update:value="updateInputValue"
               />
             </div>
             <div class="button-form">
@@ -31,52 +32,14 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue';
 import { useModuleStore } from '@/stores/modulesStore';
-import AppButton from '../Button/AppButton.vue'
-import Input from './Input.vue'
+import AppButton from '../Button/AppButton.vue';
+import Input from './Input.vue';
 
-const moduleStore = useModuleStore()
+const moduleStore = useModuleStore();
 
-
-
-const sendToViber = async (formData) => {
-  const AUTH_TOKEN = 'ТВОЙ_VIBER_AUTH_TOKEN'; // Замініть на свій токен
-  const USER_ID = 'USER_ID_ОДЕРЖУВАЧА'; // Замініть на ID користувача
-  const URL = 'https://chatapi.viber.com/pa/send_message';
-
-  const messageData = {
-    receiver: USER_ID,
-    type: "text",
-    text: `📩 Нова заявка:\n
-    🏷 Ім'я: ${formData.name}
-    🐶 Улюбленець: ${formData.pet}
-    📞 Телефон: ${formData.tel}
-    📧 Пошта: ${formData.mail}`,
-    sender: {
-      name: "Мій Бот",
-      avatar: "https://example.com/avatar.jpg" // Замінити на посилання на іконку бота
-    }
-  };
-
-  try {
-    const response = await fetch(URL, {
-      method: 'POST',
-      headers: {
-        'X-Viber-Auth-Token': AUTH_TOKEN,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(messageData)
-    });
-
-    const result = await response.json();
-    console.log('✅ Дані надіслано в Viber:', result);
-  } catch (error) {
-    console.error('❌ Помилка надсилання у Viber:', error);
-  }
-};
-
-const isAgree = ref(false)
+const isAgree = ref(false);
 const inputItems = ref([
   {
     label: "Ваше ім'я",
@@ -106,7 +69,46 @@ const inputItems = ref([
     iconPath: '/src/assets/img/Modal',
     type: 'mail',
   },
-])
+]);
+
+const updateInputValue = (label, value) => {
+  const input = inputItems.value.find(item => item.label === label);
+  if (input) {
+    input.valueInput = value;
+  }
+};
+
+
+const sendToTelegram = async (formData) => {
+  const API_TOKEN = '7748966624:AAH1v92Zd47ry7iowMFCDgoP8FjQnNVk4JU'; // Замените на ваш токен
+  const CHAT_ID = '1883201209'; // Замените на ваш Chat ID
+
+  const message = `📩 Нова заявка:\n
+🏷 Имя: ${formData.name}
+🐶 Улюбленець: ${formData.pet}
+📞 Телефон: ${formData.tel}
+📧 Почта: ${formData.mail}`;
+
+  const URL = `https://api.telegram.org/bot${API_TOKEN}/sendMessage`;
+
+  try {
+    const response = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message
+      })
+    });
+
+    const result = await response.json();
+    console.log('✅ Данные отправлены в Telegram:', result);
+  } catch (error) {
+    console.error('❌ Ошибка отправки в Telegram:', error);
+  }
+};
 
 const submitForm = () => {
   if (!isAgree.value) {
@@ -114,7 +116,7 @@ const submitForm = () => {
     return;
   }
 
-  // Створюємо об'єкт із введеними даними
+  // Создаём объект с введёнными данными
   const formData = {
     name: inputItems.value[0].valueInput,
     pet: inputItems.value[1].valueInput,
@@ -127,10 +129,10 @@ const submitForm = () => {
 
   inputItems.value.forEach(el => {
     el.valueInput = '';
-    isAgree.value  = false
   });
+  isAgree.value = false;
 
-  sendToViber(formData); // Відправка в Viber
+  sendToTelegram(formData); // Вызов функции для отправки в Telegram
 };
 </script>
 
@@ -153,7 +155,6 @@ $second: #839AA9
 
   display: flex
   justify-content: center
-
 
 .modal
   &-window
