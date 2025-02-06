@@ -29,6 +29,7 @@
 
 <script setup>
 import {ref} from 'vue'
+import {sendToTelegram} from '@/sendToTelegram'
 import AppButton from '../Button/AppButton.vue'
 import Input from '../Modal/Input.vue'
 
@@ -85,6 +86,7 @@ const submitForm = () => {
     el.valueInput = '';
     isAgree.value = false
   });
+  sendToTelegram(formData)
 };
 </script>
 

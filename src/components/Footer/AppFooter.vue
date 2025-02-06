@@ -55,6 +55,7 @@
 
 <script setup>
 import {  ref } from 'vue'
+import {sendToTelegram} from '@/sendToTelegram'
 import { useModuleStore } from '@/stores/modulesStore'
 import AppLogo from '../Logo/AppLogo.vue'
 import Svg from '@/components/Svg/Svg.vue'
@@ -116,6 +117,7 @@ const submitForm = () => {
     el.valueInput = '';
     isAgree.value = false
   });
+  sendToTelegram(formData)
 };
 </script>
 
