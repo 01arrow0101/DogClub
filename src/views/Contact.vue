@@ -2,38 +2,38 @@
   <main class="contact">
     <div class="bg">
       <div class="container">
-        <h2 class="title-h2 center">Contact Us</h2>
+        <h2 class="title-h2 center">Зв’яжіться з нами</h2>
         <div class="content">
           <div class="contact-info">
             <div class="info-item">
-              <h3 class="title-h3">Address</h3>
-              <p>123 Pet Street, Pet City, 12345</p>
+              <h3 class="title-h3">Адреса</h3>
+              <p>123 Вулиця ,  Місто, 12345</p>
             </div>
             <div class="info-item">
-              <h3 class="title-h3">Phone</h3>
+              <h3 class="title-h3">Телефон</h3>
               <p>(123) 456-7890</p>
             </div>
             <div class="info-item">
-              <h3 class="title-h3">Email</h3>
+              <h3 class="title-h3">Електронна пошта</h3>
               <p>info@petshop.com</p>
             </div>
           </div>
           <div class="contact-form">
-            <h3 class="title-h3">Send Us a Message</h3>
+            <h3 class="title-h3">Надішліть нам повідомлення</h3>
             <form @submit.prevent="submitForm">
               <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Назва</label>
                 <input type="text" id="name" v-model="formData.name" required />
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Електронна пошта</label>
                 <input type="email" id="email" v-model="formData.email" required />
               </div>
               <div class="form-group">
-                <label for="message">Message</label>
+                <label for="message">Повідомлення</label>
                 <textarea id="message" v-model="formData.message" required></textarea>
               </div>
-              <AppButton type="submit" class="btn">Send Message</AppButton>
+              <AppButton type="submit" class="btn">Надіслати повідомлення</AppButton>
             </form>
           </div>
         </div>

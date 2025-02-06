@@ -2,7 +2,7 @@
   <main class="happy-customer">
     <div class="bg">
       <div class="container">
-        <h2 class="title-h2 center">Happy Customers</h2>
+        <h2 class="title-h2 center">Щасливі клієнти</h2>
         <div class="content">
           <div class="customer-reviews">
             <div v-for="(review, index) in reviews" :key="index" class="review-card">
@@ -14,21 +14,21 @@
             </div>
           </div>
           <div class="customer-form">
-            <h3 class="title-h3">Leave Your Review</h3>
+            <h3 class="title-h3">Залиште свій відгук</h3>
             <form @submit.prevent="submitForm">
               <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Назва</label>
                 <input type="text" id="name" v-model="formData.name" required />
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Електронна пошта</label>
                 <input type="email" id="email" v-model="formData.email" required />
               </div>
               <div class="form-group">
-                <label for="review">Review</label>
+                <label for="review">Відгук</label>
                 <textarea id="review" v-model="formData.review" required></textarea>
               </div>
-              <AppButton type="submit" class="btn">Submit Review</AppButton>
+              <AppButton type="submit" class="btn">Надіслати відгук</AppButton>
             </form>
           </div>
         </div>
@@ -43,19 +43,19 @@ import AppButton from '@/components/Button/AppButton.vue'
 
 const reviews = ref([
   {
-    name: 'John Doe',
-    date: 'October 15, 2023',
-    text: 'Great service and friendly staff! Highly recommend.'
+    name: 'Джон Доу',
+    date: '15 жовтня 2023',
+    text: 'Чудовий сервіс та дружній персонал! Настійно рекомендую. '
   },
   {
-    name: 'Jane Smith',
-    date: 'September 22, 2023',
-    text: 'The grooming was top-notch. My pet looked amazing!'
+    name: "Джейн Сміт",
+    date: '22 вересня 2023',
+    text: 'Догляд був найвищим. Мій вихованець виглядав дивовижно!'
   },
   {
-    name: 'Alice Johnson',
-    date: 'August 10, 2023',
-    text: 'Excellent experience. Will definitely come back!'
+    name: "Аліса Джонсон",
+    date: '10 серпня 2023',
+    text: 'Відмінний досвід. Обов’язково повернеться! '
   }
 ])
 
