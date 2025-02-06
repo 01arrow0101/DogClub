@@ -87,7 +87,8 @@ $text-primary: #181817
 $border: #C4C4C4
 $text-hover: #FF9F0E
 $text-light: #fff
-
+.title-h2
+  color: $text-hover
 .happy-customer
   .bg
     max-width: 1440px
@@ -174,15 +175,21 @@ $text-light: #fff
       input,
       textarea
         width: 100%
-        padding: 12px
-        border: 1px solid $border
+        padding: 12.5px 35px 12.5px 80px
+        outline: 1px solid $text-hover
+        border-color: transparent
         border-radius: 8px
-        font-size: 16px
-        color: $text-primary
 
+        color: $second
+
+        font-size: 1.125rem
+        line-height: 24px
+        letter-spacing: 0.05em
+        &::placeholder
+          color: $primary
         &:focus
-          border-color: $hover
-          outline: none
+          outline: 3px dashed $text-hover
+          transition: outline .3s
 
       textarea
         resize: vertical
@@ -201,4 +208,22 @@ $text-light: #fff
 
       &:hover
         background: darken($hover, 10%)
+
+.input
+  width: 100%
+  padding: 12.5px 35px 12.5px 80px
+  outline: 1px solid $primary
+  border-color: transparent
+  border-radius: 8px
+
+  color: $second
+
+  font-size: 1.125rem
+  line-height: 24px
+  letter-spacing: 0.05em
+  &::placeholder
+    color: $primary
+  &:focus
+    outline: 3px dashed $primary
+    transition: outline .3s
 </style>
