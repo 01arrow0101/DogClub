@@ -1,11 +1,7 @@
 <template>
   <div class="container">
-    <div class="item-router row">
-      <router-link class="hover-link" to='/services/'> < service  </router-link>
-      <router-link class="hover-link" :to='`/services/${service.collection}`'> < {{ service.collection }} </router-link>
-    </div>
+   <GoToBack />
     <div class="row">
-
       <div class="img">
       <img :src="service.path" :alt="service.id" />
     </div>
@@ -57,6 +53,7 @@ import { useCartStore } from '@/stores/cartStore';
 import { useDataBaseStore } from '@/stores/dataBaseStore';
 import AppButton from '/src/components/Button/AppButton.vue';
 import Svg from '@/components/Svg/Svg.vue'
+import GoToBack from '../Button/GoToBack.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -99,13 +96,5 @@ onMounted(() => {
 img
   max-width: 100%
   height: auto
-.item-router
-  gap:8px
-  margin-bottom: 24px
-  padding-top: 24px
-.hover-link
-  color: $primary
-  &:hover
-    color: $hover
 
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <GoToBack/>
     <div class="info-product">
   <div class="title-h2 center">Товари для Тренування</div>
   <PaginationPageWithCard />
@@ -75,6 +76,7 @@
 
 <script setup>
 import PaginationPageWithCard from './PaginationPageWithCard.vue';
+import GoToBack from '@/components/Button/GoToBack.vue';
 
 </script>
 

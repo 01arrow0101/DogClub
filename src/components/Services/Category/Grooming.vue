@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <router-link to='/services'> < services</router-link>
+    <GoToBack />
 <div class="col">
 <div class="info-product">
   <div class="title-h2 center">Товари для Грумінгу</div>
@@ -77,6 +77,7 @@
 
 <script setup>
 import PaginationPageWithCard from './PaginationPageWithCard.vue';
+import GoToBack from '@/components/Button/GoToBack.vue';
 </script>
 
 <style lang="sass" scoped>
