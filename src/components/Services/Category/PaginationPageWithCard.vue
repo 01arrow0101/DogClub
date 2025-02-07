@@ -58,6 +58,11 @@
     />
   </div>
   <div v-else>
+    <Card
+      v-for="item in items"
+      :key="item.id"
+      :item="item"
+    />
     <p>Немає доступних послуг.</p>
   </div>
 
@@ -94,6 +99,7 @@ import Card from './Card.vue'
 import AppButton from '@/components/Button/AppButton.vue'
 import SelectSort from './SelectSort.vue'
 
+const items = ref([])
 const dataBaseStore = useDataBaseStore()
 const modelStore = useModuleStore()
 const isMobile = ref(window.innerWidth < 768)
@@ -111,6 +117,7 @@ const hendleResize = () => {
 }
 onMounted(() => {
   window.addEventListener('resize', hendleResize)
+  dataBaseStore.cards.filter(arr => arr.collection === 'collectio')
 })
 onUnmounted(() => {
   window.removeEventListener('resize', hendleResize)

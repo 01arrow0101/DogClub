@@ -1,7 +1,7 @@
 <template>
   <div class="card center">
     <div class="img">
-      <img :src="item.path" :alt="item.id" />
+      <router-link :to="`/services/${item.collection}/${item.id}`"><img :src="item.path" :alt="item.id" /></router-link>
     </div>
     <div class="code">
       <div v-if="item.new" style="color: red">NEW</div>

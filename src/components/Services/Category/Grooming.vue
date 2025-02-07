@@ -1,8 +1,7 @@
 <template>
   <div class="container">
+    <router-link to='/services'> < services</router-link>
 <div class="col">
-
-
 <div class="info-product">
   <div class="title-h2 center">Товари для Грумінгу</div>
 <PaginationPageWithCard />

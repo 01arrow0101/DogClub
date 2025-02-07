@@ -7,6 +7,7 @@ import Nutrition from '@/components/Services/Category/Nutrition.vue'
 import Grooming from '@/components/Services/Category/Grooming.vue'
 import Training from '@/components/Services/Category/Training.vue'
 import Bathing from '@/components/Services/Category/Bathing.vue'
+import ServiceDetail from '@/components/Services/ServiceDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,6 +59,11 @@ const router = createRouter({
       name: 'contact',
       isActive: false,
       component: Contact
+    },
+    {
+      path: '/services/:collection/:id',
+      name: 'ServiceDetail',
+      component: ServiceDetail,
     },
   ]
 })
