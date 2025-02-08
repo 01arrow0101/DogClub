@@ -79,6 +79,8 @@ watch(
 @import '/src/assets/main.sass'
 $hover: #FF9F0E
 $second: #fff
+.container
+  padding: 0 8px
 .active
   color: $hover
   transition: color .5s ease

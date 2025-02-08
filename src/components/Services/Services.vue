@@ -126,6 +126,8 @@ defineProps({
 .container
   position: relative
   padding: 68px 0 95px
+  @media(max-width: 768px)
+    padding: 40px 8px
   &::after
     content:''
     position: absolute
@@ -144,6 +146,7 @@ defineProps({
   gap: 24px
   flex-wrap: wrap
   @media (max-width: 768px)
+    gap: 8px
 .linkMore
   align-self: end
   color: $hover

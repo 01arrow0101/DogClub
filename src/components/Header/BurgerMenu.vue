@@ -46,6 +46,7 @@ $second: #fff
   overflow: hidden
 .container
   padding-top: 32px
+
   overflow: hidden
 .nav
   &-link

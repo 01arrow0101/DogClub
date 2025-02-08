@@ -28,6 +28,8 @@ $second: #181817
   background: $primary
   padding: 47px
   box-shadow: 0 4px 4px 0 rgba(24, 24, 23, 0.05)
+  @media(max-width: 480px)
+    padding: 8px
 .icon
   margin-bottom: 24px
   color: $second

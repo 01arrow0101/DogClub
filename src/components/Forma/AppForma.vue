@@ -99,6 +99,8 @@ $second: #839AA9
   &-window
     position: relative
     padding: 168px 0 92px 0
+    @media(max-width: 768px)
+      padding: 40px 0
     &::before
       content: ''
       position: absolute
@@ -139,6 +141,8 @@ $second: #839AA9
     right: 16px
 .title-h2
   margin-bottom: 16px
+  @media(max-width: 480px)
+    font-size: 22px
 .text
   margin-bottom: 42px
   font-size: 18px
