@@ -52,6 +52,7 @@ const cartClear = () =>{
   alert('Кошик очищений')
   const dataBase = useDataBaseStore()
   dataBase.cards.find(el => el.inCart = false)
+  dataBase.product.inCart = false
   cartStore.carts = []
 }
 </script>

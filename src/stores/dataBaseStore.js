@@ -7,6 +7,7 @@ export const useDataBaseStore = defineStore('dataBase', () => {
   const loader = ref(false)
   const showSort =ref(false)
   const cards = ref([])
+  const product = ref({})
   const filterCards = ref([])
   const activeTab = ref('stars')
   const collections = ['training', 'bathing', 'nutritions', 'grooming']
@@ -58,6 +59,7 @@ export const useDataBaseStore = defineStore('dataBase', () => {
     activeTab,
     loader,
     collections,
-    showSort
+    showSort,
+    product
   }
 })

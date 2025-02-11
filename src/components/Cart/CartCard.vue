@@ -50,6 +50,7 @@ const removeProduct = (removeId) => {
   setTimeout(() => {
     cartStore.deleteProduct(props.card.id)
     dataBaseStore.cards.find(el => el.id === removeId).inCart = false
+    dataBaseStore.product.inCart = false
     cartStore.cartLoader = false
   },300)
 }

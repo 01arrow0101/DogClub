@@ -4,7 +4,7 @@
       <router-link :to="`/services/${item.collection}/${item.id}`"><img :src="item.path" :alt="item.id" /></router-link>
     </div>
     <div class="code">
-      <div v-if="item.new" style="color: red">NEW</div>
+      <div class="new" v-if="item.new" style="color: red">NEW</div>
       vendor code: {{ item.code }} <span>
          <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars >= 1 ? 'gold' : 'grey'"></Svg>
          <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars > 2 ? 'gold' : 'grey'"></Svg>
@@ -75,18 +75,24 @@ $second: #FF9F0E
     height: 100%
     object-fit: contain
 .code
+  position: relative
   font-size: 14px
   line-height: 1rem
   color: $primary
   margin-bottom: 16px
-  flex: 1 1 auto
   & span
     margin-left: 16px
+.new
+  position: absolute
+  top: -20px
+  left: 50%
+  transform: translateX(-50%)
 .text
   font-size: 16px
   line-height: 1.1875rem
   margin-bottom: 8px
   text-align: left
+  flex: 1 1 auto
 .weight
   text-align: left
   font-size: 16px
