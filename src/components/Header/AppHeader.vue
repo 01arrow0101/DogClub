@@ -19,8 +19,10 @@
     </div>
   </div>
   <div class="container">
-    <BurgerMenu :links="moduleStore.linkItems" @close="isOpen = false" v-if="isOpen" />
-  </div>
+    <transition name="show_burger">
+      <BurgerMenu :links="moduleStore.linkItems" @close="isOpen = false" v-if="isOpen" />
+    </transition>
+    </div>
 </template>
 
 <script setup>
@@ -168,4 +170,10 @@ $second: #fff
 
 .row
   align-items: center
+
+.show_burger-enter-active, .show_burger-leave-active
+  transition: opacity 0.5s ease, transform 0.5s ease
+.show_burger-enter-from, .show_burger-leave-to
+  opacity: 0
+  transform: translateX(-100%)
 </style>

@@ -39,7 +39,9 @@ const upTo = () => {
   <Svg folder="/src/assets/img/Main/Services" name="Arrow" class="arrow"></Svg>
  </div>
 
+<transition name="modal">
   <Modal v-if="moduleStore.isOpenModalWindow" />
+</transition>
 
   <div class="loading_overlay" v-if="dataBaseStore.loader">
     <AppLoader loading="loading" loader=" loader" />
@@ -95,9 +97,6 @@ const upTo = () => {
   border-radius: 32px 0 0 32px
   border: 8px solid $hover
   border-right: 1px solid transparent
-  z-index: 999999999
-
-
   z-index: 2000
   overflow: hidden
 
@@ -134,19 +133,6 @@ const upTo = () => {
   animation: swipe-reverse 1.5s ease forwards
 
 @keyframes swipe-reverse
-  // 0%
-  //   width: 30%
-  //   height: 100vh
-  //   overflow: hidden
-  // 75%
-  //   width: 30%
-  //   padding: 25px
-  //   opacity: 1
-  // 100%
-  //   padding: 25px
-  //   opacity: 0
-  //   overflow: hidden
-
   0%
     width: 30%
     height: 100vh
@@ -231,4 +217,10 @@ const upTo = () => {
     top: -50px
   100%
     top: -30px
+
+.modal-enter-active, .modal-leave-active
+  transition: opacity 1.5s ease
+
+.modal-enter-from, .modal-leave-to
+  opacity: 0
 </style>

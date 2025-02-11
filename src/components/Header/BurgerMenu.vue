@@ -1,6 +1,5 @@
 <template>
-<transition enter-active-class="show-burger">
-  <div class="content">
+  <div  class="content">
     <div class="container">
       <div class="col">
         <AppLogo />
@@ -8,7 +7,7 @@
           <span></span>
         </AppButton>
         <nav class="nav col gap p-t">
-          <div v-for="link in links" :key="link.title" class="nav-link">
+          <div v-for="(link, index) in links" :key="index" class="nav-link">
             <router-link :to="link.path" @click="$emit('close')">{{ link.title}} </router-link>
           </div>
         </nav>
@@ -20,7 +19,6 @@
       </div>
     </div>
   </div>
-</transition>
 </template>
 <script setup>
 import { ref } from 'vue'
@@ -34,14 +32,13 @@ const props = defineProps({
 const moduleStore = useModuleStore()
 const links = ref(props.links)
 
-
-
 defineEmits(['close'])
 </script>
 <style lang="sass" scoped>
 @import '/src/assets/main.sass'
 $hover: #FF9F0E
 $second: #fff
+
 .content
   overflow: hidden
 .container
