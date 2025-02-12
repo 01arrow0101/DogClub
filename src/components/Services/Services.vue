@@ -163,7 +163,7 @@ defineProps({
     animation: arrow 1.5s ease infinite
 .arrow
   color: $hover
-  &:hover
+  
 @keyframes arrow
   0%
     transform: translateX(0)
