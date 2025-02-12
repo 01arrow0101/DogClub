@@ -25,6 +25,9 @@ import { ref } from 'vue'
 import CardCustomer from '../Customer/CardCustomer.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
+import Sindy from '/src/assets/img/Main/Customer/Sindy.jpeg'
+import Anna from '/src/assets/img/Main/Customer/Anna.jpeg'
+import Christin from '/src/assets/img/Main/Customer/Christin.jpeg'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -54,25 +57,25 @@ const breakpoints = {
 
 const cards = ref([
   {
-    folder: '/src/assets/img/Main/Customer/Christin.jpeg',
+    folder: `${Christin}`,
     title: 'Крістін і Том',
     text: 'Подобається загальне враження від тренування!',
     quality: 5,
   },
   {
-    folder: '/src/assets/img/Main/Customer/Anna.jpeg',
+    folder: `${Anna}`,
     title: 'Анна і Тоббі',
     text: 'Чудові продукти та вчасна доставка.',
     quality: 4,
   },
   {
-    folder: '/src/assets/img/Main/Customer/Sindy.jpeg',
+    folder: `${Sindy}`,
     title: 'Сінді і Кітч',
     text: 'Чудова робота з тренером!',
     quality: 5,
   },
   {
-    folder: '/src/assets/img/Main/Customer/Sindy.jpeg',
+    folder: `${Sindy}`,
     title: 'Сінді і Кітч',
     text: 'Чудова робота з тренером!',
     quality: 5,

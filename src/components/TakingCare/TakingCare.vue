@@ -43,7 +43,7 @@ import AppButton from '../Button/AppButton.vue'
     right: -640px
     width: 828px
     height: 513px
-    background: url('../src/assets/img/Main/bg1Home.png') center / contain no-repeat
+    background: url('/src/assets/img/Main/bg1Home.png') center / contain no-repeat
     @media (max-width: 768px)
       width: 0
       height: 0
@@ -67,7 +67,7 @@ import AppButton from '../Button/AppButton.vue'
     bottom: 130px
 .right
   position: relative
-  background: url('../src/assets/img/Main/dog.png') right / contain no-repeat
+  background: url('/src/assets/img/Main/dog.png') right / contain no-repeat
   width: 506px
   height: 516px
   @media(max-width:768px)

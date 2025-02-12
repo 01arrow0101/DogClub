@@ -117,7 +117,7 @@ const hendleResize = () => {
 }
 onMounted(() => {
   window.addEventListener('resize', hendleResize)
-  dataBaseStore.cards.filter(arr => arr.collection === 'collectio')
+  dataBaseStore.cards.filter(arr => arr.collection === 'collections')
 })
 onUnmounted(() => {
   window.removeEventListener('resize', hendleResize)
