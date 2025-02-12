@@ -46,21 +46,21 @@ const services = ref([
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Харчування',
-    name: 'nutrition',
+    name: 'Nutrition',
     path: '/nutrition',
     isShow: 'Харчування'
   },
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Тренування',
-    name: 'training',
+    name: 'Training',
     path: '/training',
     isShow: 'Тренування'
   },
   {
     folderIcon: '/src/assets/img/Main/Services',
     title: 'Купання',
-    name: 'bathing',
+    name: 'Bathing',
     path: '/bathing',
     isShow: 'Купання'
   },
@@ -163,7 +163,7 @@ defineProps({
     animation: arrow 1.5s ease infinite
 .arrow
   color: $hover
-  
+
 @keyframes arrow
   0%
     transform: translateX(0)

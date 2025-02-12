@@ -1,24 +1,25 @@
 <script setup>
-import { defineAsyncComponent } from "vue";
+import { computed } from "vue";
+
+// Завантажуємо всі SVG-файли з папки "assets/icons"
+const icons = import.meta.glob("@/assets/img/**/*.svg", { eager: true });
+
 const props = defineProps({
-  name: {
-    type: String,
-    required: true,
-  },
-  className: {
-    type: String,
-    required: false,
-  },
-  folder:{
-    type: String,
-    required: true
-  }
+  name: { type: String, required: true },
+  className: { type: String, required: false },
+  folder: { type: String, required: true }
 });
 
-const icon = defineAsyncComponent(
-  () => import(`${props.folder}/${props.name}.svg`),
-);
+// Формуємо коректний шлях до SVG
+const icon = computed(() => {
+  const path = `${props.folder}/${props.name}.svg`;
+  console.log("Шлях до іконки:", path); // Дебаг-лог
+
+  return icons[path]?.default || null;
+});
 </script>
+
 <template>
-  <component :class="className" :is="icon" />
+  <component v-if="icon" :is="icon" :class="className" />
+  <span v-else class="icon-error">⚠️ Іконка не знайдена</span>
 </template>
