@@ -35,7 +35,7 @@ const router = useRouter()
 .arrow
   transform: rotate(-180deg)
   color: $hover
-  &:hover
+
 @keyframes arrow
   0%
     transform: translateX(0) rotate(-180deg)

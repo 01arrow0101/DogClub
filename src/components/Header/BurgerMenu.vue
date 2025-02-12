@@ -35,6 +35,7 @@ const links = ref(props.links)
 defineEmits(['close'])
 </script>
 <style lang="sass" scoped>
+@use 'sass:color'
 @import '/src/assets/main.sass'
 $hover: #FF9F0E
 $second: #fff
@@ -58,7 +59,7 @@ $second: #fff
   padding: 4px
   cursor: pointer
   &:hover
-    background: darken($hover, 10%)
+    background: color.scale($hover, $lightness: 10%)
   & span
     display: block
     position: relative

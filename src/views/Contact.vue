@@ -63,6 +63,7 @@ const submitForm = () => {
 </script>
 
 <style lang="sass" scoped>
+@use 'sass:color'
 @import '@/assets/main.sass'
 $text-secondary: #4D4D4D
 $text-primary: #181817
@@ -173,5 +174,5 @@ $text-light: #fff
       transition: background 0.3s ease
 
       &:hover
-        background: darken($hover, 10%)
+        background: color.scale($hover,$lightness: 10%)
 </style>

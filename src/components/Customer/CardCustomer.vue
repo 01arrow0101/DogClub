@@ -10,23 +10,23 @@
     <div class="row">
     <div class="quality">
       <Svg
-        folder="/src/assets/img/Main/Customer/icon/"
+        folder="/src/assets/img/Main/Customer/icon"
         :name="person.quality < 1 ? 'whiteBone' : 'goldBone'"
       ></Svg>
       <Svg
-        folder="/src/assets/img/Main/Customer/icon/"
+        folder="/src/assets/img/Main/Customer/icon"
         :name="person.quality < 2 ? 'whiteBone' : 'goldBone'"
       ></Svg>
       <Svg
-        folder="/src/assets/img/Main/Customer/icon/"
+        folder="/src/assets/img/Main/Customer/icon"
         :name="person.quality < 3 ? 'whiteBone' : 'goldBone'"
       ></Svg>
       <Svg
-        folder="/src/assets/img/Main/Customer/icon/"
+        folder="/src/assets/img/Main/Customer/icon"
         :name="person.quality < 4 ? 'whiteBone' : 'goldBone'"
       ></Svg>
       <Svg
-        folder="/src/assets/img/Main/Customer/icon/"
+        folder="/src/assets/img/Main/Customer/icon"
         :name="person.quality < 5 ? 'whiteBone' : 'goldBone'"
       ></Svg>
 

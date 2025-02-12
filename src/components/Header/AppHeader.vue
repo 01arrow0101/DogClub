@@ -78,6 +78,7 @@ watch(
 </script>
 
 <style lang="sass" scoped>
+@use 'sass:color'
 @import '/src/assets/main.sass'
 $hover: #FF9F0E
 $second: #fff
@@ -109,7 +110,7 @@ $second: #fff
   @media( max-width: 480px)
     display: block
   &:hover
-    background: darken($hover, 10%)
+    background: color.scale($hover,$lightness: 10%)
   & span
     display: block
     position: relative

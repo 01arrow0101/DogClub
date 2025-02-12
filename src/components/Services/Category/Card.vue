@@ -6,11 +6,11 @@
     <div class="code">
       <div class="new" v-if="item.new" style="color: red">NEW</div>
       vendor code: {{ item.code }} <span>
-         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars >= 1 ? 'gold' : 'grey'"></Svg>
-         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars > 2 ? 'gold' : 'grey'"></Svg>
-         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars > 3 ? 'gold' : 'grey'"></Svg>
-         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars > 4 ? 'gold' : 'grey'"></Svg>
-         <Svg folder="/src/assets/img/Cart/" name="star" :class="item.stars == 5 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart" name="star" :class="item.stars >= 1 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart" name="star" :class="item.stars > 2 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart" name="star" :class="item.stars > 3 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart" name="star" :class="item.stars > 4 ? 'gold' : 'grey'"></Svg>
+         <Svg folder="/src/assets/img/Cart" name="star" :class="item.stars == 5 ? 'gold' : 'grey'"></Svg>
         </span>
     </div>
     <div class="text">

@@ -77,8 +77,8 @@ const upTo = () => {
   padding: 4px
   border-radius: 25%
   @media (max-width: 768px)
-  bottom: 50px
-  right: 20px
+    bottom: 50px
+    right: 20px
 .buttonUp
   padding: 4px
 .header
