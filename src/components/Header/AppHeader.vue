@@ -89,6 +89,9 @@ $second: #fff
   transition: color .5s ease
 .p-t
   padding: 32px 0 16px 0
+  @media (max-width: 540px)
+    padding: 32px 16px
+
 .nav
   &-link
     transition: color .5s ease

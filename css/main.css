@@ -47,16 +47,20 @@ a {
   text-decoration: none;
 }
 
+@font-face {
+  font-family: Irpin;
+  src: url("/src/assets/fonts/Irpin.ttf");
+}
 .title {
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   line-height: 5.5625rem;
   letter-spacing: 0.05em;
-  font-family: Arsenal;
+  font-family: Irpin;
   margin-bottom: 40px;
 }
 @media (max-width: 768px) {
   .title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     line-height: 70px;
     letter-spacing: 0;
     margin-bottom: 24px;
@@ -73,9 +77,9 @@ a {
 }
 
 .title-h2 {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   line-height: 70px;
-  font-family: Arsenal;
+  font-family: Irpin;
   margin-bottom: 40px;
 }
 @media (max-width: 480px) {
@@ -118,6 +122,14 @@ a {
 .nav-link:hover {
   color: #FF9F0E;
   transition: color 0.3s ease;
+}
+
+.hr {
+  border-color: transparent;
+  border-radius: 4px;
+  width: 100%;
+  background: #FF9F0E;
+  height: 8px;
 }
 
 body {

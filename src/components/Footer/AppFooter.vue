@@ -21,10 +21,10 @@
             </a>
           </div>
         </div>
+        
         <nav class="nav gap col">
           <div v-for="link in moduleStore.linkItems" :key="link.title" class="nav-link">
-            <a :href="link.path">{{ link.title }}</a>
-             <!-- <router-link :to="link.path">{{  link.title }}</router-link> -->
+            <a class="link" href="#" @click.prevent="goTo(link.path)">{{ link.title }}</a>
           </div>
         </nav>
 
@@ -55,6 +55,7 @@
 
 <script setup>
 import {  ref } from 'vue'
+import { useRouter } from 'vue-router'
 import {sendToTelegram} from '@/sendToTelegram'
 import { useModuleStore } from '@/stores/modulesStore'
 import AppLogo from '../Logo/AppLogo.vue'
@@ -64,6 +65,7 @@ import AppButton from '../Button/AppButton.vue'
 
 const moduleStore = useModuleStore()
 
+const router = useRouter()
 const isAgree = ref(false)
 const inputItems = ref([
   {
@@ -119,6 +121,17 @@ const submitForm = () => {
   });
   sendToTelegram(formData)
 };
+
+const goTo = (path) => {
+  moduleStore.linkItems.forEach(el => {
+    if( el.path === path){
+      router.push(path)
+      el.isActive = true
+    }else{
+      el.isActive = false
+    }
+  })
+}
 </script>
 
 <style lang="sass" scoped>

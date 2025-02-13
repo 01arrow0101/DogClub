@@ -2,11 +2,11 @@
   <div class="cart-card">
     <div class="row">
       <div class="card-img">
-        <a href="#"><img :src="card.path" :alt="card.title" /></a>
+        <router-link :to="`/services/${card.collection}/${card.id}`"><img :src="card.path" :alt="card.title" /></router-link>
       </div>
       <div class="cart-title">
         <h3 class="title-h3">
-          <a href="#">{{ card.title }}</a>
+          <router-link :to="`/services/${card.collection}/${card.id}`">{{ card.title }}</router-link>
         </h3>
         <p class="title-h3">
           Вес: {{ card.weight }}
@@ -104,7 +104,7 @@ watch(
   border-left: 3px solid $hover
 
   box-shadow: 0 2px 10px 2px #fff
-  background: #eee
+  background: #fff
   margin-bottom: 24px
 .price
   display: flex

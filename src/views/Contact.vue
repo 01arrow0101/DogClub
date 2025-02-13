@@ -147,7 +147,7 @@ $text-light: #fff
         border-color: transparent
         border-radius: 8px
 
-        color: $second
+        color: $primary
 
         font-size: 1.125rem
         line-height: 24px

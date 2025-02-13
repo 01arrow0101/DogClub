@@ -141,8 +141,8 @@ $second: #839AA9
     padding: 142px 140px
     @media (max-width: 768px)
       padding: 70px
-    @media (max-width: 480px)
-      padding: 40px
+    @media (max-width: 540px)
+      padding: 16px
 .close
   position: absolute
   top: 32px
@@ -154,9 +154,14 @@ $second: #839AA9
     right: 16px
 .title-h2
   margin-bottom: 16px
+  @media(max-width: 450px)
+    font-size: 24px
+
 .text
   margin-bottom: 42px
   color: $second
+  @media(max-width: 540px)
+    margin-bottom: 24px
 .inputs
   display: flex
   flex-direction: column

@@ -87,7 +87,7 @@ $text-secondary: #4D4D4D
 $text-primary: #181817
 $border: #C4C4C4
 $text-hover: #FF9F0E
-$text-light: #fff
+$text-light: #000
 .title-h2
   color: $text-hover
 .happy-customer
@@ -181,7 +181,7 @@ $text-light: #fff
         border-color: transparent
         border-radius: 8px
 
-        color: $second
+        color: $primary
 
         font-size: 1.125rem
         line-height: 24px

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper center">
     <div class="img-person">
-      <img :src="person.folder" :alt="person.title" />
+      <img class="customer" :src="person.folder" :alt="person.title" />
     </div>
     <div class="person-info">
       <p class="text text-title">{{ person.title }}</p>
@@ -64,6 +64,10 @@ defineProps({
 .img-person
   height: 326px
   overflow: hidden
+  & img
+    width: 100%
+    height: 100%
+    object-fit: cover
 .row
   justify-content: space-around
 .img-person

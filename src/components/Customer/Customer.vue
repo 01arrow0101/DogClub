@@ -8,7 +8,6 @@
       :space-between="16"
       :breakpoints="breakpoints"
       navigation
-      :pagination="{ clickable: true }"
       :scrollbar="{ draggable: true }"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
@@ -24,10 +23,11 @@
 import { ref } from 'vue'
 import CardCustomer from '../Customer/CardCustomer.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
+import { Navigation, Scrollbar, A11y } from 'swiper/modules'
 import Sindy from '/src/assets/img/Main/Customer/Sindy.jpeg'
 import Anna from '/src/assets/img/Main/Customer/Anna.jpeg'
 import Christin from '/src/assets/img/Main/Customer/Christin.jpeg'
+import David from '/src/assets/img/Main/Customer/David.jpeg'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -42,7 +42,7 @@ const onSlideChange = () => {
   // console.log('slide change')
 }
 
-const modules = [Navigation, Pagination, Scrollbar, A11y]
+const modules = [Navigation, Scrollbar, A11y]
 const breakpoints = {
   1440: {
     slidesPerView: 3,
@@ -50,7 +50,7 @@ const breakpoints = {
   768: {
     slidesPerView: 2,
   },
-  480: {
+  540: {
     slidesPerView: 1,
   },
 }
@@ -75,8 +75,8 @@ const cards = ref([
     quality: 5,
   },
   {
-    folder: `${Sindy}`,
-    title: 'Сінді і Кітч',
+    folder: `${David}`,
+    title: 'Давид і Лексі',
     text: 'Чудова робота з тренером!',
     quality: 5,
   },
