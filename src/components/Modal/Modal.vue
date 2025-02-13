@@ -124,11 +124,15 @@ $second: #839AA9
 
   display: flex
   justify-content: center
+  @media(max-height: 768px)
+    padding-top: 16px
+    padding-bottom: 16px
 
 .modal
   &-window
     max-width: 55rem
-    max-height: 55rem
+    // max-height: 55rem
+    height: 100%
 
     background: $primary
     border-radius: 32px
@@ -139,6 +143,8 @@ $second: #839AA9
   &-content
     position: relative
     padding: 142px 140px
+    @media (max-width: 1400px)
+      padding: 70px
     @media (max-width: 768px)
       padding: 70px
     @media (max-width: 540px)

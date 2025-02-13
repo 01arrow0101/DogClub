@@ -162,4 +162,23 @@ body {
 
 .el-icon svg {
   color: #fff;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  color: #FF9F0E;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: #fff;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  border-radius: 50%;
+  padding: 32px;
+  background: #FF9F0E;
+}
+.swiper-button-prev:hover, .swiper-button-next:hover {
+  background: #bc7100;
 }/*# sourceMappingURL=main.css.map */

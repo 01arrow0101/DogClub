@@ -94,13 +94,16 @@ const submitForm = () => {
 // @import '/src/assets/main.sass'
 $primary: #fff
 $second: #839AA9
-
+.container
+  padding: 0
 .modal
   &-window
     position: relative
     padding: 168px 0 92px 0
     @media(max-width: 768px)
       padding: 40px 0
+    @media(max-width: 540px)
+      padding: 16px 0
     &::before
       content: ''
       position: absolute
@@ -141,7 +144,7 @@ $second: #839AA9
     right: 16px
 .title-h2
   margin-bottom: 16px
-  @media(max-width: 480px)
+  @media(max-width: 540px)
     font-size: 22px
 .text
   margin-bottom: 42px
@@ -149,6 +152,8 @@ $second: #839AA9
   line-height: 24px
   letter-spacing: 0.05em
   color: $second
+  @media(max-width: 540px)
+    margin-bottom: 16px
 .inputs
   display: flex
   flex-direction: column
