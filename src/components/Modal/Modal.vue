@@ -130,10 +130,6 @@ $second: #839AA9
 
   display: flex
   justify-content: center
-  @media(max-height: 768px)
-    padding-top: 16px
-    padding-bottom: 16px
-
 .modal
   &-window
     max-width: 55rem
@@ -143,15 +139,11 @@ $second: #839AA9
     display: flex
     justify-content: center
     align-items: center
-    @media(max-height: 768px)
-      height: 100vh
-      max-height: 100vh
   &-content
     position: relative
     padding: 142px 140px
+    overflow-y: auto
     @media (max-width: 1400px)
-      padding: 70px
-    @media (max-width: 768px)
       padding: 70px
     @media (max-width: 540px)
       padding: 16px
