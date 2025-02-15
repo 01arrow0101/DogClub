@@ -20,7 +20,13 @@
             </div>
             <div class="license">
               <label class="text-license" for="check">
-                <input v-model="isAgree" required :checked="isAgree" type="checkbox" name="check" />
+                <input
+                  v-model="isAgree"
+                  required
+                  :checked="isAgree"
+                  type="checkbox"
+                  name="check"
+                />
                 Я згоден з політикою конфіденційності
               </label>
             </div>
@@ -32,22 +38,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { sendToTelegram } from '@/sendToTelegram'
-import { useModuleStore } from '@/stores/modulesStore';
-import AppButton from '../Button/AppButton.vue';
-import Input from './Input.vue';
+import { useModuleStore } from '@/stores/modulesStore'
+import AppButton from '../Button/AppButton.vue'
+import Input from './Input.vue'
 
-const moduleStore = useModuleStore();
+const moduleStore = useModuleStore()
 
-const isAgree = ref(false);
+const isAgree = ref(false)
 const inputItems = ref([
   {
     label: "Ваше ім'я",
     valueInput: '',
     iconName: 'user',
     iconPath: '/src/assets/img/Modal',
-    type: 'text'
+    type: 'text',
   },
   {
     label: "Ім'я улюбленця",
@@ -70,19 +76,19 @@ const inputItems = ref([
     iconPath: '/src/assets/img/Modal',
     type: 'mail',
   },
-]);
+])
 
 const updateInputValue = (label, value) => {
-  const input = inputItems.value.find(item => item.label === label);
+  const input = inputItems.value.find(item => item.label === label)
   if (input) {
-    input.valueInput = value;
+    input.valueInput = value
   }
-};
+}
 
 const submitForm = () => {
   if (!isAgree.value) {
-    console.log('Error: License not read, please check the license');
-    return;
+    console.log('Error: License not read, please check the license')
+    return
   }
 
   // Создаём объект с введёнными данными
@@ -90,19 +96,19 @@ const submitForm = () => {
     name: inputItems.value[0].valueInput,
     pet: inputItems.value[1].valueInput,
     tel: inputItems.value[2].valueInput,
-    mail: inputItems.value[3].valueInput
-  };
+    mail: inputItems.value[3].valueInput,
+  }
 
-  console.log('Отримані дані:', formData);
-  alert('Дякуємо, заявка прийнята!');
+  console.log('Отримані дані:', formData)
+  alert('Дякуємо, заявка прийнята!')
 
   inputItems.value.forEach(el => {
-    el.valueInput = '';
-  });
-  isAgree.value = false;
+    el.valueInput = ''
+  })
+  isAgree.value = false
 
-  sendToTelegram(formData); // Вызов функции для отправки в Telegram
-};
+  sendToTelegram(formData) // Вызов функции для отправки в Telegram
+}
 </script>
 
 <style lang="sass" scoped>
@@ -131,15 +137,15 @@ $second: #839AA9
 .modal
   &-window
     max-width: 55rem
-    // max-height: 55rem
-    height: 100%
-
+    max-height: 55rem
     background: $primary
     border-radius: 32px
-
     display: flex
     justify-content: center
     align-items: center
+    @media(max-height: 768px)
+      height: 100vh
+      max-height: 100vh
   &-content
     position: relative
     padding: 142px 140px
